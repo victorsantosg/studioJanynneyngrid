@@ -5,8 +5,8 @@ import useReveal from '../hooks/useReveal';
 /* ── Paint blob palette ── */
 const BLOBS = [
   { color: '#A8D66A', w: 120, h: 100, top: '38%', left: '8%', rotate: '-8deg', opacity: 0.85 },
-  { color: '#F5B8C4', w: 90,  h: 80,  top: '52%', left: '18%', rotate: '4deg', opacity: 0.9 },
-  { color: '#6ECFE3', w: 70,  h: 65,  top: '42%', left: '34%', rotate: '-5deg', opacity: 0.8 },
+  { color: '#F5B8C4', w: 90, h: 80, top: '52%', left: '18%', rotate: '4deg', opacity: 0.9 },
+  { color: '#6ECFE3', w: 70, h: 65, top: '42%', left: '34%', rotate: '-5deg', opacity: 0.8 },
 ];
 
 /* ── Marquee tags ── */
@@ -368,7 +368,7 @@ export default function Home() {
       ═══════════════════════════════════════════ */}
       <footer style={{ background: '#111009', padding: '3rem 1.25rem', borderTop: '1px solid rgba(168,214,106,0.1)' }}>
         <div className="footer-content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', textAlign: 'center' }}>
-          <img src="/logo_img.jpeg" alt="Studio Janynne Yngrid" style={{ width: 56, height: 56, borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(168,214,106,0.4)', opacity: 0.9 }} />
+          <img src="/logo_img.png" alt="Studio Janynne Yngrid" style={{ width: 56, height: 56, borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(168,214,106,0.4)', opacity: 0.9 }} />
 
           <span style={{ fontFamily: 'var(--font-script)', fontSize: '1.3rem', color: 'white', opacity: 0.9 }}>Studio Janynne Yngrid</span>
 
