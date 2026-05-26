@@ -69,8 +69,8 @@ export default function Portfolio() {
       </div>
 
       {/* ─── GRID ─── */}
-      <section style={{ padding: '0 1.25rem 6rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+      <section className="section-padding" style={{ padding: '0 1.25rem 6rem' }}>
+        <div className="desktop-grid-4" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
           {filtered.map((p, i) => (
             <div
               key={p.id}

@@ -36,8 +36,8 @@ export default function Contato() {
         <div className="brush-stroke reveal reveal-delay-3" style={{ width: 80, marginTop: '1.5rem' }} />
       </section>
 
-      {/* ─── CONTACT CARDS ─── */}
-      <section style={{ padding: '1rem 1.25rem 3rem' }}>
+      {/* ─── CONTATO GERAL (CARDS + FORM) ─── */}
+      <section className="section-padding contact-layout" style={{ padding: '2rem 1.25rem 6rem' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {[
             { icon: '📱', label: 'WhatsApp', value: '+55 (85) 9 9999-9999', accent: 'var(--verde)', href: 'https://wa.me/5585999999999' },
@@ -71,10 +71,7 @@ export default function Contato() {
             </a>
           ))}
         </div>
-      </section>
 
-      {/* ─── FORM ─── */}
-      <section style={{ padding: '2rem 1.25rem 6rem' }}>
         <div className="card-bezel">
           <div className="card-inner" style={{ padding: '2rem' }}>
             {!sent ? (

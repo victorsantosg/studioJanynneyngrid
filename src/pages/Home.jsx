@@ -30,7 +30,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════
           HERO — Z-Axis Cascade Layout
       ═══════════════════════════════════════════ */}
-      <section style={{
+      <section className="desktop-hero" style={{
         minHeight: '100dvh',
         display: 'flex',
         flexDirection: 'column',
@@ -45,15 +45,17 @@ export default function Home() {
         <div style={{ position: 'absolute', bottom: '10%', right: '5%', width: 200, height: 200, borderRadius: '50%', background: 'radial-gradient(ellipse, #C2EBF5 0%, transparent 70%)', pointerEvents: 'none' }} />
 
         {/* Floating photos — Z-Axis Cascade */}
-        <div style={{ position: 'absolute', top: '8%', right: '4%', zIndex: 2 }}>
-          <div className={`float-a${visible ? ' paint-pop' : ''}`} style={{ width: 'min(180px, 42vw)', borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 16px 48px rgba(28,20,16,0.18)', border: '4px solid white', transform: 'rotate(-3deg)' }}>
-            <img src="/img_1.jpeg" alt="Janynne" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4' }} />
+        <div className="desktop-hero-images">
+          <div style={{ position: 'absolute', top: '8%', right: '4%', zIndex: 2 }} className="float-a">
+            <div className={`hero-float-a float-a${visible ? ' paint-pop' : ''}`} style={{ width: 'min(180px, 42vw)', borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 16px 48px rgba(28,20,16,0.18)', border: '4px solid white', transform: 'rotate(-3deg)' }}>
+              <img src="/img_1.jpeg" alt="Janynne" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4' }} />
+            </div>
           </div>
-        </div>
 
-        <div style={{ position: 'absolute', top: '30%', right: '38%', zIndex: 1 }}>
-          <div className={`float-b${visible ? ' paint-pop' : ''}`} style={{ animationDelay: '0.2s', width: 'min(130px, 30vw)', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 12px 36px rgba(28,20,16,0.14)', border: '3px solid white', transform: 'rotate(2deg)' }}>
-            <img src="/img_3.jpeg" alt="Janynne" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4' }} />
+          <div style={{ position: 'absolute', top: '30%', right: '38%', zIndex: 1 }} className="float-b">
+            <div className={`hero-float-b float-b${visible ? ' paint-pop' : ''}`} style={{ animationDelay: '0.2s', width: 'min(130px, 30vw)', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 12px 36px rgba(28,20,16,0.14)', border: '3px solid white', transform: 'rotate(2deg)' }}>
+              <img src="/img_3.jpeg" alt="Janynne" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4' }} />
+            </div>
           </div>
         </div>
 
@@ -73,7 +75,7 @@ export default function Home() {
         ))}
 
         {/* Hero text */}
-        <div style={{ position: 'relative', zIndex: 3, maxWidth: 500 }}>
+        <div className="desktop-hero-text" style={{ position: 'relative', zIndex: 3, maxWidth: 500 }}>
           <div className={`reveal${visible ? ' visible' : ''}`} style={{ marginBottom: '1rem' }}>
             <span className="badge badge-verde">
               <span className="color-dot" style={{ background: 'var(--verde)' }} />
@@ -81,7 +83,7 @@ export default function Home() {
             </span>
           </div>
 
-          <h1 className={`reveal font-heading${visible ? ' visible' : ''}`} style={{
+          <h1 className={`reveal font-heading font-heading-hero${visible ? ' visible' : ''}`} style={{
             fontFamily: 'var(--font-heading)',
             fontSize: 'clamp(2.2rem, 9vw, 4.5rem)',
             lineHeight: 1.1,
@@ -136,7 +138,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════
           SOBRE — Editorial Split
       ═══════════════════════════════════════════ */}
-      <section style={{ padding: '6rem 1.25rem', position: 'relative', overflow: 'hidden' }}>
+      <section className="section-padding" style={{ padding: '6rem 1.25rem', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: 0, right: 0, width: 300, height: 300, background: 'radial-gradient(ellipse, #FAE0E6 0%, transparent 70%)', pointerEvents: 'none' }} />
 
         <div className="reveal" style={{ marginBottom: '0.75rem' }}>
@@ -147,7 +149,7 @@ export default function Home() {
         </div>
         <div className="brush-stroke reveal reveal-delay-1" style={{ width: 60, marginBottom: '1.5rem' }} />
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+        <div className="desktop-grid-2" style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
           {/* Photo + info */}
           <div className="reveal" style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
             {/* Photo with double-bezel */}
@@ -201,7 +203,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════
           TRABALHOS EM DESTAQUE
       ═══════════════════════════════════════════ */}
-      <section style={{ padding: '6rem 1.25rem', background: 'white' }}>
+      <section className="section-padding" style={{ padding: '6rem 1.25rem', background: 'white' }}>
         <div className="reveal" style={{ marginBottom: '0.75rem' }}>
           <span className="badge badge-azul">
             <span className="color-dot" style={{ background: 'var(--azul)' }} />
@@ -213,7 +215,7 @@ export default function Home() {
         </h2>
 
         {/* Bento Grid */}
-        <div style={{ display: 'grid', gridTemplateRows: 'auto auto', gap: 16 }}>
+        <div className="desktop-grid-2" style={{ display: 'grid', gridTemplateRows: 'auto auto', gap: 16 }}>
           {/* Card 1 — full width */}
           <div className="reveal portfolio-card" style={{ height: 280 }}>
             <img src="/img_1.jpeg" alt="Design de Moda" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
@@ -259,7 +261,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════
           SERVIÇOS
       ═══════════════════════════════════════════ */}
-      <section style={{ padding: '6rem 1.25rem', position: 'relative', overflow: 'hidden' }}>
+      <section className="section-padding" style={{ padding: '6rem 1.25rem', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', bottom: 0, left: 0, width: 250, height: 250, background: 'radial-gradient(ellipse, #D6EDAF 0%, transparent 70%)', pointerEvents: 'none' }} />
 
         <div className="reveal" style={{ marginBottom: '0.75rem' }}>
@@ -272,7 +274,7 @@ export default function Home() {
           Serviços
         </h2>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div className="services-grid" style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           {[
             { accent: 'verde', icon: '🎨', title: 'Design de Estampas', desc: 'Criação de padrões exclusivos para coleções de moda, com pesquisa de referências e desenvolvimento artístico completo.' },
             { accent: 'rosa', icon: '✦', title: 'Identidade Visual', desc: 'Construção da personalidade visual da sua marca — logo, paleta, tipografia e aplicações.' },
@@ -302,7 +304,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════
           DEPOIMENTOS
       ═══════════════════════════════════════════ */}
-      <section style={{ padding: '6rem 1.25rem', background: 'var(--creme-warm)' }}>
+      <section className="section-padding" style={{ padding: '6rem 1.25rem', background: 'var(--creme-warm)' }}>
         <div className="reveal" style={{ marginBottom: '0.75rem' }}>
           <span className="badge badge-rosa">
             <span className="color-dot" style={{ background: 'var(--rosa)' }} />
@@ -313,7 +315,7 @@ export default function Home() {
           O que dizem
         </h2>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <div className="desktop-grid-2" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           {[
             { quote: '"A sensibilidade da Janynne para traduzir o sentimento da coleção em estampas foi extraordinária. Ela elevou o patamar do nosso design."', author: 'Maison Elegance', role: 'Alta Costura' },
             { quote: '"O processo criativo é fluido e transparente. O resultado final da nossa identidade visual superou todas as expectativas."', author: 'Atelier Nouveau', role: 'Moda Contemporânea' },
@@ -337,7 +339,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════
           CTA FINAL
       ═══════════════════════════════════════════ */}
-      <section style={{ padding: '7rem 1.25rem', textAlign: 'center', position: 'relative', overflow: 'hidden', background: 'var(--ink)' }}>
+      <section className="section-padding" style={{ padding: '7rem 1.25rem', textAlign: 'center', position: 'relative', overflow: 'hidden', background: 'var(--ink)' }}>
         {/* Colored paint blobs on dark bg */}
         <div style={{ position: 'absolute', top: '20%', left: '10%', width: 160, height: 140, borderRadius: '60% 40% 70% 30% / 50% 60% 40% 50%', background: 'var(--verde)', opacity: 0.15, pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', bottom: '20%', right: '8%', width: 120, height: 100, borderRadius: '40% 60% 30% 70% / 60% 40% 60% 40%', background: 'var(--rosa)', opacity: 0.15, pointerEvents: 'none' }} />
@@ -365,12 +367,12 @@ export default function Home() {
           FOOTER
       ═══════════════════════════════════════════ */}
       <footer style={{ background: '#111009', padding: '3rem 1.25rem', borderTop: '1px solid rgba(168,214,106,0.1)' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', textAlign: 'center' }}>
+        <div className="footer-content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', textAlign: 'center' }}>
           <img src="/logo_img.jpeg" alt="Studio Janynne Yngrid" style={{ width: 56, height: 56, borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(168,214,106,0.4)', opacity: 0.9 }} />
 
           <span style={{ fontFamily: 'var(--font-script)', fontSize: '1.3rem', color: 'white', opacity: 0.9 }}>Studio Janynne Yngrid</span>
 
-          <nav style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+          <nav className="footer-nav" style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             <Link to="/" className="footer-link" style={{ color: 'rgba(255,255,255,0.5)' }}>Home</Link>
             <Link to="/portfolio" className="footer-link" style={{ color: 'rgba(255,255,255,0.5)' }}>Portfólio</Link>
             <Link to="/servicos" className="footer-link" style={{ color: 'rgba(255,255,255,0.5)' }}>Serviços</Link>

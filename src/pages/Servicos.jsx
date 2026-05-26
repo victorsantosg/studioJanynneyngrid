@@ -76,8 +76,8 @@ export default function Servicos() {
       </section>
 
       {/* ─── PACKAGES ─── */}
-      <section style={{ padding: '2rem 1.25rem 5rem' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+      <section className="section-padding" style={{ padding: '2rem 1.25rem 5rem' }}>
+        <div className="desktop-grid-3" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           {SERVICES.map((s, i) => (
             <div
               key={s.title}
@@ -138,7 +138,7 @@ export default function Servicos() {
       </section>
 
       {/* ─── PROCESSO ─── */}
-      <section style={{ padding: '5rem 1.25rem', background: 'var(--creme-warm)' }}>
+      <section className="section-padding" style={{ padding: '5rem 1.25rem', background: 'var(--creme-warm)' }}>
         <div className="reveal" style={{ marginBottom: '0.75rem' }}>
           <span className="badge badge-azul">
             <span className="color-dot" style={{ background: 'var(--azul)' }} />
@@ -149,12 +149,12 @@ export default function Servicos() {
           O Processo Criativo
         </h2>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+        <div className="process-grid" style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
           {PROCESS.map((step, i) => (
-            <div key={step.num} className={`reveal reveal-delay-${i % 3}`} style={{ display: 'flex', gap: '1.25rem', paddingBottom: i < PROCESS.length - 1 ? '2rem' : 0, position: 'relative' }}>
+            <div key={step.num} className={`reveal reveal-delay-${i % 3} process-step`} style={{ display: 'flex', gap: '1.25rem', paddingBottom: i < PROCESS.length - 1 ? '2rem' : 0, position: 'relative' }}>
               {/* Timeline line */}
               {i < PROCESS.length - 1 && (
-                <div style={{ position: 'absolute', left: 22, top: 52, bottom: 0, width: 2, background: 'rgba(168,214,106,0.2)' }} />
+                <div className="process-line" style={{ position: 'absolute', left: 22, top: 52, bottom: 0, width: 2, background: 'rgba(168,214,106,0.2)' }} />
               )}
 
               {/* Step number circle */}
@@ -183,7 +183,7 @@ export default function Servicos() {
       </section>
 
       {/* ─── FAQ ─── */}
-      <section style={{ padding: '5rem 1.25rem 4rem', background: 'white' }}>
+      <section className="section-padding" style={{ padding: '5rem 1.25rem 4rem', background: 'white' }}>
         <div className="reveal" style={{ marginBottom: '0.75rem' }}>
           <span className="badge badge-verde">
             <span className="color-dot" style={{ background: 'var(--verde)' }} />
@@ -194,7 +194,7 @@ export default function Servicos() {
           Perguntas Frequentes
         </h2>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <div className="desktop-grid-2" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {[
             { q: 'Você faz revisões nos projetos?', a: 'Sim! Cada pacote inclui rodadas de revisão. Trabalho até o resultado ficar perfeito para você.' },
             { q: 'Como funciona o pagamento?', a: '50% de entrada para início do projeto e 50% na entrega dos arquivos finais.' },
