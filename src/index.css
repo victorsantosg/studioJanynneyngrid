@@ -132,24 +132,35 @@ body::before {
   z-index: 100;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: space-between;
+  width: min(350px, 90vw);
+  height: 56px;
   background: rgba(254, 252, 248, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(168, 214, 106, 0.35);
   border-radius: 9999px;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1.25rem;
   box-shadow:
     0 4px 24px rgba(168, 214, 106, 0.15),
     0 1px 0 rgba(255,255,255,0.9) inset;
-  transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+  transition: all 0.6s cubic-bezier(0.32, 0.72, 0, 1);
   white-space: nowrap;
+  overflow: hidden;
 }
 .nav-pill.scrolled {
-  background: rgba(254, 252, 248, 0.97);
-  box-shadow:
-    0 8px 40px rgba(168, 214, 106, 0.2),
-    0 1px 0 rgba(255,255,255,0.9) inset;
+  left: calc(100% - 48px - 1.5rem);
+  transform: none;
+  width: 48px;
+  min-width: 48px;
+  height: 48px;
+  padding: 0;
+  justify-content: center;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 /* ─── MENU OVERLAY ─── */
@@ -503,6 +514,12 @@ body::before {
 .marquee-track:hover { animation-play-state: paused; }
 
 /* ─── RESPONSIVE BASE ─── */
+.desktop-grid-2, .desktop-grid-3, .desktop-grid-4, .services-grid, .process-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 @media (max-width: 768px) {
   .nav-pill { padding: 0.625rem 1rem; gap: 0.75rem; }
   
@@ -576,9 +593,488 @@ body::before {
 }
 
 @media (min-width: 1024px) {
-  .section-padding { padding: 8rem 6rem !important; }
-  .desktop-hero { padding: 0 6rem 5rem !important; }
+  section, footer, .constrain-width {
+    padding-left: max(6rem, calc((100vw - 1100px) / 2)) !important;
+    padding-right: max(6rem, calc((100vw - 1100px) / 2)) !important;
+  }
+  
+  .section-padding { padding-top: 8rem !important; padding-bottom: 8rem !important; }
+  .desktop-hero { padding-top: 0 !important; padding-bottom: 5rem !important; }
   .desktop-grid-2 { gap: 6rem; }
   .desktop-hero-images .float-a { width: 360px !important; }
   .desktop-hero-images .float-b { width: 280px !important; right: 32% !important; }
+}
+
+/* ─── BRAND MARQUEE FOR PORTFOLIO ─── */
+.brand-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  background: var(--creme);
+  padding: 1.5rem 0;
+  border-top: 1.5px dashed rgba(168, 214, 106, 0.3);
+  border-bottom: 1.5px dashed rgba(168, 214, 106, 0.3);
+  margin: 1.5rem 0 3rem;
+  position: relative;
+}
+.brand-marquee-container::before,
+.brand-marquee-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 15%;
+  z-index: 2;
+  pointer-events: none;
+}
+.brand-marquee-container::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--creme) 0%, transparent 100%);
+}
+.brand-marquee-container::after {
+  right: 0;
+  background: linear-gradient(-90deg, var(--creme) 0%, transparent 100%);
+}
+
+.brand-marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 5rem;
+  animation: brandMarquee 25s linear infinite;
+}
+.brand-marquee-container:hover .brand-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes brandMarquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.brand-logo {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  user-select: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.brand-logo:hover {
+  color: var(--rosa-deep);
+  transform: scale(1.05);
+}
+
+.brand-cabide {
+  font-family: var(--font-body);
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+.brand-dalutex {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-size: 1.4rem;
+}
+.brand-lancaster {
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+.brand-munny {
+  font-family: var(--font-body);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+.brand-triton {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.05em;
+  font-size: 1.35rem;
+}
+.brand-shein {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  font-size: 1.15rem;
+  text-transform: uppercase;
+}
+.brand-ipanema {
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+  color: var(--rosa-deep);
+}
+
+/* ─── ACTIVE LINK BRUSH STROKE UNDERLINE ─── */
+.nav-link {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  padding: 0.5rem 0.25rem;
+  transition: color 0.3s ease;
+}
+.nav-link:hover {
+  color: var(--ink);
+}
+.nav-link-active {
+  color: var(--ink) !important;
+  font-weight: 700;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: var(--rosa-pale);
+  border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1), background-color 0.3s;
+  z-index: -1;
+  opacity: 0.85;
+}
+.nav-link:hover::after {
+  transform: scaleX(0.7);
+  background-color: var(--rosa-pale);
+}
+.nav-link-active::after {
+  transform: scaleX(1) !important;
+  background-color: var(--rosa) !important;
+  height: 6px;
+}
+
+/* ─── SLOGAN WATERCOLOR ACCENTS ─── */
+.brush-accent {
+  position: relative;
+  display: inline-block;
+  padding: 0 0.5rem;
+  z-index: 1;
+}
+.brush-accent::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  bottom: 4px;
+  height: 75%;
+  z-index: -1;
+  opacity: 0.8;
+  transform: rotate(-1.5deg);
+  transition: transform 0.3s ease, opacity 0.3s;
+}
+.brush-accent-rose::before {
+  background: var(--rosa-pale);
+  border-radius: 60% 40% 80% 20% / 50% 60% 40% 50%;
+  box-shadow: 0 0 10px var(--rosa-pale);
+}
+.brush-accent-teal::before {
+  background: var(--azul-pale);
+  border-radius: 40% 70% 30% 60% / 60% 40% 50% 50%;
+  box-shadow: 0 0 10px var(--azul-pale);
+}
+.brush-accent-yellow::before {
+  background: #FDF7D8;
+  border-radius: 50% 50% 70% 30% / 40% 60% 40% 60%;
+  box-shadow: 0 0 10px #FDF7D8;
+}
+.brush-accent:hover::before {
+  transform: rotate(1deg) scale(1.05);
+  opacity: 0.95;
+}
+
+.brush-accent-green::before {
+  background: rgba(168, 214, 106, 0.45);
+  border-radius: 50% 60% 45% 55% / 50% 45% 60% 50%;
+  box-shadow: 0 0 10px rgba(168, 214, 106, 0.35);
+  height: 90%;
+  bottom: 1px;
+}
+.brush-accent-pink::before {
+  background: rgba(245, 184, 196, 0.45);
+  border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+  box-shadow: 0 0 10px rgba(245, 184, 196, 0.35);
+  height: 90%;
+  bottom: 1px;
+}
+
+/* ─── WATERCOLOR PILL BUTTON ─── */
+.btn-watercolor-teal {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.65rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  background: var(--azul-pale);
+  border: 1.5px solid rgba(110, 207, 227, 0.4);
+  border-radius: 40% 60% 35% 65% / 60% 40% 60% 40%;
+  box-shadow: 
+    0 4px 15px rgba(110, 207, 227, 0.15),
+    0 1px 0 rgba(255,255,255,0.8) inset;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  position: relative;
+  z-index: 1;
+}
+.btn-watercolor-teal::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--azul-pale) 0%, var(--azul) 100%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.btn-watercolor-teal:hover {
+  transform: scale(1.03) rotate(-0.5deg);
+  box-shadow: 0 6px 20px rgba(110, 207, 227, 0.3);
+  border-color: var(--azul-deep);
+}
+.btn-watercolor-teal:hover::before {
+  opacity: 1;
+}
+.btn-watercolor-teal:active {
+  transform: scale(0.98);
+}
+
+/* ─── DESKTOP HEADER NAVBAR ─── */
+.header-nav-container {
+  width: 100%;
+  background: rgba(254, 252, 248, 0.9);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(168, 214, 106, 0.15);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 0.8rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+.header-nav-container.scrolled {
+  padding: 0.5rem 2rem;
+  background: rgba(254, 252, 248, 0.96);
+  box-shadow: 0 8px 30px rgba(168, 214, 106, 0.1);
+}
+.header-logo-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+.logo-watercolor-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.4rem 0.8rem;
+  overflow: visible;
+}
+.logo-splash {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(8px);
+  opacity: 0.65;
+  z-index: 0;
+  pointer-events: none;
+  transition: transform 0.5s ease;
+}
+.logo-watercolor-container:hover .logo-splash {
+  transform: scale(1.15) rotate(10deg);
+}
+.logo-splash.teal-splash {
+  width: 35px;
+  height: 30px;
+  background: var(--azul-pale);
+  top: -2px;
+  left: 5px;
+  border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+}
+.logo-splash.pink-splash {
+  width: 40px;
+  height: 35px;
+  background: var(--rosa-pale);
+  bottom: -2px;
+  left: 25px;
+  border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%;
+}
+.logo-splash.yellow-splash {
+  width: 30px;
+  height: 30px;
+  background: #FDF7D8;
+  top: 10px;
+  left: 35px;
+  border-radius: 50% 50% 70% 30% / 40% 60% 40% 60%;
+}
+.logo-paintbrush {
+  position: relative;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+  margin-right: 6px;
+  transform: rotate(-15deg);
+  transition: transform 0.4s ease;
+}
+.logo-watercolor-container:hover .logo-paintbrush {
+  transform: rotate(15deg) translate(2px, -2px);
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  line-height: 1.1;
+}
+.logo-studio {
+  font-family: var(--font-script);
+  font-size: 1.25rem;
+  color: var(--ink);
+  margin-bottom: -2px;
+}
+.logo-name {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.header-links-section {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+/* ─── WATERCOLOR CANVAS CARDS ─── */
+.canvas-card-container {
+  display: flex;
+  flex-direction: column;
+  background: var(--creme);
+  border-radius: 2rem;
+  padding: 0.75rem;
+  border: 1.5px solid rgba(168, 214, 106, 0.15);
+  box-shadow: 0 4px 20px rgba(168, 214, 106, 0.04);
+  transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+.canvas-card-container:hover {
+  transform: translateY(-8px) rotate(0.5deg);
+  box-shadow: 0 20px 40px rgba(28, 20, 16, 0.08);
+  border-color: rgba(168, 214, 106, 0.3);
+}
+.canvas-card-inner {
+  width: 100%;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 1/1;
+  background: white;
+}
+.canvas-card-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.canvas-card-container:hover .canvas-card-inner img {
+  transform: scale(1.05);
+}
+.canvas-card-label-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.25rem 0.5rem 0.75rem;
+  position: relative;
+  min-height: 3.5rem;
+}
+.card-brush-stroke {
+  position: absolute;
+  width: 85%;
+  height: 2.2rem;
+  z-index: 1;
+  opacity: 0.85;
+  transform: rotate(-1deg);
+  transition: transform 0.4s ease, opacity 0.4s;
+}
+.canvas-card-container:hover .card-brush-stroke {
+  transform: scaleX(1.05) rotate(0.5deg);
+  opacity: 0.95;
+}
+.card-brush-stroke-rose {
+  background: var(--rosa-pale);
+  border-radius: 50% 50% 70% 30% / 40% 60% 40% 60%;
+}
+.card-brush-stroke-yellow {
+  background: #FDF7D8;
+  border-radius: 60% 40% 80% 20% / 50% 60% 40% 50%;
+}
+.card-brush-stroke-teal {
+  background: var(--azul-pale);
+  border-radius: 40% 70% 30% 60% / 60% 40% 50% 50%;
+}
+.card-brush-title-text {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-script);
+  font-size: 1.45rem;
+  color: var(--ink);
+  text-align: center;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+/* Page watercolor splashes background wrappers */
+.page-splashes-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.ambient-splash {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+.ambient-splash.left-pink {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, var(--rosa-pale) 0%, transparent 70%);
+  top: 15%;
+  left: -150px;
+}
+.ambient-splash.right-yellow {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #FDF7D8 0%, transparent 70%);
+  top: 40%;
+  right: -200px;
+}
+.ambient-splash.bottom-teal {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--azul-pale) 0%, transparent 70%);
+  bottom: 10%;
+  left: 20%;
 }

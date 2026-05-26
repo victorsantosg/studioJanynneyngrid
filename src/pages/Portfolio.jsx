@@ -5,6 +5,9 @@ import useReveal from '../hooks/useReveal';
 const CATEGORIES = ['Todos', 'Estampas', 'Identidade Visual', 'Branding', 'Ilustração'];
 
 const PROJECTS = [
+  { id: 101, img: '/jardim_de_afetos.png', title: 'Jardim de Afetos', cat: 'Estampas', accent: 'var(--rosa-deep)', year: '2025' },
+  { id: 102, img: '/citricos_do_sol.png', title: 'Cítricos do Sol', cat: 'Estampas', accent: 'var(--amarelo-deep)', year: '2025' },
+  { id: 103, img: '/mar_em_aquarela.png', title: 'Mar em Aquarela', cat: 'Estampas', accent: 'var(--azul-deep)', year: '2025' },
   { id: 1, img: '/img_1.jpeg', title: 'Coleção Primavera', cat: 'Estampas', accent: 'var(--verde)', year: '2024' },
   { id: 2, img: '/img_2.jpeg', title: 'Marca Atelier', cat: 'Identidade Visual', accent: 'var(--rosa)', year: '2024' },
   { id: 3, img: '/img_3.jpeg', title: 'Fashion Branding', cat: 'Branding', accent: 'var(--azul)', year: '2025' },
@@ -20,7 +23,11 @@ export default function Portfolio() {
   const filtered = active === 'Todos' ? PROJECTS : PROJECTS.filter(p => p.cat === active);
 
   return (
-    <div ref={pageRef} style={{ background: 'var(--creme)', paddingTop: '6rem' }}>
+    <div ref={pageRef} style={{ background: 'var(--creme)', paddingTop: '6rem', position: 'relative' }} className="page-splashes-wrapper">
+      {/* Manchas de aquarela de fundo nas laterais */}
+      <div className="ambient-splash left-pink" style={{ top: '25%' }} />
+      <div className="ambient-splash right-yellow" style={{ top: '60%' }} />
+      <div className="ambient-splash bottom-teal" style={{ bottom: '10%' }} />
 
       {/* ─── HEADER ─── */}
       <section style={{ padding: '4rem 1.25rem 3rem', position: 'relative', overflow: 'hidden' }}>
@@ -42,8 +49,30 @@ export default function Portfolio() {
         <div className="brush-stroke reveal reveal-delay-3" style={{ width: 80, marginTop: '1.5rem' }} />
       </section>
 
+      {/* ─── BRAND MARQUEE (Carrossel Automático de Marcas) ─── */}
+      <div className="brand-marquee-container reveal reveal-delay-2">
+        <div className="brand-marquee-track">
+          <span className="brand-logo brand-cabide">CABIDE CAIÇARA</span>
+          <span className="brand-logo brand-dalutex">Dalutex</span>
+          <span className="brand-logo brand-lancaster">LANCASTER</span>
+          <span className="brand-logo brand-munny">MUNNY</span>
+          <span className="brand-logo brand-triton">Triton</span>
+          <span className="brand-logo brand-shein">SHEIN</span>
+          <span className="brand-logo brand-ipanema">Ipanema</span>
+          
+          {/* Duplicado para rolagem contínua */}
+          <span className="brand-logo brand-cabide">CABIDE CAIÇARA</span>
+          <span className="brand-logo brand-dalutex">Dalutex</span>
+          <span className="brand-logo brand-lancaster">LANCASTER</span>
+          <span className="brand-logo brand-munny">MUNNY</span>
+          <span className="brand-logo brand-triton">Triton</span>
+          <span className="brand-logo brand-shein">SHEIN</span>
+          <span className="brand-logo brand-ipanema">Ipanema</span>
+        </div>
+      </div>
+
       {/* ─── FILTER PILLS ─── */}
-      <div className="reveal" style={{ padding: '0 1.25rem 2rem', display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+      <div className="reveal constrain-width" style={{ padding: '0 1.25rem 2rem', display: 'flex', gap: 8, flexWrap: 'wrap' }}>
         {CATEGORIES.map(cat => (
           <button
             key={cat}
@@ -70,33 +99,43 @@ export default function Portfolio() {
 
       {/* ─── GRID ─── */}
       <section className="section-padding" style={{ padding: '0 1.25rem 6rem' }}>
-        <div className="desktop-grid-4" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
-          {filtered.map((p, i) => (
-            <div
-              key={p.id}
-              className={`reveal reveal-delay-${i % 4} portfolio-card`}
-              style={{
-                gridColumn: i === 0 ? '1 / -1' : 'auto',
-                height: i === 0 ? 300 : 220,
-              }}
-            >
-              <img src={p.img} alt={p.title} style={{ objectPosition: 'top center' }} />
-              <div className="overlay">
-                <div>
-                  <span style={{
-                    fontFamily: 'var(--font-body)', fontSize: 9, fontWeight: 700,
-                    letterSpacing: '0.2em', textTransform: 'uppercase',
-                    color: p.accent, display: 'block', marginBottom: 4,
-                  }}>
-                    {p.cat}  ·  {p.year}
-                  </span>
-                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: i === 0 ? '1.3rem' : '1rem', color: 'white' }}>
+        <div className="desktop-grid-4" style={{ gap: 16 }}>
+          {filtered.map((p, i) => {
+            const strokeColor = p.cat === 'Estampas' || p.cat === 'Ilustração' 
+              ? 'rose' 
+              : p.cat === 'Identidade Visual' 
+                ? 'yellow' 
+                : 'teal';
+
+            return (
+              <div
+                key={p.id}
+                className={`reveal reveal-delay-${i % 4} canvas-card-container`}
+                style={{
+                  gridColumn: i === 0 ? '1 / -1' : 'auto',
+                }}
+              >
+                <div className="canvas-card-inner" style={{ height: i === 0 ? 300 : 'auto', aspectRatio: i === 0 ? 'auto' : '1/1' }}>
+                  <img 
+                    src={p.img} 
+                    alt={p.title} 
+                    style={{ 
+                      objectPosition: 'top center',
+                      objectFit: i === 0 ? 'cover' : 'contain',
+                      background: i === 0 ? 'transparent' : 'white',
+                      padding: i === 0 ? 0 : '8px'
+                    }} 
+                  />
+                </div>
+                <div className="canvas-card-label-area">
+                  <div className={`card-brush-stroke card-brush-stroke-${strokeColor}`} />
+                  <span className="card-brush-title-text" style={{ fontSize: '1.25rem' }}>
                     {p.title}
-                  </h3>
+                  </span>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 

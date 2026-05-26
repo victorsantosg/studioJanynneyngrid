@@ -149,19 +149,21 @@ export default function Contato() {
         <div style={{ position: 'absolute', top: '15%', right: '5%', width: 150, height: 130, borderRadius: '60% 40% 70% 30% / 50% 60% 40% 50%', background: 'var(--verde)', opacity: 0.12, pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', bottom: '20%', left: '5%', width: 100, height: 90, borderRadius: '50%', background: 'var(--rosa)', opacity: 0.12, pointerEvents: 'none' }} />
 
-        <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'center' }}>
-          <div style={{ width: 72, height: 72, borderRadius: '50%', overflow: 'hidden', flexShrink: 0, border: '2px solid var(--verde)', opacity: 0.95 }}>
-            <img src="/img_1.jpeg" alt="Janynne" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+        <div style={{ maxWidth: 600, margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+          <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ width: 72, height: 72, borderRadius: '50%', overflow: 'hidden', flexShrink: 0, border: '2px solid var(--verde)', opacity: 0.95 }}>
+              <img src="/img_1.jpeg" alt="Janynne" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+            </div>
+            <div style={{ textAlign: 'left' }}>
+              <span style={{ fontFamily: 'var(--font-script)', fontSize: '1.3rem', color: 'var(--rosa)', display: 'block', marginBottom: 2 }}>Janynne Yngrid</span>
+              <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>Fashion Print & Brand Designer</span>
+            </div>
           </div>
-          <div>
-            <span style={{ fontFamily: 'var(--font-script)', fontSize: '1.3rem', color: 'var(--rosa)', display: 'block', marginBottom: 2 }}>Janynne Yngrid</span>
-            <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>Fashion Print & Brand Designer</span>
-          </div>
-        </div>
 
-        <p style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.75)', marginTop: '1.5rem' }}>
-          "Acredito que toda marca tem uma história única para contar. Meu trabalho é encontrar as cores, formas e texturas que traduzem essa história com autenticidade."
-        </p>
+          <p style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: '1.15rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.75)', marginTop: '2rem' }}>
+            "Acredito que toda marca tem uma história única para contar. Meu trabalho é encontrar as cores, formas e texturas que traduzem essa história com autenticidade."
+          </p>
+        </div>
       </section>
 
       <footer style={{ background: '#111009', padding: '2rem 1.25rem', textAlign: 'center' }}>

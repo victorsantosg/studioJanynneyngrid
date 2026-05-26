@@ -25,10 +25,14 @@ export default function Home() {
   }, []);
 
   return (
-    <div ref={pageRef} style={{ background: 'var(--creme)' }}>
+    <div ref={pageRef} style={{ background: 'var(--creme)', position: 'relative' }} className="page-splashes-wrapper">
+      {/* Manchas de aquarela de fundo nas laterais */}
+      <div className="ambient-splash left-pink" style={{ top: '10%' }} />
+      <div className="ambient-splash right-yellow" style={{ top: '35%' }} />
+      <div className="ambient-splash bottom-teal" style={{ bottom: '15%' }} />
 
       {/* ═══════════════════════════════════════════
-          HERO — Z-Axis Cascade Layout
+          HERO — Layout Original com Detalhes Mockup
       ═══════════════════════════════════════════ */}
       <section className="desktop-hero" style={{
         minHeight: '100dvh',
@@ -39,27 +43,29 @@ export default function Home() {
         position: 'relative',
         overflow: 'hidden',
       }}>
-        {/* Ambient background blobs */}
-        <div style={{ position: 'absolute', top: '5%', right: '-5%', width: 320, height: 320, borderRadius: '50%', background: 'radial-gradient(ellipse, #D6EDAF 0%, transparent 70%)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', top: '20%', left: '-10%', width: 280, height: 280, borderRadius: '50%', background: 'radial-gradient(ellipse, #FAE0E6 0%, transparent 70%)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', bottom: '10%', right: '5%', width: 200, height: 200, borderRadius: '50%', background: 'radial-gradient(ellipse, #C2EBF5 0%, transparent 70%)', pointerEvents: 'none' }} />
+        {/* Ambient background blobs matching mockup colors */}
+        <div style={{ position: 'absolute', top: '5%', right: '-5%', width: 320, height: 320, borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(168,214,106,0.3) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: '20%', left: '-10%', width: 280, height: 280, borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(245,184,196,0.3) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', bottom: '10%', right: '5%', width: 200, height: 200, borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(110,207,227,0.25) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
-        {/* Floating photos — Z-Axis Cascade */}
+        {/* Floating photos — Z-Axis Cascade with polaroid-like watercolor frame style */}
         <div className="desktop-hero-images">
           <div style={{ position: 'absolute', top: '8%', right: '4%', zIndex: 2 }} className="float-a">
-            <div className={`hero-float-a float-a${visible ? ' paint-pop' : ''}`} style={{ width: 'min(180px, 42vw)', borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 16px 48px rgba(28,20,16,0.18)', border: '4px solid white', transform: 'rotate(-3deg)' }}>
-              <img src="/img_1.jpeg" alt="Janynne" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4' }} />
+            <div className={`hero-float-a float-a${visible ? ' paint-pop' : ''}`} style={{ width: 'min(200px, 45vw)', borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 20px 50px rgba(28,20,16,0.16)', border: '6px solid white', transform: 'rotate(-3deg)', background: 'white', padding: '6px 6px 18px' }}>
+              <img src="/img_1.jpeg" alt="Janynne Yngrid" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4', borderRadius: '1rem' }} />
+              <div style={{ textAlign: 'center', marginTop: '8px', fontFamily: 'var(--font-script)', fontSize: '1.15rem', color: 'var(--ink-soft)' }}>Janynne Yngrid</div>
             </div>
           </div>
 
           <div style={{ position: 'absolute', top: '30%', right: '38%', zIndex: 1 }} className="float-b">
-            <div className={`hero-float-b float-b${visible ? ' paint-pop' : ''}`} style={{ animationDelay: '0.2s', width: 'min(130px, 30vw)', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 12px 36px rgba(28,20,16,0.14)', border: '3px solid white', transform: 'rotate(2deg)' }}>
-              <img src="/img_3.jpeg" alt="Janynne" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4' }} />
+            <div className={`hero-float-b float-b${visible ? ' paint-pop' : ''}`} style={{ animationDelay: '0.2s', width: 'min(150px, 32vw)', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 15px 35px rgba(28,20,16,0.12)', border: '5px solid white', transform: 'rotate(2deg)', background: 'white', padding: '5px 5px 14px' }}>
+              <img src="/img_3.jpeg" alt="Estampa" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4', borderRadius: '0.75rem' }} />
+              <div style={{ textAlign: 'center', marginTop: '6px', fontFamily: 'var(--font-script)', fontSize: '0.95rem', color: 'var(--ink-muted)' }}>Criação</div>
             </div>
           </div>
         </div>
 
-        {/* Paint palette blobs (decorative) */}
+        {/* Decorative paint blobs matching background design */}
         {BLOBS.map((b, i) => (
           <div key={i} style={{
             position: 'absolute', top: b.top, left: b.left,
@@ -74,38 +80,40 @@ export default function Home() {
           }} />
         ))}
 
-        {/* Hero text */}
-        <div className="desktop-hero-text" style={{ position: 'relative', zIndex: 3, maxWidth: 500 }}>
-          <div className={`reveal${visible ? ' visible' : ''}`} style={{ marginBottom: '1rem' }}>
+        {/* Hero text alined left matching the mockup */}
+        <div className="desktop-hero-text" style={{ position: 'relative', zIndex: 3, maxWidth: 550 }}>
+          <div className={`reveal${visible ? ' visible' : ''}`} style={{ marginBottom: '1.25rem' }}>
             <span className="badge badge-verde">
               <span className="color-dot" style={{ background: 'var(--verde)' }} />
               Design · Arte · Moda
             </span>
           </div>
 
-          <h1 className={`reveal font-heading font-heading-hero${visible ? ' visible' : ''}`} style={{
+          {/* Slogan matching screenshot layout and highlights */}
+          <h1 className={`reveal font-heading${visible ? ' visible' : ''}`} style={{
             fontFamily: 'var(--font-heading)',
-            fontSize: 'clamp(2.2rem, 9vw, 4.5rem)',
-            lineHeight: 1.1,
+            fontSize: 'clamp(2.5rem, 8vw, 4.3rem)',
+            lineHeight: 1.05,
             color: 'var(--ink)',
-            marginBottom: '1.25rem',
+            marginBottom: '1.5rem',
+            fontWeight: 'normal',
           }}>
-            Criando a{' '}
-            <em style={{ fontStyle: 'italic', color: 'var(--rosa-deep)', fontFamily: 'var(--font-display)' }}>identidade</em>
-            <br />da sua marca em{' '}
-            <em style={{ fontStyle: 'italic', color: 'var(--verde-deep)', fontFamily: 'var(--font-display)' }}>cores</em>{' '}
-            e elementos.
+            Criando a<br />
+            <span style={{ fontFamily: 'var(--font-script)', fontStyle: 'italic', textTransform: 'none', color: 'var(--rosa-deep)', display: 'inline-block', transform: 'rotate(-2deg)' }}>identidade</span><br />
+            da sua marca<br />
+            em <span className="brush-accent brush-accent-green" style={{ color: 'var(--verde-deep)' }}>cores</span> e<br />
+            <span className="brush-accent brush-accent-pink">elementos.</span>
           </h1>
 
           <p className={`reveal reveal-delay-1${visible ? ' visible' : ''}`} style={{
             fontFamily: 'var(--font-body)', fontSize: '0.95rem', lineHeight: 1.7,
-            color: 'var(--ink-soft)', marginBottom: '2rem', maxWidth: 380,
+            color: 'var(--ink-soft)', marginBottom: '2.5rem', maxWidth: 420,
           }}>
             Studio especializado em design têxtil, estampas exclusivas e identidade visual para marcas de moda.
           </p>
 
-          <div className={`reveal reveal-delay-2${visible ? ' visible' : ''}`} style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-            <Link to="/portfolio" className="btn-primary">
+          <div className={`reveal reveal-delay-2${visible ? ' visible' : ''}`} style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+            <Link to="/portfolio" className="btn-primary" style={{ background: 'var(--ink)', color: 'white' }}>
               <span className="label">Ver Portfólio</span>
               <span className="btn-icon" aria-hidden>↗</span>
             </Link>
@@ -138,7 +146,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════
           SOBRE — Editorial Split
       ═══════════════════════════════════════════ */}
-      <section className="section-padding" style={{ padding: '6rem 1.25rem', position: 'relative', overflow: 'hidden' }}>
+      <section id="sobre" className="section-padding" style={{ padding: '6rem 1.25rem', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: 0, right: 0, width: 300, height: 300, background: 'radial-gradient(ellipse, #FAE0E6 0%, transparent 70%)', pointerEvents: 'none' }} />
 
         <div className="reveal" style={{ marginBottom: '0.75rem' }}>
@@ -149,23 +157,23 @@ export default function Home() {
         </div>
         <div className="brush-stroke reveal reveal-delay-1" style={{ width: 60, marginBottom: '1.5rem' }} />
 
-        <div className="desktop-grid-2" style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
-          {/* Photo + info */}
-          <div className="reveal" style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+        <div className="desktop-grid-2" style={{ alignItems: 'center' }}>
+          {/* Photo + info (Column 1) */}
+          <div className="reveal" style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
             {/* Photo with double-bezel */}
             <div className="card-bezel float-b" style={{ flexShrink: 0 }}>
-              <div className="card-inner" style={{ width: 'min(140px, 36vw)', borderRadius: 'calc(2rem - 6px)', overflow: 'hidden' }}>
+              <div className="card-inner" style={{ width: 'min(180px, 40vw)', borderRadius: 'calc(2rem - 6px)', overflow: 'hidden' }}>
                 <img src="/img_2.jpeg" alt="Janynne Yngrid" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4' }} />
               </div>
             </div>
 
             {/* Text */}
             <div style={{ flex: 1 }}>
-              <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(1.8rem,6vw,2.8rem)', lineHeight: 1.15, color: 'var(--ink)', marginBottom: '0.5rem' }}>
+              <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2rem,6vw,3.2rem)', lineHeight: 1.15, color: 'var(--ink)', marginBottom: '0.5rem' }}>
                 Janynne<br />
                 <span style={{ fontFamily: 'var(--font-script)', fontSize: '0.9em', color: 'var(--rosa-deep)' }}>Yngrid</span>
               </h2>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.85rem', color: 'var(--ink-muted)', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1rem' }}>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'var(--ink-muted)', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1.25rem' }}>
                 Fashion Print & Brand Designer
               </p>
               {/* Color palette dots as credentials */}
@@ -184,18 +192,20 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Bio text */}
-          <div className="reveal reveal-delay-1">
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.95rem', lineHeight: 1.8, color: 'var(--ink-soft)', marginBottom: '1rem' }}>
-              Especialista em transformar conceitos abstratos em narrativas visuais tangíveis. Com um olhar refinado para a alta costura e design têxtil, Janynne une a precisão técnica do atelier à expressividade artística da ilustração manual.
-            </p>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.95rem', lineHeight: 1.8, color: 'var(--ink-soft)' }}>
-              Criando estampas exclusivas e identidades visuais que definem o DNA de marcas contemporâneas de moda.
-            </p>
-          </div>
+          {/* Bio text + Button (Column 2) */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <div className="reveal reveal-delay-1">
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.05rem', lineHeight: 1.8, color: 'var(--ink-soft)', marginBottom: '1rem' }}>
+                Especialista em transformar conceitos abstratos em narrativas visuais tangíveis. Com um olhar refinado para a alta costura e design têxtil, Janynne une a precisão técnica do atelier à expressividade artística da ilustração manual.
+              </p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.05rem', lineHeight: 1.8, color: 'var(--ink-soft)' }}>
+                Criando estampas exclusivas e identidades visuais que definem o DNA de marcas contemporâneas de moda.
+              </p>
+            </div>
 
-          <div className="reveal reveal-delay-2">
-            <Link to="/portfolio" className="btn-ghost" style={{ alignSelf: 'flex-start' }}>Ver Trabalhos</Link>
+            <div className="reveal reveal-delay-2">
+              <Link to="/portfolio" className="btn-ghost" style={{ alignSelf: 'flex-start' }}>Ver Trabalhos</Link>
+            </div>
           </div>
         </div>
       </section>
@@ -214,38 +224,56 @@ export default function Home() {
           Trabalhos em Destaque
         </h2>
 
-        {/* Bento Grid */}
-        <div className="desktop-grid-2" style={{ display: 'grid', gridTemplateRows: 'auto auto', gap: 16 }}>
-          {/* Card 1 — full width */}
-          <div className="reveal portfolio-card" style={{ height: 280 }}>
-            <img src="/img_1.jpeg" alt="Design de Moda" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
-            <div className="overlay">
-              <div>
-                <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--verde)', display: 'block', marginBottom: 4 }}>Fashion Design</span>
-                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.2rem', color: 'white' }}>Estampas Exclusivas</h3>
-              </div>
+        {/* Grid harmonioso estilo Portfólio */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'start' }}>
+          {/* Card 1 */}
+          <div className="reveal canvas-card-container" style={{ gridColumn: '1 / -1' }}>
+            <div className="canvas-card-inner" style={{ height: 350 }}>
+              <img 
+                src="/jardim_de_afetos.png" 
+                alt="Jardim de Afetos" 
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', background: 'transparent' }} 
+              />
+            </div>
+            <div className="canvas-card-label-area">
+              <div className="card-brush-stroke card-brush-stroke-rose" />
+              <span className="card-brush-title-text" style={{ fontSize: '1.25rem' }}>
+                Jardim de Afetos
+              </span>
             </div>
           </div>
 
-          {/* Cards 2 & 3 — side by side */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
-            <div className="reveal reveal-delay-1 portfolio-card" style={{ height: 220 }}>
-              <img src="/img_2.jpeg" alt="Identidade Visual" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
-              <div className="overlay">
-                <div>
-                  <span style={{ fontFamily: 'var(--font-body)', fontSize: 9, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--rosa)', display: 'block', marginBottom: 4 }}>Branding</span>
-                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1rem', color: 'white' }}>Identidade Visual</h3>
-                </div>
-              </div>
+          {/* Card 2 */}
+          <div className="reveal reveal-delay-1 canvas-card-container">
+            <div className="canvas-card-inner" style={{ aspectRatio: '1/1' }}>
+              <img 
+                src="/citricos_do_sol.png" 
+                alt="Cítricos do Sol" 
+                style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', background: 'white', padding: '12px' }} 
+              />
             </div>
-            <div className="reveal reveal-delay-2 portfolio-card" style={{ height: 220 }}>
-              <img src="/img_3.jpeg" alt="Ilustração" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
-              <div className="overlay">
-                <div>
-                  <span style={{ fontFamily: 'var(--font-body)', fontSize: 9, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--azul)', display: 'block', marginBottom: 4 }}>Design</span>
-                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1rem', color: 'white' }}>Ilustração</h3>
-                </div>
-              </div>
+            <div className="canvas-card-label-area">
+              <div className="card-brush-stroke card-brush-stroke-yellow" />
+              <span className="card-brush-title-text" style={{ fontSize: '1.1rem' }}>
+                Cítricos do Sol
+              </span>
+            </div>
+          </div>
+
+          {/* Card 3 */}
+          <div className="reveal reveal-delay-2 canvas-card-container">
+            <div className="canvas-card-inner" style={{ aspectRatio: '1/1' }}>
+              <img 
+                src="/mar_em_aquarela.png" 
+                alt="Mar em Aquarela" 
+                style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', background: 'white', padding: '12px' }} 
+              />
+            </div>
+            <div className="canvas-card-label-area">
+              <div className="card-brush-stroke card-brush-stroke-teal" />
+              <span className="card-brush-title-text" style={{ fontSize: '1.1rem' }}>
+                Mar em Aquarela
+              </span>
             </div>
           </div>
         </div>
@@ -274,7 +302,7 @@ export default function Home() {
           Serviços
         </h2>
 
-        <div className="services-grid" style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div className="services-grid">
           {[
             { accent: 'verde', icon: '🎨', title: 'Design de Estampas', desc: 'Criação de padrões exclusivos para coleções de moda, com pesquisa de referências e desenvolvimento artístico completo.' },
             { accent: 'rosa', icon: '✦', title: 'Identidade Visual', desc: 'Construção da personalidade visual da sua marca — logo, paleta, tipografia e aplicações.' },

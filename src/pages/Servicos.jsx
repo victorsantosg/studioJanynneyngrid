@@ -77,7 +77,7 @@ export default function Servicos() {
 
       {/* ─── PACKAGES ─── */}
       <section className="section-padding" style={{ padding: '2rem 1.25rem 5rem' }}>
-        <div className="desktop-grid-3" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <div className="desktop-grid-3">
           {SERVICES.map((s, i) => (
             <div
               key={s.title}
@@ -149,7 +149,7 @@ export default function Servicos() {
           O Processo Criativo
         </h2>
 
-        <div className="process-grid" style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+        <div className="process-grid">
           {PROCESS.map((step, i) => (
             <div key={step.num} className={`reveal reveal-delay-${i % 3} process-step`} style={{ display: 'flex', gap: '1.25rem', paddingBottom: i < PROCESS.length - 1 ? '2rem' : 0, position: 'relative' }}>
               {/* Timeline line */}
@@ -194,7 +194,7 @@ export default function Servicos() {
           Perguntas Frequentes
         </h2>
 
-        <div className="desktop-grid-2" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <div className="desktop-grid-2">
           {[
             { q: 'Você faz revisões nos projetos?', a: 'Sim! Cada pacote inclui rodadas de revisão. Trabalho até o resultado ficar perfeito para você.' },
             { q: 'Como funciona o pagamento?', a: '50% de entrada para início do projeto e 50% na entrega dos arquivos finais.' },
