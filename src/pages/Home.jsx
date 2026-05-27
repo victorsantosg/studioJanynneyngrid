@@ -152,7 +152,7 @@ export default function Home() {
         <div className="reveal" style={{ marginBottom: '0.75rem' }}>
           <span className="badge badge-rosa">
             <span className="color-dot" style={{ background: 'var(--rosa)' }} />
-            Sobre a Designer
+            Sobre mim
           </span>
         </div>
         <div className="brush-stroke reveal reveal-delay-1" style={{ width: 60, marginBottom: '1.5rem' }} />
@@ -162,8 +162,8 @@ export default function Home() {
           <div className="reveal" style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
             {/* Photo with double-bezel */}
             <div className="card-bezel float-b" style={{ flexShrink: 0 }}>
-              <div className="card-inner" style={{ width: 'min(180px, 40vw)', borderRadius: 'calc(2rem - 6px)', overflow: 'hidden' }}>
-                <img src="/img_2.jpeg" alt="Janynne Yngrid" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4' }} />
+              <div className="card-inner" style={{ width: 'min(210px, 40vw)', borderRadius: 'calc(2rem - 6px)', overflow: 'hidden' }}>
+                <img src="/img_4.jpeg" alt="Janynne Yngrid" style={{ width: '100%', height: 'auto', display: 'block' }} />
               </div>
             </div>
 
@@ -196,10 +196,13 @@ export default function Home() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <div className="reveal reveal-delay-1">
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.05rem', lineHeight: 1.8, color: 'var(--ink-soft)', marginBottom: '1rem' }}>
-                Especialista em transformar conceitos abstratos em narrativas visuais tangíveis. Com um olhar refinado para a alta costura e design têxtil, Janynne une a precisão técnica do atelier à expressividade artística da ilustração manual.
+                Sou apaixonada por arte, cores e moda. Sou designer de estampas e estilista, formada em Design de Moda pela Universidade de Fortaleza e pós-graduanda em Inovação e Tecnologia em Design de Estampa pelo SENAI CETIQT.
+              </p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.05rem', lineHeight: 1.8, color: 'var(--ink-soft)', marginBottom: '1rem' }}>
+                Há mais de 7 anos atuo no mercado da moda, desenvolvendo projetos para mais de 150 marcas. Crio estampas exclusivas, identidades visuais, ilustrações e croquis que unem estratégia criativa e desejo de mercado. Meu trabalho transforma conceitos em narrativas visuais autênticas, trazendo personalidade e identidade para marcas.
               </p>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.05rem', lineHeight: 1.8, color: 'var(--ink-soft)' }}>
-                Criando estampas exclusivas e identidades visuais que definem o DNA de marcas contemporâneas de moda.
+                Mais do que criar estampas para todos os segmentos, busco traduzir emoções, tendências e histórias através da moda e do design.
               </p>
             </div>
 
@@ -377,11 +380,11 @@ export default function Home() {
           <span style={{ fontFamily: 'var(--font-script)', fontSize: '1.5rem', color: 'var(--rosa)' }}>Vamos criar juntos?</span>
         </div>
         <h2 className="reveal reveal-delay-1" style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(1.8rem,7vw,3rem)', color: 'white', marginBottom: '1rem', lineHeight: 1.2 }}>
-          Sua marca merece uma identidade<br />
-          <em style={{ fontStyle: 'italic', color: 'var(--verde)', fontFamily: 'var(--font-display)' }}>que conta uma história.</em>
+          Estampas criativas para marcas<br />
+          <em style={{ fontStyle: 'italic', color: 'var(--verde)', fontFamily: 'var(--font-display)' }}>que desejam se destacar.</em>
         </h2>
         <p className="reveal reveal-delay-2" style={{ fontFamily: 'var(--font-body)', fontSize: '0.95rem', color: 'rgba(255,255,255,0.6)', marginBottom: '2.5rem', maxWidth: 380, marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.7 }}>
-          Estou disponível para novos projetos. Vamos conversar sobre a sua marca.
+          Estou disponível para novos projetos. Vamos conversar sobre sua coleção.
         </p>
         <div className="reveal reveal-delay-3">
           <Link to="/contato" className="btn-primary" style={{ background: 'var(--verde)', color: 'var(--ink)' }}>

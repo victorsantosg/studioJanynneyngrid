@@ -1,24 +1,37 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useReveal from '../hooks/useReveal';
 
-const CATEGORIES = ['Todos', 'Estampas', 'Identidade Visual', 'Branding', 'Ilustração'];
+const CATEGORIES = ['Todos', 'Estampas', 'Croquis', 'Ilustração'];
+
+const defaultDesc = "Uma estampa exclusiva criada com aquarela, pensada para trazer leveza e personalidade. Esse design foi desenvolvido focando no movimento das formas e na harmonia das cores.";
+const defaultGallery = ['/colecao1/colecao1.webp', '/colecao1/colecao2.webp'];
 
 const PROJECTS = [
-  { id: 101, img: '/jardim_de_afetos.png', title: 'Jardim de Afetos', cat: 'Estampas', accent: 'var(--rosa-deep)', year: '2025' },
-  { id: 102, img: '/citricos_do_sol.png', title: 'Cítricos do Sol', cat: 'Estampas', accent: 'var(--amarelo-deep)', year: '2025' },
-  { id: 103, img: '/mar_em_aquarela.png', title: 'Mar em Aquarela', cat: 'Estampas', accent: 'var(--azul-deep)', year: '2025' },
-  { id: 1, img: '/img_1.jpeg', title: 'Coleção Primavera', cat: 'Estampas', accent: 'var(--verde)', year: '2024' },
-  { id: 2, img: '/img_2.jpeg', title: 'Marca Atelier', cat: 'Identidade Visual', accent: 'var(--rosa)', year: '2024' },
-  { id: 3, img: '/img_3.jpeg', title: 'Fashion Branding', cat: 'Branding', accent: 'var(--azul)', year: '2025' },
-  { id: 4, img: '/img_1.jpeg', title: 'Estampa Floral', cat: 'Estampas', accent: 'var(--amarelo-deep)', year: '2025' },
-  { id: 5, img: '/img_3.jpeg', title: 'Ilustração Têxtil', cat: 'Ilustração', accent: 'var(--verde)', year: '2025' },
-  { id: 6, img: '/img_2.jpeg', title: 'Identidade de Marca', cat: 'Identidade Visual', accent: 'var(--rosa)', year: '2024' },
+  { id: 101, img: '/jardim_de_afetos.png', title: 'Jardim de Afetos', cat: 'Estampas', accent: 'var(--rosa-deep)', year: '2025', description: defaultDesc, gallery: defaultGallery },
+  { id: 102, img: '/citricos_do_sol.png', title: 'Cítricos do Sol', cat: 'Estampas', accent: 'var(--amarelo-deep)', year: '2025', description: defaultDesc, gallery: defaultGallery },
+  { id: 103, img: '/mar_em_aquarela.png', title: 'Mar em Aquarela', cat: 'Estampas', accent: 'var(--azul-deep)', year: '2025', description: defaultDesc, gallery: defaultGallery },
+  { id: 1, img: '/img_1.jpeg', title: 'Coleção Primavera', cat: 'Estampas', accent: 'var(--verde)', year: '2024', description: defaultDesc, gallery: defaultGallery },
+  { id: 2, img: '/img_2.jpeg', title: 'Marca Atelier', cat: 'Identidade Visual', accent: 'var(--rosa)', year: '2024', description: defaultDesc, gallery: defaultGallery },
+  { id: 3, img: '/img_3.jpeg', title: 'Fashion Branding', cat: 'Branding', accent: 'var(--azul)', year: '2025', description: defaultDesc, gallery: defaultGallery },
+  { id: 4, img: '/img_1.jpeg', title: 'Estampa Floral', cat: 'Estampas', accent: 'var(--amarelo-deep)', year: '2025', description: defaultDesc, gallery: defaultGallery },
+  { id: 5, img: '/img_3.jpeg', title: 'Ilustração Têxtil', cat: 'Ilustração', accent: 'var(--verde)', year: '2025', description: defaultDesc, gallery: defaultGallery },
+  { id: 6, img: '/img_2.jpeg', title: 'Identidade de Marca', cat: 'Identidade Visual', accent: 'var(--rosa)', year: '2024', description: defaultDesc, gallery: defaultGallery },
 ];
 
 export default function Portfolio() {
   const [active, setActive] = useState('Todos');
+  const [selectedProject, setSelectedProject] = useState(null);
   const pageRef = useReveal();
+
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => { document.body.style.overflow = 'auto'; };
+  }, [selectedProject]);
 
   const filtered = active === 'Todos' ? PROJECTS : PROJECTS.filter(p => p.cat === active);
 
@@ -110,9 +123,11 @@ export default function Portfolio() {
             return (
               <div
                 key={p.id}
-                className={`reveal reveal-delay-${i % 4} canvas-card-container`}
+                className={`reveal reveal-delay-${i % 4} canvas-card-container portfolio-item-clickable`}
+                onClick={() => setSelectedProject(p)}
                 style={{
                   gridColumn: i === 0 ? '1 / -1' : 'auto',
+                  cursor: 'pointer'
                 }}
               >
                 <div className="canvas-card-inner" style={{ height: i === 0 ? 300 : 'auto', aspectRatio: i === 0 ? 'auto' : '1/1' }}>
@@ -161,6 +176,56 @@ export default function Portfolio() {
           © 2025 Studio Janynne Yngrid · Todos os Direitos Reservados
         </p>
       </footer>
+
+      {/* ─── MODAL DO PROJETO ─── */}
+      {selectedProject && (
+        <div className="project-modal-overlay" onClick={() => setSelectedProject(null)}>
+          <div className="project-modal-content" onClick={e => e.stopPropagation()}>
+            <button className="project-modal-close" onClick={() => setSelectedProject(null)}>
+              ✕
+            </button>
+            <div className="project-modal-body">
+              {/* Coluna Esquerda: Imagem Principal e Galeria */}
+              <div className="project-modal-media">
+                <div className="project-modal-main-image" style={{ borderColor: selectedProject.accent }}>
+                  <img src={selectedProject.img} alt={selectedProject.title} />
+                </div>
+                {selectedProject.gallery && selectedProject.gallery.length > 0 && (
+                  <div className="project-modal-gallery">
+                    {selectedProject.gallery.map((img, idx) => (
+                      <div key={idx} className="project-modal-thumb">
+                        <img src={img} alt={`${selectedProject.title} mockup ${idx + 1}`} />
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+              
+              {/* Coluna Direita: Informações */}
+              <div className="project-modal-info">
+                <span className="badge" style={{ background: 'var(--creme-warm)', color: selectedProject.accent, border: `1px solid ${selectedProject.accent}` }}>
+                  {selectedProject.cat}
+                </span>
+                <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2rem, 5vw, 2.8rem)', color: 'var(--ink)', margin: '1rem 0 0.5rem', lineHeight: 1.1 }}>
+                  {selectedProject.title}
+                </h2>
+                <div style={{ fontFamily: 'var(--font-script)', fontSize: '1.25rem', color: selectedProject.accent, marginBottom: '2rem' }}>
+                  {selectedProject.year}
+                </div>
+                
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', lineHeight: 1.8, color: 'var(--ink-soft)', marginBottom: '2rem' }}>
+                  {selectedProject.description}
+                </p>
+
+                <Link to="/contato" className="btn-primary" style={{ width: '100%', justifyContent: 'center', background: 'var(--ink)' }}>
+                  <span className="label">Quero um projeto assim</span>
+                  <span className="btn-icon">↗</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
