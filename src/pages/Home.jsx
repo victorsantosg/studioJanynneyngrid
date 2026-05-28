@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useReveal from '../hooks/useReveal';
+import ParticleCanvas from '../components/ParticleCanvas';
 
 /* ── Paint blob palette ── */
 const BLOBS = [
@@ -47,6 +48,8 @@ export default function Home() {
         <div style={{ position: 'absolute', top: '5%', right: '-5%', width: 320, height: 320, borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(168,214,106,0.3) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', top: '20%', left: '-10%', width: 280, height: 280, borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(245,184,196,0.3) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', bottom: '10%', right: '5%', width: 200, height: 200, borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(110,207,227,0.25) 0%, transparent 70%)', pointerEvents: 'none' }} />
+
+        <ParticleCanvas />
 
         {/* Floating photos — Z-Axis Cascade with polaroid-like watercolor frame style */}
         <div className="desktop-hero-images">
