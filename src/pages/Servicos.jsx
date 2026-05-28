@@ -75,19 +75,6 @@ export default function Servicos() {
           Cada projeto é único. Aqui você encontra os serviços e o processo criativo do Studio Janynne Yngrid.
         </p>
         <div className="brush-stroke reveal reveal-delay-3" style={{ width: 80, marginTop: '1.5rem' }} />
-
-        {/* ─── VÍDEO DO PROCESSO ─── */}
-        <div className="reveal" style={{ marginTop: '3rem', borderRadius: '1.5rem', overflow: 'hidden', border: '2px solid rgba(168,214,106,0.3)', boxShadow: '0 20px 40px rgba(0,0,0,0.05)', background: 'white' }}>
-          <video 
-            src="/processo_criativo/lv_0_20240117133308.mp4" 
-            controls 
-            autoPlay 
-            muted 
-            loop 
-            playsInline
-            style={{ width: '100%', display: 'block', maxHeight: '500px', objectFit: 'cover', background: 'var(--ink)' }}
-          />
-        </div>
       </section>
 
       {/* ─── PACKAGES ─── */}
