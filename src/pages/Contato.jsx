@@ -11,6 +11,9 @@ export default function Contato() {
   const handleChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
   const handleSubmit = e => {
     e.preventDefault();
+    const subject = encodeURIComponent(`Novo Briefing: ${form.nome} - ${form.servico}`);
+    const body = encodeURIComponent(`Nome: ${form.nome}\nE-mail: ${form.email}\nServiço: ${form.servico}\n\nMensagem:\n${form.mensagem}`);
+    window.location.href = `mailto:studiojanynneyngrid@gmail.com?subject=${subject}&body=${body}`;
     setSent(true);
   };
 
@@ -42,9 +45,9 @@ export default function Contato() {
       <section className="section-padding contact-layout" style={{ padding: '2rem 1.25rem 6rem' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {[
-            { icon: '📱', label: 'WhatsApp', value: '+55 (85) 9 9999-9999', accent: 'var(--verde)', href: 'https://wa.me/5585999999999' },
+            { icon: '📱', label: 'WhatsApp', value: '+55 85 8629-9263', accent: 'var(--verde)', href: 'https://wa.me/558586299263' },
             { icon: '📸', label: 'Instagram', value: '@studiojanynneyngrid', accent: 'var(--rosa)', href: 'https://instagram.com/studiojanynneyngrid' },
-            { icon: '✉', label: 'E-mail', value: 'studio@janynneyngrid.com', accent: 'var(--azul)', href: 'mailto:studio@janynneyngrid.com' },
+            { icon: '✉', label: 'E-mail', value: 'studiojanynneyngrid@gmail.com', accent: 'var(--azul)', href: 'mailto:studiojanynneyngrid@gmail.com' },
           ].map((c, i) => (
             <a
               key={c.label}
