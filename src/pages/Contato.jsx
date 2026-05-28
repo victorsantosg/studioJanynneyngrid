@@ -7,14 +7,38 @@ export default function Contato() {
   const pageRef = useReveal();
   const [form, setForm] = useState({ nome: '', email: '', servico: '', mensagem: '' });
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
-  const handleSubmit = e => {
+
+  const handleSubmit = async e => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Novo Briefing: ${form.nome} - ${form.servico}`);
-    const body = encodeURIComponent(`Nome: ${form.nome}\nE-mail: ${form.email}\nServiço: ${form.servico}\n\nMensagem:\n${form.mensagem}`);
-    window.location.href = `mailto:studiojanynneyngrid@gmail.com?subject=${subject}&body=${body}`;
-    setSent(true);
+    setLoading(true);
+    try {
+      const response = await fetch('https://formspree.io/f/mqejnddw', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          Nome: form.nome,
+          Email: form.email,
+          Serviço: form.servico,
+          Mensagem: form.mensagem
+        })
+      });
+      if (response.ok) {
+        setSent(true);
+        setForm({ nome: '', email: '', servico: '', mensagem: '' });
+      } else {
+        alert('Ops! Ocorreu um erro ao enviar sua mensagem. Tente novamente mais tarde.');
+      }
+    } catch (error) {
+      alert('Ops! Erro de conexão ao enviar a mensagem.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -121,8 +145,8 @@ export default function Contato() {
                     />
                   </div>
 
-                  <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                    <span className="label">Enviar Briefing</span>
+                  <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center', opacity: loading ? 0.7 : 1, cursor: loading ? 'not-allowed' : 'pointer' }} disabled={loading}>
+                    <span className="label">{loading ? 'Enviando...' : 'Enviar Briefing'}</span>
                     <span className="btn-icon">→</span>
                   </button>
                 </form>
