@@ -10,14 +10,30 @@ const defaultGallery = [];
 const HIGHLIGHTED_PROJECTS = [
   { 
     id: 7, 
-    img: '/colecao_estampas/estampa2.jpeg', 
+    img: '/colecao_estampas/Summer-Mocha-&-Blue/estampa1.jpeg', 
     title: 'Summer Mocha & Blue', 
     cat: 'Estampas', 
     accent: 'var(--verde)', 
     year: '2025', 
     description: 'Estampa criada destacando a cor do ano de 2025 Mocha Mousse e com uma pintada de azul escuro que fez uma combinação perfeita! Para realçar mais os elementos, textura não podia ficar de fora e agora mostro esse resultado incrível de estampa aquarela!', 
-    gallery: ['/colecao_estampas/estampa1.jpeg', '/colecao_estampas/estampa3.jpeg'] 
+    gallery: ['/colecao_estampas/Summer-Mocha-&-Blue/estampa2.jpeg', '/colecao_estampas/Summer-Mocha-&-Blue/estampa3.jpeg'] 
   },
+  {
+    id: 8,
+    img: '/colecao_estampas/Frutificar-ano-2024/08af04218897743.67a974d29d006.jpg.jpeg',
+    title: 'Frutificar ano 2024',
+    cat: 'Estampas',
+    accent: 'var(--amarelo-deep)',
+    year: '2024',
+    description: 'Fazer estampa infantil me leva a um mundo de cores e elementos criativos! É uma sensação maravilhosa e o resultado então? Fica tudo tão lindo! Elementos em aquarela com cartela primavera/verão com fundo textura de linho.',
+    gallery: [
+      '/colecao_estampas/Frutificar-ano-2024/0528.mp4',
+      '/colecao_estampas/Frutificar-ano-2024/468179654_18146058658350434_4680175991980186050_n.jpg.jpeg',
+      '/colecao_estampas/Frutificar-ano-2024/468278741_18146058145350434_3177576444346075973_n.jpg.jpeg',
+      '/colecao_estampas/Frutificar-ano-2024/468280991_18146057968350434_3959330153825415454_n.jpg.jpeg',
+      '/colecao_estampas/Frutificar-ano-2024/ac4f3e218897743.67a974d29c878.jpg.jpeg'
+    ]
+  }
 ];
 
 /* ── Paint blob palette ── */
@@ -251,7 +267,8 @@ export default function Home() {
       {/* ═══════════════════════════════════════════
           TRABALHOS EM DESTAQUE
       ═══════════════════════════════════════════ */}
-      <section className="section-padding" style={{ padding: '6rem 1.25rem', background: 'white' }}>
+      <section className="section-padding" style={{ padding: '6rem 1.25rem', background: 'white', position: 'relative', overflow: 'hidden' }}>
+        <ParticleCanvas count={20} />
         <div className="reveal" style={{ marginBottom: '0.75rem' }}>
           <span className="badge badge-azul">
             <span className="color-dot" style={{ background: 'var(--azul)' }} />
@@ -350,7 +367,8 @@ export default function Home() {
       {/* ═══════════════════════════════════════════
           DEPOIMENTOS
       ═══════════════════════════════════════════ */}
-      <section className="section-padding" style={{ padding: '6rem 1.25rem', background: 'var(--creme-warm)' }}>
+      <section className="section-padding" style={{ padding: '6rem 1.25rem', background: 'var(--creme-warm)', position: 'relative', overflow: 'hidden' }}>
+        <ParticleCanvas count={20} />
         <div className="reveal" style={{ marginBottom: '0.75rem' }}>
           <span className="badge badge-rosa">
             <span className="color-dot" style={{ background: 'var(--rosa)' }} />
@@ -386,6 +404,7 @@ export default function Home() {
           CTA FINAL
       ═══════════════════════════════════════════ */}
       <section className="section-padding" style={{ padding: '7rem 1.25rem', textAlign: 'center', position: 'relative', overflow: 'hidden', background: 'var(--ink)' }}>
+        <ParticleCanvas count={25} />
         {/* Colored paint blobs on dark bg */}
         <div style={{ position: 'absolute', top: '20%', left: '10%', width: 160, height: 140, borderRadius: '60% 40% 70% 30% / 50% 60% 40% 50%', background: 'var(--verde)', opacity: 0.15, pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', bottom: '20%', right: '8%', width: 120, height: 100, borderRadius: '40% 60% 30% 70% / 60% 40% 60% 40%', background: 'var(--rosa)', opacity: 0.15, pointerEvents: 'none' }} />
@@ -459,7 +478,16 @@ export default function Home() {
                   <>
                     <div className="project-modal-media">
                       <div className="project-modal-main-image" style={{ borderColor: selectedProject.accent }}>
-                        <ImageMagnifier src={activeMedia?.img || selectedProject.img} alt={selectedProject.title} zoomLevel={2.5} />
+                        {activeMedia?.img?.endsWith('.mp4') ? (
+                          <video 
+                            key={activeMedia.img}
+                            src={activeMedia.img} 
+                            autoPlay loop muted playsInline controls
+                            style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: 'calc(1.5rem - 4px)', background: 'black' }} 
+                          />
+                        ) : (
+                          <ImageMagnifier src={activeMedia?.img || selectedProject.img} alt={selectedProject.title} zoomLevel={2.5} />
+                        )}
                       </div>
                       {allMedia.length > 1 && (
                         <div className="project-modal-gallery">
@@ -477,7 +505,13 @@ export default function Home() {
                                   transition: 'all 0.2s ease-in-out'
                                 }}
                               >
-                                <img src={media.img} alt={`${selectedProject.title} thumb ${idx}`} />
+                                {media.img.endsWith('.mp4') ? (
+                                  <div style={{ width: '100%', height: '100%', background: 'var(--creme)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    <span style={{ color: 'var(--ink-soft)', fontSize: '1.8rem', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))' }}>▶</span>
+                                  </div>
+                                ) : (
+                                  <img src={media.img} alt={`${selectedProject.title} thumb ${idx}`} />
+                                )}
                               </div>
                             );
                           })}

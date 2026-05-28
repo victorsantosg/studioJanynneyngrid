@@ -140,7 +140,8 @@ export default function Servicos() {
       </section>
 
       {/* ─── PROCESSO ─── */}
-      <section className="section-padding" style={{ padding: '5rem 1.25rem', background: 'var(--creme-warm)' }}>
+      <section className="section-padding" style={{ padding: '5rem 1.25rem', background: 'var(--creme-warm)', position: 'relative', overflow: 'hidden' }}>
+        <ParticleCanvas count={20} />
         <div className="reveal" style={{ marginBottom: '0.75rem' }}>
           <span className="badge badge-azul">
             <span className="color-dot" style={{ background: 'var(--azul)' }} />
@@ -185,7 +186,8 @@ export default function Servicos() {
       </section>
 
       {/* ─── FAQ ─── */}
-      <section className="section-padding" style={{ padding: '5rem 1.25rem 4rem', background: 'white' }}>
+      <section className="section-padding" style={{ padding: '5rem 1.25rem 4rem', background: 'white', position: 'relative', overflow: 'hidden' }}>
+        <ParticleCanvas count={15} />
         <div className="reveal" style={{ marginBottom: '0.75rem' }}>
           <span className="badge badge-verde">
             <span className="color-dot" style={{ background: 'var(--verde)' }} />
@@ -212,7 +214,8 @@ export default function Servicos() {
       </section>
 
       {/* ─── CTA ─── */}
-      <section style={{ padding: '5rem 1.25rem', textAlign: 'center', background: 'var(--creme-warm)', borderTop: '1px solid rgba(168,214,106,0.15)' }}>
+      <section style={{ padding: '5rem 1.25rem', textAlign: 'center', background: 'var(--creme-warm)', borderTop: '1px solid rgba(168,214,106,0.15)', position: 'relative', overflow: 'hidden' }}>
+        <ParticleCanvas count={15} />
         <div className="reveal" style={{ marginBottom: '0.5rem' }}>
           <span style={{ fontFamily: 'var(--font-script)', fontSize: '1.4rem', color: 'var(--verde-deep)' }}>Pronto para começar?</span>
         </div>

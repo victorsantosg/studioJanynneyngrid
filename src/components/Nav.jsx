@@ -10,10 +10,10 @@ export default function Nav() {
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     const onResize = () => setIsMobile(window.innerWidth <= 768);
-    
+
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onResize);
-    
+
     return () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onResize);
@@ -22,7 +22,7 @@ export default function Nav() {
 
   useEffect(() => {
     setMenuOpen(false);
-    
+
     // Scroll suave para âncoras (IDs)
     if (location.hash) {
       const id = location.hash.substring(1);
@@ -49,15 +49,15 @@ export default function Nav() {
       <div className="logo-splash teal-splash" />
       <div className="logo-splash pink-splash" />
       <div className="logo-splash yellow-splash" />
-      
+
       {/* Ícone de Pincel SVG */}
-      <svg 
-        className="logo-paintbrush" 
-        viewBox="0 0 24 24" 
-        fill="none" 
-        stroke="var(--ink)" 
-        strokeWidth="2" 
-        strokeLinecap="round" 
+      <svg
+        className="logo-paintbrush"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="var(--ink)"
+        strokeWidth="2"
+        strokeLinecap="round"
         strokeLinejoin="round"
       >
         <path d="M18 11l-6-6-8.5 8.5a3.5 3.5 0 0 0 5 5L17 12" />
@@ -79,13 +79,13 @@ export default function Nav() {
       <>
         <nav className={`nav-pill${scrolled ? ' scrolled' : ''}`}>
           {/* Wrapper da marca que encolhe e sumirá no scroll */}
-          <div 
-            className="nav-pill-brand-wrap" 
-            style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '0.75rem', 
-              flexGrow: 1, 
+          <div
+            className="nav-pill-brand-wrap"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.75rem',
+              flexGrow: 1,
               overflow: 'hidden',
               transition: 'max-width 0.5s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.4s ease, gap 0.5s ease',
               maxWidth: scrolled ? 0 : 300,
@@ -154,32 +154,32 @@ export default function Nav() {
       </Link>
 
       <nav className="header-links-section">
-        <Link 
-          to="/" 
+        <Link
+          to="/"
           className={`nav-link${isActive('/') ? ' nav-link-active' : ''}`}
         >
           Home
         </Link>
-        <Link 
-          to="/portfolio" 
+        <Link
+          to="/portfolio"
           className={`nav-link${isActive('/portfolio') ? ' nav-link-active' : ''}`}
         >
           Estampas
         </Link>
-        <Link 
-          to="/#sobre" 
+        <Link
+          to="/#sobre"
           className={`nav-link${isActive('/', '#sobre') ? ' nav-link-active' : ''}`}
         >
           Sobre
         </Link>
-        <Link 
-          to="/servicos#processo" 
+        <Link
+          to="/servicos#processo"
           className={`nav-link${isActive('/servicos', '#processo') ? ' nav-link-active' : ''}`}
         >
           Processo Criativo
         </Link>
-        <Link 
-          to="/contato" 
+        <Link
+          to="/contato"
           className={`nav-link${isActive('/contato') ? ' nav-link-active' : ''}`}
         >
           Contato
@@ -187,7 +187,7 @@ export default function Nav() {
 
         {/* Botão Pílula Aquarela */}
         <Link to="/contato" className="btn-watercolor-teal" style={{ marginLeft: '1rem' }}>
-          Vamos criar juntas?
+          Vamos criar juntos?
         </Link>
       </nav>
     </header>
