@@ -23,7 +23,7 @@ const PROJECTS = [
   {
     id: 8,
     img: '/colecao_estampas/Frutificar-ano-2024/08af04218897743.67a974d29d006.jpg.jpeg',
-    title: 'Frutificar ano 2024',
+    title: 'Frutificar',
     cat: 'Estampas',
     accent: 'var(--amarelo-deep)',
     year: '2024',
@@ -34,6 +34,22 @@ const PROJECTS = [
       '/colecao_estampas/Frutificar-ano-2024/468278741_18146058145350434_3177576444346075973_n.jpg.jpeg',
       '/colecao_estampas/Frutificar-ano-2024/468280991_18146057968350434_3959330153825415454_n.jpg.jpeg',
       '/colecao_estampas/Frutificar-ano-2024/ac4f3e218897743.67a974d29c878.jpg.jpeg'
+    ]
+  },
+  {
+    id: 9,
+    img: '/colecao_estampas/Paraiso-ano-2024/JY0523A.jpg.jpeg',
+    title: 'Paraíso',
+    cat: 'Estampas',
+    accent: 'var(--rosa-deep)',
+    year: '2024',
+    description: 'Uma coleção infantil encantadora, desenvolvida a partir de um estudo cuidadoso da identidade da marca Turma de Meninas. As cores foram selecionadas estrategicamente para criar conexão com o público e fortalecer a essência lúdica da coleção. Com elementos aquarelados e uma proposta tropical delicada, o resultado traduz leveza, alegria e um universo cheio de encanto.',
+    gallery: [
+      '/colecao_estampas/Paraiso-ano-2024/behance_img_2.jpg.jpeg',
+      '/colecao_estampas/Paraiso-ano-2024/behance_img_3.jpg.jpeg',
+      '/colecao_estampas/Paraiso-ano-2024/behance_img_4.jpg.jpeg',
+      '/colecao_estampas/Paraiso-ano-2024/behance_img_5.jpg.jpeg',
+      '/colecao_estampas/Paraiso-ano-2024/behance_img_6.jpg.jpeg'
     ]
   }
 ];
