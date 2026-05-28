@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const COLORS = ['#A8D66A', '#F5B8C4', '#6ECFE3'];
 
-const ParticleCanvas = () => {
+const ParticleCanvas = ({ count = 30 }) => {
+  const canvasRef = useRef(null);
+
   useEffect(() => {
-    const canvas = document.getElementById('particle-canvas');
+    const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
@@ -89,7 +91,7 @@ const ParticleCanvas = () => {
 
     const initParticles = () => {
         particles = [];
-        for (let i = 0; i < 80; i++) {
+        for (let i = 0; i < count; i++) {
             particles.push(new Particle());
         }
     };
@@ -124,7 +126,7 @@ const ParticleCanvas = () => {
     };
   }, []);
 
-  return <canvas id="particle-canvas" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1 }}></canvas>;
+  return <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1 }}></canvas>;
 };
 
 export default ParticleCanvas;

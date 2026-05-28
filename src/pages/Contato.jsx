@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useReveal from '../hooks/useReveal';
+import ParticleCanvas from '../components/ParticleCanvas';
 
 export default function Contato() {
   const pageRef = useReveal();
@@ -18,6 +19,7 @@ export default function Contato() {
 
       {/* ─── HEADER ─── */}
       <section style={{ padding: '4rem 1.25rem 2rem', position: 'relative', overflow: 'hidden' }}>
+        <ParticleCanvas />
         <div style={{ position: 'absolute', top: '5%', right: '-5%', width: 200, height: 180, borderRadius: '60% 40% 70% 30% / 50% 60% 40% 50%', background: 'var(--azul-pale)', opacity: 0.7, pointerEvents: 'none' }} />
 
         <div className="reveal" style={{ marginBottom: '0.75rem' }}>

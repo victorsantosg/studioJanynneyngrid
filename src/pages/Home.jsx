@@ -2,6 +2,16 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useReveal from '../hooks/useReveal';
 import ParticleCanvas from '../components/ParticleCanvas';
+import ImageMagnifier from '../components/ImageMagnifier';
+
+const defaultDesc = "Uma estampa exclusiva criada com aquarela, pensada para trazer leveza e personalidade. Esse design foi desenvolvido focando no movimento das formas e na harmonia das cores.";
+const defaultGallery = ['/colecao1/colecao1.webp', '/colecao1/colecao2.webp'];
+
+const HIGHLIGHTED_PROJECTS = [
+  { id: 101, img: '/jardim_de_afetos.png', title: 'Jardim de Afetos', cat: 'Estampas', accent: 'var(--rosa-deep)', year: '2025', description: defaultDesc, gallery: defaultGallery },
+  { id: 102, img: '/citricos_do_sol.png', title: 'Cítricos do Sol', cat: 'Estampas', accent: 'var(--amarelo-deep)', year: '2025', description: defaultDesc, gallery: defaultGallery },
+  { id: 103, img: '/mar_em_aquarela.png', title: 'Mar em Aquarela', cat: 'Estampas', accent: 'var(--azul-deep)', year: '2025', description: defaultDesc, gallery: defaultGallery }
+];
 
 /* ── Paint blob palette ── */
 const BLOBS = [
@@ -19,11 +29,24 @@ const TAGS = [
 export default function Home() {
   const pageRef = useReveal();
   const [visible, setVisible] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [activeMedia, setActiveMedia] = useState(null);
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 80);
     return () => clearTimeout(t);
   }, []);
+
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+      setActiveMedia({ img: selectedProject.img, desc: selectedProject.description });
+    } else {
+      document.body.style.overflow = 'auto';
+      setActiveMedia(null);
+    }
+    return () => { document.body.style.overflow = 'auto'; };
+  }, [selectedProject]);
 
   return (
     <div ref={pageRef} style={{ background: 'var(--creme)', position: 'relative' }} className="page-splashes-wrapper">
@@ -131,16 +154,17 @@ export default function Home() {
       {/* ═══════════════════════════════════════════
           MARQUEE — Disciplinas
       ═══════════════════════════════════════════ */}
-      <div style={{ background: 'var(--ink)', padding: '1rem 0', overflow: 'hidden' }}>
-        <div className="marquee-track">
-          {[...TAGS, ...TAGS].map((tag, i) => (
-            <span key={i} style={{
-              fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 600,
-              letterSpacing: '0.2em', textTransform: 'uppercase',
-              color: i % 3 === 0 ? 'var(--verde)' : i % 3 === 1 ? 'var(--rosa)' : 'var(--azul)',
-              padding: '0 2rem', whiteSpace: 'nowrap',
+      <div className="brand-marquee-container" style={{ margin: 0, borderBottom: 'none', paddingTop: '2.5rem', paddingBottom: '2.5rem' }}>
+        <div className="brand-marquee-track">
+          {[...TAGS, ...TAGS, ...TAGS].map((tag, i) => (
+            <span key={i} className="brand-logo" style={{
+              fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 600,
+              letterSpacing: '0.25em', textTransform: 'uppercase',
+              color: 'var(--ink-soft)',
+              display: 'flex', alignItems: 'center', gap: '3.5rem'
             }}>
-              {tag}  ·
+              {tag}
+              <span style={{ color: i % 3 === 0 ? 'var(--verde)' : i % 3 === 1 ? 'var(--rosa)' : 'var(--azul)', fontSize: 24, lineHeight: 0 }}>·</span>
             </span>
           ))}
         </div>
@@ -150,6 +174,7 @@ export default function Home() {
           SOBRE — Editorial Split
       ═══════════════════════════════════════════ */}
       <section id="sobre" className="section-padding" style={{ padding: '6rem 1.25rem', position: 'relative', overflow: 'hidden' }}>
+        <ParticleCanvas />
         <div style={{ position: 'absolute', top: 0, right: 0, width: 300, height: 300, background: 'radial-gradient(ellipse, #FAE0E6 0%, transparent 70%)', pointerEvents: 'none' }} />
 
         <div className="reveal" style={{ marginBottom: '0.75rem' }}>
@@ -231,57 +256,32 @@ export default function Home() {
         </h2>
 
         {/* Grid harmonioso estilo Portfólio */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'start' }}>
-          {/* Card 1 */}
-          <div className="reveal canvas-card-container" style={{ gridColumn: '1 / -1' }}>
-            <div className="canvas-card-inner" style={{ height: 350 }}>
-              <img 
-                src="/jardim_de_afetos.png" 
-                alt="Jardim de Afetos" 
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', background: 'transparent' }} 
-              />
-            </div>
-            <div className="canvas-card-label-area">
-              <div className="card-brush-stroke card-brush-stroke-rose" />
-              <span className="card-brush-title-text" style={{ fontSize: '1.25rem' }}>
-                Jardim de Afetos
-              </span>
-            </div>
-          </div>
-
-          {/* Card 2 */}
-          <div className="reveal reveal-delay-1 canvas-card-container">
-            <div className="canvas-card-inner" style={{ aspectRatio: '1/1' }}>
-              <img 
-                src="/citricos_do_sol.png" 
-                alt="Cítricos do Sol" 
-                style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', background: 'white', padding: '12px' }} 
-              />
-            </div>
-            <div className="canvas-card-label-area">
-              <div className="card-brush-stroke card-brush-stroke-yellow" />
-              <span className="card-brush-title-text" style={{ fontSize: '1.1rem' }}>
-                Cítricos do Sol
-              </span>
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div className="reveal reveal-delay-2 canvas-card-container">
-            <div className="canvas-card-inner" style={{ aspectRatio: '1/1' }}>
-              <img 
-                src="/mar_em_aquarela.png" 
-                alt="Mar em Aquarela" 
-                style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', background: 'white', padding: '12px' }} 
-              />
-            </div>
-            <div className="canvas-card-label-area">
-              <div className="card-brush-stroke card-brush-stroke-teal" />
-              <span className="card-brush-title-text" style={{ fontSize: '1.1rem' }}>
-                Mar em Aquarela
-              </span>
-            </div>
-          </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', alignItems: 'start' }}>
+          {HIGHLIGHTED_PROJECTS.map((p, i) => {
+            const strokeColor = p.title === 'Jardim de Afetos' ? 'rose' : p.title === 'Cítricos do Sol' ? 'yellow' : 'teal';
+            return (
+              <div
+                key={p.id}
+                className={`reveal reveal-delay-${i} canvas-card-container portfolio-item-clickable`}
+                onClick={() => setSelectedProject(p)}
+                style={{ cursor: 'pointer' }}
+              >
+                <div className="canvas-card-inner" style={{ aspectRatio: '1/1' }}>
+                  <img 
+                    src={p.img} 
+                    alt={p.title} 
+                    style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', background: 'white', padding: '12px' }} 
+                  />
+                </div>
+                <div className="canvas-card-label-area">
+                  <div className={`card-brush-stroke card-brush-stroke-${strokeColor}`} />
+                  <span className="card-brush-title-text" style={{ fontSize: '1.1rem' }}>
+                    {p.title}
+                  </span>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         <div className="reveal reveal-delay-3" style={{ marginTop: '2rem', textAlign: 'center' }}>
@@ -425,6 +425,80 @@ export default function Home() {
           </p>
         </div>
       </footer>
+
+      {/* ─── MODAL DO PROJETO ─── */}
+      {selectedProject && (
+        <div className="project-modal-overlay" onClick={() => setSelectedProject(null)}>
+          <div className="project-modal-content" onClick={e => e.stopPropagation()}>
+            <button className="project-modal-close" onClick={() => setSelectedProject(null)}>
+              ✕
+            </button>
+            <div className="project-modal-body">
+              {/* Coluna Esquerda: Imagem Principal e Galeria */}
+              {(() => {
+                const allMedia = [
+                  { img: selectedProject.img, desc: selectedProject.description },
+                  ...(selectedProject.gallery || []).map((img, idx) => ({
+                    img,
+                    desc: `Aplicação mockup ${idx + 1} para o projeto ${selectedProject.title}, demonstrando a versatilidade da estampa e do design no uso real.`
+                  }))
+                ];
+                return (
+                  <>
+                    <div className="project-modal-media">
+                      <div className="project-modal-main-image" style={{ borderColor: selectedProject.accent }}>
+                        <ImageMagnifier src={activeMedia?.img || selectedProject.img} alt={selectedProject.title} zoomLevel={2.5} />
+                      </div>
+                      <div className="project-modal-gallery">
+                        {allMedia.map((media, idx) => {
+                          const isActive = activeMedia?.img === media.img;
+                          return (
+                            <div 
+                              key={idx} 
+                              className="project-modal-thumb" 
+                              onClick={() => setActiveMedia(media)}
+                              style={{ 
+                                cursor: 'pointer', 
+                                border: isActive ? `3px solid ${selectedProject.accent}` : '3px solid transparent',
+                                opacity: isActive ? 1 : 0.6,
+                                transition: 'all 0.2s ease-in-out'
+                              }}
+                            >
+                              <img src={media.img} alt={`${selectedProject.title} thumb ${idx}`} />
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                    
+                    {/* Coluna Direita: Informações */}
+                    <div className="project-modal-info">
+                      <span className="badge" style={{ background: 'var(--creme-warm)', color: selectedProject.accent, border: `1px solid ${selectedProject.accent}` }}>
+                        {selectedProject.cat}
+                      </span>
+                      <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2rem, 5vw, 2.8rem)', color: 'var(--ink)', margin: '1rem 0 0.5rem', lineHeight: 1.1 }}>
+                        {selectedProject.title}
+                      </h2>
+                      <div style={{ fontFamily: 'var(--font-script)', fontSize: '1.25rem', color: selectedProject.accent, marginBottom: '2rem' }}>
+                        {selectedProject.year}
+                      </div>
+                      
+                      <p style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', lineHeight: 1.8, color: 'var(--ink-soft)', marginBottom: '2rem' }}>
+                        {activeMedia?.desc || selectedProject.description}
+                      </p>
+
+                      <Link to="/contato" className="btn-primary" style={{ width: '100%', justifyContent: 'center', background: 'var(--ink)' }}>
+                        <span className="label">Quero um projeto assim</span>
+                        <span className="btn-icon">↗</span>
+                      </Link>
+                    </div>
+                  </>
+                );
+              })()}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

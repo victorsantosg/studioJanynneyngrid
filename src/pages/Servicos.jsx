@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import useReveal from '../hooks/useReveal';
+import ParticleCanvas from '../components/ParticleCanvas';
 
 const PROCESS = [
   {
@@ -57,6 +58,7 @@ export default function Servicos() {
 
       {/* ─── HEADER ─── */}
       <section style={{ padding: '4rem 1.25rem 3rem', position: 'relative', overflow: 'hidden' }}>
+        <ParticleCanvas />
         <div style={{ position: 'absolute', top: '5%', right: '-8%', width: 220, height: 200, borderRadius: '60% 40% 70% 30% / 50% 60% 40% 50%', background: 'var(--rosa-pale)', opacity: 0.7, pointerEvents: 'none' }} />
 
         <div className="reveal" style={{ marginBottom: '0.75rem' }}>

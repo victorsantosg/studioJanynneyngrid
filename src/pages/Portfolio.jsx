@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useReveal from '../hooks/useReveal';
+import ImageMagnifier from '../components/ImageMagnifier';
+import ParticleCanvas from '../components/ParticleCanvas';
 
 const CATEGORIES = ['Todos', 'Estampas', 'Croquis', 'Ilustração'];
 
@@ -22,13 +24,16 @@ const PROJECTS = [
 export default function Portfolio() {
   const [active, setActive] = useState('Todos');
   const [selectedProject, setSelectedProject] = useState(null);
+  const [activeMedia, setActiveMedia] = useState(null);
   const pageRef = useReveal();
 
   useEffect(() => {
     if (selectedProject) {
       document.body.style.overflow = 'hidden';
+      setActiveMedia({ img: selectedProject.img, desc: selectedProject.description });
     } else {
       document.body.style.overflow = 'auto';
+      setActiveMedia(null);
     }
     return () => { document.body.style.overflow = 'auto'; };
   }, [selectedProject]);
@@ -44,6 +49,7 @@ export default function Portfolio() {
 
       {/* ─── HEADER ─── */}
       <section style={{ padding: '4rem 1.25rem 3rem', position: 'relative', overflow: 'hidden' }}>
+        <ParticleCanvas />
         <div style={{ position: 'absolute', top: '10%', right: '-5%', width: 260, height: 260, borderRadius: '50%', background: 'radial-gradient(ellipse, #D6EDAF 0%, transparent 70%)', pointerEvents: 'none' }} />
 
         <div className="reveal" style={{ marginBottom: '0.75rem' }}>
@@ -186,42 +192,66 @@ export default function Portfolio() {
             </button>
             <div className="project-modal-body">
               {/* Coluna Esquerda: Imagem Principal e Galeria */}
-              <div className="project-modal-media">
-                <div className="project-modal-main-image" style={{ borderColor: selectedProject.accent }}>
-                  <img src={selectedProject.img} alt={selectedProject.title} />
-                </div>
-                {selectedProject.gallery && selectedProject.gallery.length > 0 && (
-                  <div className="project-modal-gallery">
-                    {selectedProject.gallery.map((img, idx) => (
-                      <div key={idx} className="project-modal-thumb">
-                        <img src={img} alt={`${selectedProject.title} mockup ${idx + 1}`} />
+              {(() => {
+                const allMedia = [
+                  { img: selectedProject.img, desc: selectedProject.description },
+                  ...(selectedProject.gallery || []).map((img, idx) => ({
+                    img,
+                    desc: `Aplicação mockup ${idx + 1} para o projeto ${selectedProject.title}, demonstrando a versatilidade da estampa e do design no uso real.`
+                  }))
+                ];
+                return (
+                  <>
+                    <div className="project-modal-media">
+                      <div className="project-modal-main-image" style={{ borderColor: selectedProject.accent }}>
+                        <ImageMagnifier src={activeMedia?.img || selectedProject.img} alt={selectedProject.title} zoomLevel={2.5} />
                       </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-              
-              {/* Coluna Direita: Informações */}
-              <div className="project-modal-info">
-                <span className="badge" style={{ background: 'var(--creme-warm)', color: selectedProject.accent, border: `1px solid ${selectedProject.accent}` }}>
-                  {selectedProject.cat}
-                </span>
-                <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2rem, 5vw, 2.8rem)', color: 'var(--ink)', margin: '1rem 0 0.5rem', lineHeight: 1.1 }}>
-                  {selectedProject.title}
-                </h2>
-                <div style={{ fontFamily: 'var(--font-script)', fontSize: '1.25rem', color: selectedProject.accent, marginBottom: '2rem' }}>
-                  {selectedProject.year}
-                </div>
-                
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', lineHeight: 1.8, color: 'var(--ink-soft)', marginBottom: '2rem' }}>
-                  {selectedProject.description}
-                </p>
+                      <div className="project-modal-gallery">
+                        {allMedia.map((media, idx) => {
+                          const isActive = activeMedia?.img === media.img;
+                          return (
+                            <div 
+                              key={idx} 
+                              className="project-modal-thumb" 
+                              onClick={() => setActiveMedia(media)}
+                              style={{ 
+                                cursor: 'pointer', 
+                                border: isActive ? `3px solid ${selectedProject.accent}` : '3px solid transparent',
+                                opacity: isActive ? 1 : 0.6,
+                                transition: 'all 0.2s ease-in-out'
+                              }}
+                            >
+                              <img src={media.img} alt={`${selectedProject.title} thumb ${idx}`} />
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                    
+                    {/* Coluna Direita: Informações */}
+                    <div className="project-modal-info">
+                      <span className="badge" style={{ background: 'var(--creme-warm)', color: selectedProject.accent, border: `1px solid ${selectedProject.accent}` }}>
+                        {selectedProject.cat}
+                      </span>
+                      <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2rem, 5vw, 2.8rem)', color: 'var(--ink)', margin: '1rem 0 0.5rem', lineHeight: 1.1 }}>
+                        {selectedProject.title}
+                      </h2>
+                      <div style={{ fontFamily: 'var(--font-script)', fontSize: '1.25rem', color: selectedProject.accent, marginBottom: '2rem' }}>
+                        {selectedProject.year}
+                      </div>
+                      
+                      <p style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', lineHeight: 1.8, color: 'var(--ink-soft)', marginBottom: '2rem' }}>
+                        {activeMedia?.desc || selectedProject.description}
+                      </p>
 
-                <Link to="/contato" className="btn-primary" style={{ width: '100%', justifyContent: 'center', background: 'var(--ink)' }}>
-                  <span className="label">Quero um projeto assim</span>
-                  <span className="btn-icon">↗</span>
-                </Link>
-              </div>
+                      <Link to="/contato" className="btn-primary" style={{ width: '100%', justifyContent: 'center', background: 'var(--ink)' }}>
+                        <span className="label">Quero um projeto assim</span>
+                        <span className="btn-icon">↗</span>
+                      </Link>
+                    </div>
+                  </>
+                );
+              })()}
             </div>
           </div>
         </div>
