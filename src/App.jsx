@@ -3,6 +3,7 @@ import Nav from './components/Nav';
 import Home from './pages/Home';
 import Portfolio from './pages/Portfolio';
 import Servicos from './pages/Servicos';
+import Processo from './pages/Processo';
 import Contato from './pages/Contato';
 import './index.css';
 
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/servicos" element={<Servicos />} />
+        <Route path="/processo" element={<Processo />} />
         <Route path="/contato" element={<Contato />} />
       </Routes>
     </Router>

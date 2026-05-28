@@ -133,7 +133,8 @@ export default function Nav() {
           <Link to="/" className="menu-link">Home</Link>
           <Link to="/portfolio" className="menu-link">Estampas</Link>
           <Link to="/#sobre" className="menu-link">Sobre</Link>
-          <Link to="/servicos#processo" className="menu-link">Processo Criativo</Link>
+          <Link to="/servicos" className="menu-link">Serviços</Link>
+          <Link to="/processo" className="menu-link">Processo Criativo</Link>
           <Link to="/contato" className="menu-link">Contato</Link>
 
           <div style={{ position: 'absolute', bottom: '2rem', display: 'flex', gap: 24, alignItems: 'center' }}>
@@ -173,8 +174,14 @@ export default function Nav() {
           Sobre
         </Link>
         <Link
-          to="/servicos#processo"
-          className={`nav-link${isActive('/servicos', '#processo') ? ' nav-link-active' : ''}`}
+          to="/servicos"
+          className={`nav-link${isActive('/servicos') ? ' nav-link-active' : ''}`}
+        >
+          Serviços
+        </Link>
+        <Link
+          to="/processo"
+          className={`nav-link${isActive('/processo') ? ' nav-link-active' : ''}`}
         >
           Processo Criativo
         </Link>

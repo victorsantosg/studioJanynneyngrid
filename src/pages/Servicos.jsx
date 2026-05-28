@@ -2,32 +2,7 @@ import { Link } from 'react-router-dom';
 import useReveal from '../hooks/useReveal';
 import ParticleCanvas from '../components/ParticleCanvas';
 
-const PROCESS = [
-  {
-    num: '01', accent: 'var(--verde)', badge: 'Início',
-    title: 'Briefing & Imersão',
-    desc: 'Mergulho profundo nos valores, DNA e referências da sua marca. Entendemos o que você quer comunicar antes de qualquer criação.',
-    duration: '1–2 semanas',
-  },
-  {
-    num: '02', accent: 'var(--rosa)', badge: 'Criação',
-    title: 'Pesquisa & Conceito',
-    desc: 'Desenvolvimento de referências visuais, moodboard e direção criativa. Apresentação de conceito para validação.',
-    duration: '1–2 semanas',
-  },
-  {
-    num: '03', accent: 'var(--azul)', badge: 'Desenvolvimento',
-    title: 'Design & Refinamento',
-    desc: 'Criação artística com até 3 rodadas de revisão incluídas. Cada detalhe é pensado com precisão e cuidado.',
-    duration: '2–3 semanas',
-  },
-  {
-    num: '04', accent: 'var(--amarelo-deep)', badge: 'Finalização',
-    title: 'Entrega & Suporte',
-    desc: 'Arquivos finais em todos os formatos necessários + guia de uso. Suporte para implementação.',
-    duration: '1 semana',
-  },
-];
+
 
 const SERVICES = [
   {
@@ -139,51 +114,7 @@ export default function Servicos() {
         </div>
       </section>
 
-      {/* ─── PROCESSO ─── */}
-      <section id="processo" className="section-padding" style={{ padding: '5rem 1.25rem', background: 'var(--creme-warm)', position: 'relative', overflow: 'hidden' }}>
-        <ParticleCanvas count={20} />
-        <div className="reveal" style={{ marginBottom: '0.75rem' }}>
-          <span className="badge badge-azul">
-            <span className="color-dot" style={{ background: 'var(--azul)' }} />
-            Como funciona
-          </span>
-        </div>
-        <h2 className="reveal reveal-delay-1" style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(1.6rem,6vw,2.5rem)', color: 'var(--ink)', marginBottom: '2.5rem' }}>
-          O Processo Criativo
-        </h2>
 
-        <div className="process-grid">
-          {PROCESS.map((step, i) => (
-            <div key={step.num} className={`reveal reveal-delay-${i % 3} process-step`} style={{ display: 'flex', gap: '1.25rem', paddingBottom: i < PROCESS.length - 1 ? '2rem' : 0, position: 'relative' }}>
-              {/* Timeline line */}
-              {i < PROCESS.length - 1 && (
-                <div className="process-line" style={{ position: 'absolute', left: 22, top: 52, bottom: 0, width: 2, background: 'rgba(168,214,106,0.2)' }} />
-              )}
-
-              {/* Step number circle */}
-              <div style={{
-                width: 44, height: 44, borderRadius: '50%', flexShrink: 0,
-                background: step.accent, display: 'flex', alignItems: 'center',
-                justifyContent: 'center', fontFamily: 'var(--font-body)',
-                fontSize: 12, fontWeight: 700, color: step.accent === 'var(--amarelo-deep)' ? 'var(--ink)' : 'white',
-                position: 'relative', zIndex: 1,
-                boxShadow: `0 4px 16px ${step.accent}40`,
-              }}>
-                {step.num}
-              </div>
-
-              {/* Content */}
-              <div style={{ paddingTop: 6 }}>
-                <span style={{ fontFamily: 'var(--font-body)', fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--ink-muted)', display: 'block', marginBottom: 4 }}>
-                  {step.badge}  ·  {step.duration}
-                </span>
-                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.1rem', color: 'var(--ink)', marginBottom: '0.4rem' }}>{step.title}</h3>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', lineHeight: 1.7, color: 'var(--ink-soft)' }}>{step.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* ─── FAQ ─── */}
       <section className="section-padding" style={{ padding: '5rem 1.25rem 4rem', background: 'white', position: 'relative', overflow: 'hidden' }}>
