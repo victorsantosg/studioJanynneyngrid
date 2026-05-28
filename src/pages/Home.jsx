@@ -5,12 +5,19 @@ import ParticleCanvas from '../components/ParticleCanvas';
 import ImageMagnifier from '../components/ImageMagnifier';
 
 const defaultDesc = "Uma estampa exclusiva criada com aquarela, pensada para trazer leveza e personalidade. Esse design foi desenvolvido focando no movimento das formas e na harmonia das cores.";
-const defaultGallery = ['/colecao1/colecao1.webp', '/colecao1/colecao2.webp'];
+const defaultGallery = [];
 
 const HIGHLIGHTED_PROJECTS = [
-  { id: 101, img: '/jardim_de_afetos.png', title: 'Jardim de Afetos', cat: 'Estampas', accent: 'var(--rosa-deep)', year: '2025', description: defaultDesc, gallery: defaultGallery },
-  { id: 102, img: '/citricos_do_sol.png', title: 'Cítricos do Sol', cat: 'Estampas', accent: 'var(--amarelo-deep)', year: '2025', description: defaultDesc, gallery: defaultGallery },
-  { id: 103, img: '/mar_em_aquarela.png', title: 'Mar em Aquarela', cat: 'Estampas', accent: 'var(--azul-deep)', year: '2025', description: defaultDesc, gallery: defaultGallery }
+  { 
+    id: 7, 
+    img: '/colecao_estampas/estampa2.jpeg', 
+    title: 'Summer Mocha & Blue', 
+    cat: 'Estampas', 
+    accent: 'var(--verde)', 
+    year: '2025', 
+    description: 'Estampa criada destacando a cor do ano de 2025 Mocha Mousse e com uma pintada de azul escuro que fez uma combinação perfeita! Para realçar mais os elementos, textura não podia ficar de fora e agora mostro esse resultado incrível de estampa aquarela!', 
+    gallery: ['/colecao_estampas/estampa1.jpeg', '/colecao_estampas/estampa3.jpeg'] 
+  },
 ];
 
 /* ── Paint blob palette ── */
@@ -256,7 +263,7 @@ export default function Home() {
         </h2>
 
         {/* Grid harmonioso estilo Portfólio */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', alignItems: 'start' }}>
+        <div className="desktop-grid-4" style={{ gap: '2rem', alignItems: 'start' }}>
           {HIGHLIGHTED_PROJECTS.map((p, i) => {
             const strokeColor = p.title === 'Jardim de Afetos' ? 'rose' : p.title === 'Cítricos do Sol' ? 'yellow' : 'teal';
             return (
@@ -266,7 +273,12 @@ export default function Home() {
                 onClick={() => setSelectedProject(p)}
                 style={{ cursor: 'pointer' }}
               >
-                <div className="canvas-card-inner" style={{ aspectRatio: '1/1' }}>
+                <div className={`canvas-card-inner ${p.gallery && p.gallery.length > 0 ? 'collection-stack' : ''}`} style={{ aspectRatio: '1/1', position: 'relative' }}>
+                  {p.gallery && p.gallery.length > 0 && (
+                    <div className="collection-badge">
+                      <span>❖</span> VER
+                    </div>
+                  )}
                   <img 
                     src={p.img} 
                     alt={p.title} 
@@ -438,9 +450,9 @@ export default function Home() {
               {(() => {
                 const allMedia = [
                   { img: selectedProject.img, desc: selectedProject.description },
-                  ...(selectedProject.gallery || []).map((img, idx) => ({
+                  ...(selectedProject.gallery || []).map((img) => ({
                     img,
-                    desc: `Aplicação mockup ${idx + 1} para o projeto ${selectedProject.title}, demonstrando a versatilidade da estampa e do design no uso real.`
+                    desc: selectedProject.description
                   }))
                 ];
                 return (
@@ -449,26 +461,28 @@ export default function Home() {
                       <div className="project-modal-main-image" style={{ borderColor: selectedProject.accent }}>
                         <ImageMagnifier src={activeMedia?.img || selectedProject.img} alt={selectedProject.title} zoomLevel={2.5} />
                       </div>
-                      <div className="project-modal-gallery">
-                        {allMedia.map((media, idx) => {
-                          const isActive = activeMedia?.img === media.img;
-                          return (
-                            <div 
-                              key={idx} 
-                              className="project-modal-thumb" 
-                              onClick={() => setActiveMedia(media)}
-                              style={{ 
-                                cursor: 'pointer', 
-                                border: isActive ? `3px solid ${selectedProject.accent}` : '3px solid transparent',
-                                opacity: isActive ? 1 : 0.6,
-                                transition: 'all 0.2s ease-in-out'
-                              }}
-                            >
-                              <img src={media.img} alt={`${selectedProject.title} thumb ${idx}`} />
-                            </div>
-                          );
-                        })}
-                      </div>
+                      {allMedia.length > 1 && (
+                        <div className="project-modal-gallery">
+                          {allMedia.map((media, idx) => {
+                            const isActive = activeMedia?.img === media.img;
+                            return (
+                              <div 
+                                key={idx} 
+                                className="project-modal-thumb" 
+                                onClick={() => setActiveMedia(media)}
+                                style={{ 
+                                  cursor: 'pointer', 
+                                  border: isActive ? `3px solid ${selectedProject.accent}` : '3px solid transparent',
+                                  opacity: isActive ? 1 : 0.6,
+                                  transition: 'all 0.2s ease-in-out'
+                                }}
+                              >
+                                <img src={media.img} alt={`${selectedProject.title} thumb ${idx}`} />
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
                     </div>
                     
                     {/* Coluna Direita: Informações */}

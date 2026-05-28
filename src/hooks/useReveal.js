@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export default function useReveal() {
+export default function useReveal(deps = []) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function useReveal() {
 
     targets.forEach(t => observer.observe(t));
     return () => observer.disconnect();
-  }, []);
+  }, deps);
 
   return ref;
 }

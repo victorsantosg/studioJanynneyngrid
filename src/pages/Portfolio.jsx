@@ -7,25 +7,26 @@ import ParticleCanvas from '../components/ParticleCanvas';
 const CATEGORIES = ['Todos', 'Estampas', 'Croquis', 'Ilustração'];
 
 const defaultDesc = "Uma estampa exclusiva criada com aquarela, pensada para trazer leveza e personalidade. Esse design foi desenvolvido focando no movimento das formas e na harmonia das cores.";
-const defaultGallery = ['/colecao1/colecao1.webp', '/colecao1/colecao2.webp'];
+const defaultGallery = [];
 
 const PROJECTS = [
-  { id: 101, img: '/jardim_de_afetos.png', title: 'Jardim de Afetos', cat: 'Estampas', accent: 'var(--rosa-deep)', year: '2025', description: defaultDesc, gallery: defaultGallery },
-  { id: 102, img: '/citricos_do_sol.png', title: 'Cítricos do Sol', cat: 'Estampas', accent: 'var(--amarelo-deep)', year: '2025', description: defaultDesc, gallery: defaultGallery },
-  { id: 103, img: '/mar_em_aquarela.png', title: 'Mar em Aquarela', cat: 'Estampas', accent: 'var(--azul-deep)', year: '2025', description: defaultDesc, gallery: defaultGallery },
-  { id: 1, img: '/img_1.jpeg', title: 'Coleção Primavera', cat: 'Estampas', accent: 'var(--verde)', year: '2024', description: defaultDesc, gallery: defaultGallery },
-  { id: 2, img: '/img_2.jpeg', title: 'Marca Atelier', cat: 'Identidade Visual', accent: 'var(--rosa)', year: '2024', description: defaultDesc, gallery: defaultGallery },
-  { id: 3, img: '/img_3.jpeg', title: 'Fashion Branding', cat: 'Branding', accent: 'var(--azul)', year: '2025', description: defaultDesc, gallery: defaultGallery },
-  { id: 4, img: '/img_1.jpeg', title: 'Estampa Floral', cat: 'Estampas', accent: 'var(--amarelo-deep)', year: '2025', description: defaultDesc, gallery: defaultGallery },
-  { id: 5, img: '/img_3.jpeg', title: 'Ilustração Têxtil', cat: 'Ilustração', accent: 'var(--verde)', year: '2025', description: defaultDesc, gallery: defaultGallery },
-  { id: 6, img: '/img_2.jpeg', title: 'Identidade de Marca', cat: 'Identidade Visual', accent: 'var(--rosa)', year: '2024', description: defaultDesc, gallery: defaultGallery },
+  { 
+    id: 7, 
+    img: '/colecao_estampas/estampa2.jpeg', 
+    title: 'Summer Mocha & Blue', 
+    cat: 'Estampas', 
+    accent: 'var(--verde)', 
+    year: '2025', 
+    description: 'Estampa criada destacando a cor do ano de 2025 Mocha Mousse e com uma pintada de azul escuro que fez uma combinação perfeita! Para realçar mais os elementos, textura não podia ficar de fora e agora mostro esse resultado incrível de estampa aquarela!', 
+    gallery: ['/colecao_estampas/estampa1.jpeg', '/colecao_estampas/estampa3.jpeg'] 
+  },
 ];
 
 export default function Portfolio() {
   const [active, setActive] = useState('Todos');
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeMedia, setActiveMedia] = useState(null);
-  const pageRef = useReveal();
+  const pageRef = useReveal([active]);
 
   useEffect(() => {
     if (selectedProject) {
@@ -78,7 +79,7 @@ export default function Portfolio() {
           <span className="brand-logo brand-triton">Triton</span>
           <span className="brand-logo brand-shein">SHEIN</span>
           <span className="brand-logo brand-ipanema">Ipanema</span>
-          
+
           {/* Duplicado para rolagem contínua */}
           <span className="brand-logo brand-cabide">CABIDE CAIÇARA</span>
           <span className="brand-logo brand-dalutex">Dalutex</span>
@@ -120,10 +121,10 @@ export default function Portfolio() {
       <section className="section-padding" style={{ padding: '0 1.25rem 6rem' }}>
         <div className="desktop-grid-4" style={{ gap: 16 }}>
           {filtered.map((p, i) => {
-            const strokeColor = p.cat === 'Estampas' || p.cat === 'Ilustração' 
-              ? 'rose' 
-              : p.cat === 'Identidade Visual' 
-                ? 'yellow' 
+            const strokeColor = p.cat === 'Estampas' || p.cat === 'Ilustração'
+              ? 'rose'
+              : p.cat === 'Identidade Visual'
+                ? 'yellow'
                 : 'teal';
 
             return (
@@ -131,21 +132,23 @@ export default function Portfolio() {
                 key={p.id}
                 className={`reveal reveal-delay-${i % 4} canvas-card-container portfolio-item-clickable`}
                 onClick={() => setSelectedProject(p)}
-                style={{
-                  gridColumn: i === 0 ? '1 / -1' : 'auto',
-                  cursor: 'pointer'
-                }}
+                style={{ cursor: 'pointer' }}
               >
-                <div className="canvas-card-inner" style={{ height: i === 0 ? 300 : 'auto', aspectRatio: i === 0 ? 'auto' : '1/1' }}>
-                  <img 
-                    src={p.img} 
-                    alt={p.title} 
-                    style={{ 
+                <div className={`canvas-card-inner ${p.gallery && p.gallery.length > 0 ? 'collection-stack' : ''}`} style={{ aspectRatio: '1/1', position: 'relative' }}>
+                  {p.gallery && p.gallery.length > 0 && (
+                    <div className="collection-badge">
+                      <span>❖</span> VER
+                    </div>
+                  )}
+                  <img
+                    src={p.img}
+                    alt={p.title}
+                    style={{
                       objectPosition: 'top center',
-                      objectFit: i === 0 ? 'cover' : 'contain',
-                      background: i === 0 ? 'transparent' : 'white',
-                      padding: i === 0 ? 0 : '8px'
-                    }} 
+                      objectFit: 'contain',
+                      background: 'white',
+                      padding: '8px'
+                    }}
                   />
                 </div>
                 <div className="canvas-card-label-area">
@@ -195,9 +198,9 @@ export default function Portfolio() {
               {(() => {
                 const allMedia = [
                   { img: selectedProject.img, desc: selectedProject.description },
-                  ...(selectedProject.gallery || []).map((img, idx) => ({
+                  ...(selectedProject.gallery || []).map((img) => ({
                     img,
-                    desc: `Aplicação mockup ${idx + 1} para o projeto ${selectedProject.title}, demonstrando a versatilidade da estampa e do design no uso real.`
+                    desc: selectedProject.description
                   }))
                 ];
                 return (
@@ -206,28 +209,30 @@ export default function Portfolio() {
                       <div className="project-modal-main-image" style={{ borderColor: selectedProject.accent }}>
                         <ImageMagnifier src={activeMedia?.img || selectedProject.img} alt={selectedProject.title} zoomLevel={2.5} />
                       </div>
-                      <div className="project-modal-gallery">
-                        {allMedia.map((media, idx) => {
-                          const isActive = activeMedia?.img === media.img;
-                          return (
-                            <div 
-                              key={idx} 
-                              className="project-modal-thumb" 
-                              onClick={() => setActiveMedia(media)}
-                              style={{ 
-                                cursor: 'pointer', 
-                                border: isActive ? `3px solid ${selectedProject.accent}` : '3px solid transparent',
-                                opacity: isActive ? 1 : 0.6,
-                                transition: 'all 0.2s ease-in-out'
-                              }}
-                            >
-                              <img src={media.img} alt={`${selectedProject.title} thumb ${idx}`} />
-                            </div>
-                          );
-                        })}
-                      </div>
+                      {allMedia.length > 1 && (
+                        <div className="project-modal-gallery">
+                          {allMedia.map((media, idx) => {
+                            const isActive = activeMedia?.img === media.img;
+                            return (
+                              <div
+                                key={idx}
+                                className="project-modal-thumb"
+                                onClick={() => setActiveMedia(media)}
+                                style={{
+                                  cursor: 'pointer',
+                                  border: isActive ? `3px solid ${selectedProject.accent}` : '3px solid transparent',
+                                  opacity: isActive ? 1 : 0.6,
+                                  transition: 'all 0.2s ease-in-out'
+                                }}
+                              >
+                                <img src={media.img} alt={`${selectedProject.title} thumb ${idx}`} />
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
                     </div>
-                    
+
                     {/* Coluna Direita: Informações */}
                     <div className="project-modal-info">
                       <span className="badge" style={{ background: 'var(--creme-warm)', color: selectedProject.accent, border: `1px solid ${selectedProject.accent}` }}>
@@ -239,7 +244,7 @@ export default function Portfolio() {
                       <div style={{ fontFamily: 'var(--font-script)', fontSize: '1.25rem', color: selectedProject.accent, marginBottom: '2rem' }}>
                         {selectedProject.year}
                       </div>
-                      
+
                       <p style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', lineHeight: 1.8, color: 'var(--ink-soft)', marginBottom: '2rem' }}>
                         {activeMedia?.desc || selectedProject.description}
                       </p>
