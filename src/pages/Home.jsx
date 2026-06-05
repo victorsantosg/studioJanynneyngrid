@@ -64,6 +64,21 @@ const HIGHLIGHTED_PROJECTS = [
       '/colecao_estampas/Santa-palha-aquarela/0605.mp4',
       '/colecao_estampas/Santa-palha-aquarela/20240422_132812.mp4'
     ]
+  },
+  {
+    id: 11,
+    img: '/colecao_estampas/Aquarela-Tropical-ano/a48fc2195186333.66098164b1623.jpg.jpeg',
+    title: 'Aquarela Tropical',
+    cat: 'Estampas',
+    accent: 'var(--rosa)',
+    year: '2024',
+    description: 'Os elementos em aquarela desta coleção foram desenvolvidos para representar as praias do Ceará, referências não apenas no Brasil, mas também mundialmente. A estampa carro-chefe da coleção da marca To Have Pet foi criada de forma exclusiva, com muito carinho and dedicação. Realizamos pesquisas, elaboramos um briefing detalhado e transformamos todas as ideias em uma estampa única, que traduz a essência da coleção. O resultado ficou incrível!',
+    gallery: [
+      '/colecao_estampas/Aquarela-Tropical-ano/8d6ba1195186333.66098164b130c.jpg.jpeg',
+      '/colecao_estampas/Aquarela-Tropical-ano/ce03f8195186333.66098164b0cf4.jpg.jpeg',
+      '/colecao_estampas/Aquarela-Tropical-ano/SJY00093 1 - frente e costas ecobag.jpg.jpeg',
+      '/colecao_estampas/Aquarela-Tropical-ano/VID_79630927_092539_459.mp4'
+    ]
   }
 ];
 
