@@ -51,6 +51,21 @@ const PROJECTS = [
       '/colecao_estampas/Paraiso-ano-2024/behance_img_5.jpg.jpeg',
       '/colecao_estampas/Paraiso-ano-2024/behance_img_6.jpg.jpeg'
     ]
+  },
+  {
+    id: 10,
+    img: '/colecao_estampas/Santa-palha-aquarela/37bbd9197106979.662a871a3e7f5.jpg.jpeg',
+    title: 'Santa Palha Aquarela',
+    cat: 'Estampas',
+    accent: 'var(--azul)',
+    year: '2024',
+    description: 'Mais um trabalho feito com muito carinho junto com a Supra Estamparia Digital! Amo trabalhar com aquarela pois enriquece a estampa de um jeito incrível, a finalização de cada elemento é uma surpresa e ver o resultado final ainda é mais surpreendente. Estampa com elementos em aquarela: palha, geométrico, folhagens e textura de linho.',
+    gallery: [
+      '/colecao_estampas/Santa-palha-aquarela/f2e0fc197106979.662a871a3ec45.jpg.jpeg',
+      '/colecao_estampas/Santa-palha-aquarela/1354f7197106979.662a871a3f2e5.png',
+      '/colecao_estampas/Santa-palha-aquarela/0605.mp4',
+      '/colecao_estampas/Santa-palha-aquarela/20240422_132812.mp4'
+    ]
   }
 ];
 
@@ -259,7 +274,7 @@ export default function Portfolio() {
                                 key={idx}
                                 className="project-modal-thumb"
                                 onClick={() => setActiveMedia(media)}
-                                style={{
+                                                               style={{
                                   cursor: 'pointer',
                                   border: isActive ? `3px solid ${selectedProject.accent}` : '3px solid transparent',
                                   opacity: isActive ? 1 : 0.6,
@@ -267,8 +282,11 @@ export default function Portfolio() {
                                 }}
                               >
                                 {media.img.endsWith('.mp4') ? (
-                                  <div style={{ width: '100%', height: '100%', background: 'var(--creme)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                    <span style={{ color: 'var(--ink-soft)', fontSize: '1.8rem', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))' }}>▶</span>
+                                  <div style={{ width: '100%', height: '100%', position: 'relative', overflow: 'hidden' }}>
+                                    <video src={media.img} style={{ width: '100%', height: '100%', objectFit: 'cover' }} preload="metadata" />
+                                    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0, 0, 0, 0.45)' }}>
+                                      <span style={{ color: 'white', fontSize: '1.4rem', filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.5))' }}>▶</span>
+                                    </div>
                                   </div>
                                 ) : (
                                   <img src={media.img} alt={`${selectedProject.title} thumb ${idx}`} />
