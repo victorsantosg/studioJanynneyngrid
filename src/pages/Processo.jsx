@@ -56,6 +56,27 @@ export default function Processo() {
         <div className="brush-stroke reveal reveal-delay-3" style={{ width: 80, marginTop: '1.5rem' }} />
       </section>
 
+      {/* ─── VÍDEOS ─── */}
+      <section style={{ padding: '0 1.25rem 4rem', position: 'relative', zIndex: 2 }}>
+        <div className="desktop-grid-2" style={{ gap: '2rem', maxWidth: '800px', margin: '0 auto' }}>
+          {/* Vídeo 1 */}
+          <div className="reveal reveal-delay-2" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.1rem', color: 'var(--ink)', textAlign: 'center' }}>Estampa Festival do Morango<br/><span style={{ fontSize: '0.9rem', color: 'var(--ink-soft)' }}>para marca Estação_Sol</span></h3>
+            <div style={{ width: '100%', maxWidth: '315px', aspectRatio: '9/16', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/y66JBsP7jOo" title="Estampa Festival do Morango" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+            </div>
+          </div>
+
+          {/* Vídeo 2 */}
+          <div className="reveal reveal-delay-3" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.1rem', color: 'var(--ink)', textAlign: 'center' }}>Estampa Aquarela Tropical<br/><span style={{ fontSize: '0.9rem', color: 'var(--ink-soft)' }}>&nbsp;</span></h3>
+            <div style={{ width: '100%', maxWidth: '315px', aspectRatio: '9/16', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Ow1mWOCpNyE" title="Estampa Aquarela Tropical" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── TIMELINE ─── */}
       <section className="section-padding" style={{ padding: '2rem 1.25rem 5rem' }}>
         <div className="process-grid">
