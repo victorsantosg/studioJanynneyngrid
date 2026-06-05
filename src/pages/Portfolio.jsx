@@ -258,7 +258,7 @@ export default function Portfolio() {
                           <video 
                             key={activeMedia.img}
                             src={activeMedia.img} 
-                            autoPlay loop muted playsInline controls
+                            autoPlay loop muted playsInline
                             style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: 'calc(1.5rem - 4px)', background: 'black' }} 
                           />
                         ) : (
