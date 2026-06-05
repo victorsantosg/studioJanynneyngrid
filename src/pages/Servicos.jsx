@@ -8,19 +8,16 @@ const SERVICES = [
   {
     icon: '◈', accent: 'verde',
     title: 'Design de Estampas',
-    price: 'A partir de R$ 800',
     items: ['Pesquisa de referências', 'Desenvolvimento do padrão', 'Paleta de cores exclusiva', 'Arquivos prontos para produção', '2 revisões incluídas'],
   },
   {
     icon: '✦', accent: 'rosa', featured: true,
     title: 'Identidade Visual Completa',
-    price: 'A partir de R$ 2.500',
     items: ['Logo + variações', 'Paleta de cores', 'Tipografia', 'Manual da marca', 'Aplicações digitais', '3 revisões incluídas'],
   },
   {
     icon: '◎', accent: 'azul',
     title: 'Branding para Moda',
-    price: 'A partir de R$ 3.500',
     items: ['Identidade visual completa', 'Estratégia de marca', 'Design de estampas', 'Embalagens e tags', 'Suporte por 30 dias'],
   },
 ];
@@ -89,12 +86,9 @@ export default function Servicos() {
                 {s.icon}
               </div>
 
-              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', color: s.featured ? 'white' : 'var(--ink)', marginBottom: '0.25rem' }}>
+              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', color: s.featured ? 'white' : 'var(--ink)', marginBottom: '1.5rem' }}>
                 {s.title}
               </h3>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.85rem', fontWeight: 600, color: s.featured ? 'var(--verde)' : 'var(--verde-deep)', marginBottom: '1.25rem' }}>
-                {s.price}
-              </p>
 
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8, marginBottom: '1.5rem' }}>
                 {s.items.map(item => (
