@@ -54,15 +54,15 @@ const PROJECTS = [
   },
   {
     id: 10,
-    img: '/colecao_estampas/Santa-palha-aquarela/37bbd9197106979.662a871a3e7f5.jpg.jpeg',
+    img: '/colecao_estampas/Santa-palha-aquarela/1354f7197106979.662a871a3f2e5.png',
     title: 'Santa Palha Aquarela',
     cat: 'Estampas',
     accent: 'var(--azul)',
     year: '2024',
     description: 'Mais um trabalho feito com muito carinho junto com a Supra Estamparia Digital! Amo trabalhar com aquarela pois enriquece a estampa de um jeito incrível, a finalização de cada elemento é uma surpresa e ver o resultado final ainda é mais surpreendente. Estampa com elementos em aquarela: palha, geométrico, folhagens e textura de linho.',
     gallery: [
+      '/colecao_estampas/Santa-palha-aquarela/37bbd9197106979.662a871a3e7f5.jpg.jpeg',
       '/colecao_estampas/Santa-palha-aquarela/f2e0fc197106979.662a871a3ec45.jpg.jpeg',
-      '/colecao_estampas/Santa-palha-aquarela/1354f7197106979.662a871a3f2e5.png',
       '/colecao_estampas/Santa-palha-aquarela/0605.mp4',
       '/colecao_estampas/Santa-palha-aquarela/20240422_132812.mp4'
     ]
