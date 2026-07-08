@@ -6,19 +6,29 @@ import ParticleCanvas from '../components/ParticleCanvas';
 
 const SERVICES = [
   {
-    icon: '◈', accent: 'verde',
+    icon: '🎨', accent: 'verde',
     title: 'Design de Estampas',
     items: ['Pesquisa de referências', 'Desenvolvimento do padrão', 'Paleta de cores exclusiva', 'Arquivos prontos para produção', '2 revisões incluídas'],
   },
   {
     icon: '✦', accent: 'rosa', featured: true,
-    title: 'Identidade Visual Completa',
-    items: ['Logo + variações', 'Paleta de cores', 'Tipografia', 'Manual da marca', 'Aplicações digitais', '3 revisões incluídas'],
+    title: 'Pesquisa de Tendências e Direção Criativa',
+    items: ['Pesquisa de tendências', 'Análise da marca', 'Definição de conceito', 'Cartela de cores exclusiva', 'Construção do briefing criativo', 'Suporte direcionado'],
   },
   {
-    icon: '◎', accent: 'azul',
-    title: 'Branding para Moda',
-    items: ['Identidade visual completa', 'Estratégia de marca', 'Design de estampas', 'Embalagens e tags', 'Suporte por 30 dias'],
+    icon: '◈', accent: 'azul',
+    title: 'Desenvolvimento de Coleções',
+    items: ['Alinhamento ao posicionamento da marca', 'Foco no público-alvo', 'Alinhamento com tendências do mercado', 'Desenvolvimento completo de coleções', 'Acompanhamento do design de ponta a ponta'],
+  },
+  {
+    icon: '◎', accent: 'amarelo',
+    title: 'Briefing e Consultoria',
+    items: ['Atendimento para entender a necessidade', 'Foco no objetivo comercial da marca', 'Pesquisa completa personalizada', 'Desenvolvimento sobre briefing do cliente', 'Consultoria criativa especializada'],
+  },
+  {
+    icon: '✎', accent: 'laranja',
+    title: 'Croquis de Moda',
+    items: ['Desenvolvimento de croquis técnicos', 'Croquis ilustrativos detalhados', 'Apresentação visual de coleções', 'Modelos para projetos de moda', 'Formatos prontos para apresentação'],
   },
 ];
 

@@ -100,6 +100,24 @@ export default function Home() {
   const [visible, setVisible] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeMedia, setActiveMedia] = useState(null);
+  const [activeFeedbackImage, setActiveFeedbackImage] = useState(null);
+
+  const feedbackImages = [
+    { img: '/o_que_dizem/WhatsApp Image 2026-07-08 at 08.47.52.jpeg', name: 'Yasmim Diniz', color: 'rosa' },
+    { img: '/o_que_dizem/WhatsApp Image 2026-07-08 at 08.48.17.jpeg', name: 'Bruno Seterval', color: 'azul' },
+    { img: '/o_que_dizem/WhatsApp Image 2026-07-08 at 08.49.03.jpeg', name: 'Edna da Estação_Sol', color: 'verde' },
+    { img: '/o_que_dizem/WhatsApp Image 2026-07-08 at 08.51.07.jpeg', name: 'Letícia da Almeida Clinic', color: 'amarelo' }
+  ];
+
+  useEffect(() => {
+    if (activeFeedbackImage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => { document.body.style.overflow = 'auto'; };
+  }, [activeFeedbackImage]);
+
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 80);
@@ -145,16 +163,34 @@ export default function Home() {
 
         {/* Floating photos — Z-Axis Cascade with polaroid-like watercolor frame style */}
         <div className="desktop-hero-images">
-          <div style={{ position: 'absolute', top: '8%', right: '4%', zIndex: 2 }} className="float-a">
-            <div className={`hero-float-a float-a${visible ? ' paint-pop' : ''}`} style={{ width: 'min(200px, 45vw)', borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 20px 50px rgba(28,20,16,0.16)', border: '6px solid white', transform: 'rotate(-3deg)', background: 'white', padding: '6px 6px 18px' }}>
-              <img src="/img_1.jpeg" alt="Janynne Yngrid" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4', borderRadius: '1rem' }} />
+          {/* Foto 1: Janynne Yngrid */}
+          <div style={{ position: 'absolute', top: '5%', right: '2%', zIndex: 4 }} className="float-a">
+            <div className={`hero-float-a float-a${visible ? ' paint-pop' : ''}`} style={{ width: 'min(170px, 38vw)', borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 20px 50px rgba(28,20,16,0.16)', border: '6px solid white', transform: 'rotate(-3deg)', background: 'white', padding: '6px 6px 18px' }}>
+              <img src="/tela_inicial/1000187657.jpg.jpeg" alt="Janynne Yngrid" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4', borderRadius: '1rem' }} />
               <div style={{ textAlign: 'center', marginTop: '8px', fontFamily: 'var(--font-script)', fontSize: '1.15rem', color: 'var(--ink-soft)' }}>Janynne Yngrid</div>
             </div>
           </div>
 
-          <div style={{ position: 'absolute', top: '30%', right: '38%', zIndex: 1 }} className="float-b">
-            <div className={`hero-float-b float-b${visible ? ' paint-pop' : ''}`} style={{ animationDelay: '0.2s', width: 'min(150px, 32vw)', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 15px 35px rgba(28,20,16,0.12)', border: '5px solid white', transform: 'rotate(2deg)', background: 'white', padding: '5px 5px 14px' }}>
-              <img src="/img_3.jpeg" alt="Estampa" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4', borderRadius: '0.75rem' }} />
+          {/* Foto 2: Processo Criativo */}
+          <div style={{ position: 'absolute', top: '28%', right: '35%', zIndex: 3 }} className="float-b">
+            <div className={`hero-float-b float-b${visible ? ' paint-pop' : ''}`} style={{ animationDelay: '0.2s', width: 'min(135px, 28vw)', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 15px 35px rgba(28,20,16,0.12)', border: '5px solid white', transform: 'rotate(4deg)', background: 'white', padding: '5px 5px 14px' }}>
+              <img src="/tela_inicial/1000187658.jpg.jpeg" alt="Processo Criativo" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4', borderRadius: '0.75rem' }} />
+              <div style={{ textAlign: 'center', marginTop: '6px', fontFamily: 'var(--font-script)', fontSize: '0.95rem', color: 'var(--ink-muted)' }}>Processo Criativo</div>
+            </div>
+          </div>
+
+          {/* Foto 3: Estilo */}
+          <div style={{ position: 'absolute', top: '12%', right: '40%', zIndex: 2 }} className="float-c">
+            <div className={`hero-float-c float-c${visible ? ' paint-pop' : ''}`} style={{ animationDelay: '0.4s', width: 'min(125px, 26vw)', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 15px 35px rgba(28,20,16,0.12)', border: '5px solid white', transform: 'rotate(-8deg)', background: 'white', padding: '5px 5px 14px' }}>
+              <img src="/tela_inicial/1000017391.jpg.jpeg" alt="Estilo" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4', borderRadius: '0.75rem' }} />
+              <div style={{ textAlign: 'center', marginTop: '6px', fontFamily: 'var(--font-script)', fontSize: '0.95rem', color: 'var(--ink-muted)' }}>Estilo</div>
+            </div>
+          </div>
+
+          {/* Foto 4: Criação */}
+          <div style={{ position: 'absolute', top: '48%', right: '8%', zIndex: 1 }} className="float-d">
+            <div className={`hero-float-d float-d${visible ? ' paint-pop' : ''}`} style={{ animationDelay: '0.6s', width: 'min(145px, 32vw)', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 15px 35px rgba(28,20,16,0.12)', border: '5px solid white', transform: 'rotate(2deg)', background: 'white', padding: '5px 5px 14px' }}>
+              <img src="/tela_inicial/InShot_20220513_201325991.jpg.jpeg" alt="Criação" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4', borderRadius: '0.75rem' }} />
               <div style={{ textAlign: 'center', marginTop: '6px', fontFamily: 'var(--font-script)', fontSize: '0.95rem', color: 'var(--ink-muted)' }}>Criação</div>
             </div>
           </div>
@@ -386,15 +422,16 @@ export default function Home() {
         <div className="services-grid">
           {[
             { accent: 'verde', icon: '🎨', title: 'Design de Estampas', desc: 'Criação de padrões exclusivos para coleções de moda, com pesquisa de referências e desenvolvimento artístico completo.' },
-            { accent: 'rosa', icon: '✦', title: 'Identidade Visual', desc: 'Construção da personalidade visual da sua marca — logo, paleta, tipografia e aplicações.' },
-            { accent: 'azul', icon: '◈', title: 'Branding para Moda', desc: 'Estratégia e design visual pensados especificamente para marcas do setor fashion e lifestyle.' },
-            { accent: 'amarelo', icon: '◎', title: 'Briefing & Consultoria', desc: 'Imersão nos valores da sua marca para guiar a criação com direção criativa assertiva.' },
+            { accent: 'rosa', icon: '✦', title: 'Pesquisa de Tendências e Direção Criativa', desc: 'Pesquisa de tendências, análise da marca, definição de conceito, cartela de cores e construção do briefing criativo para coleções de estampas.' },
+            { accent: 'azul', icon: '◈', title: 'Desenvolvimento de Coleções', desc: 'Desenvolvimento de coleções alinhadas ao posicionamento da marca, público-alvo e tendências do mercado.' },
+            { accent: 'amarelo', icon: '◎', title: 'Briefing e Consultoria', desc: 'Atendimento para entender a necessidade do cliente. O projeto pode seguir uma pesquisa completa realizada por mim ou um briefing fornecido pela própria marca.' },
+            { accent: 'laranja', icon: '✎', title: 'Croquis de Moda', desc: 'Desenvolvimento de croquis técnicos e ilustrativos para apresentação de coleções e projetos de moda.' },
           ].map((s, i) => (
             <div key={s.title} className={`reveal reveal-delay-${i % 3} service-card ${s.accent}`}>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
                 <div style={{
                   width: 48, height: 48, borderRadius: '1rem', flexShrink: 0,
-                  background: s.accent === 'verde' ? 'var(--verde-pale)' : s.accent === 'rosa' ? 'var(--rosa-pale)' : s.accent === 'azul' ? 'var(--azul-pale)' : '#FDF7D8',
+                  background: s.accent === 'verde' ? 'var(--verde-pale)' : s.accent === 'rosa' ? 'var(--rosa-pale)' : s.accent === 'azul' ? 'var(--azul-pale)' : s.accent === 'laranja' ? 'var(--laranja-pale)' : '#FDF7D8',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontSize: 22,
                 }}>
@@ -425,25 +462,47 @@ export default function Home() {
           O que dizem
         </h2>
 
-        <div className="desktop-grid-2" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-          {[
-            { quote: '"A sensibilidade da Janynne para traduzir o sentimento da coleção em estampas foi extraordinária. Ela elevou o patamar do nosso design."', author: 'Maison Elegance', role: 'Alta Costura' },
-            { quote: '"O processo criativo é fluido e transparente. O resultado final da nossa identidade visual superou todas as expectativas."', author: 'Atelier Nouveau', role: 'Moda Contemporânea' },
-          ].map((t, i) => (
-            <div key={i} className={`reveal reveal-delay-${i} testimonial-card`} style={{ marginLeft: i % 2 !== 0 ? '1rem' : 0 }}>
-              <p style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: '1rem', lineHeight: 1.75, color: 'var(--ink)', marginBottom: '1.25rem', position: 'relative', zIndex: 1 }}>
-                {t.quote}
-              </p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ width: 24, height: 2, background: 'var(--rosa)', borderRadius: 2, flexShrink: 0 }} />
-                <div>
-                  <span style={{ fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--rosa-deep)' }}>{t.author}</span>
-                  <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, color: 'var(--ink-muted)', marginLeft: 6 }}>{t.role}</span>
+        <div className="feedback-grid">
+          {feedbackImages.map((img, i) => (
+            <div
+              key={i}
+              className={`reveal reveal-delay-${i} feedback-card feedback-card-tilt-${i % 4}`}
+              onClick={() => setActiveFeedbackImage(img)}
+            >
+              <div className={`feedback-phone-mockup phone-${img.color}`}>
+                <div className="feedback-phone-notch" />
+                <div className="feedback-phone-screen">
+                  <img src={img.img} alt={`Feedback de ${img.name}`} loading="lazy" />
                 </div>
               </div>
+              <h4 className="feedback-client-name">
+                {img.name}
+              </h4>
             </div>
           ))}
         </div>
+
+        {/* Lightbox / Modal de Feedback */}
+        {activeFeedbackImage && (
+          <div className="lightbox-backdrop" onClick={() => setActiveFeedbackImage(null)}>
+            <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+              <button className="lightbox-close" onClick={() => setActiveFeedbackImage(null)} aria-label="Fechar">
+                &times;
+              </button>
+              <img src={activeFeedbackImage.img} alt={`Feedback de ${activeFeedbackImage.name}`} />
+              <div style={{
+                color: 'white',
+                textAlign: 'center',
+                marginTop: '1rem',
+                fontFamily: 'var(--font-heading)',
+                fontSize: '1.25rem',
+                fontWeight: 600
+              }}>
+                {activeFeedbackImage.name}
+              </div>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* ═══════════════════════════════════════════

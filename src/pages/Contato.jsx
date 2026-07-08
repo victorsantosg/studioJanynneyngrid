@@ -129,8 +129,10 @@ export default function Contato() {
                     <select name="servico" className="form-field" value={form.servico} onChange={handleChange} style={{ appearance: 'none', cursor: 'pointer' }}>
                       <option value="">Selecione um serviço...</option>
                       <option>Design de Estampas</option>
-                      <option>Identidade Visual Completa</option>
-                      <option>Branding para Moda</option>
+                      <option>Pesquisa de Tendências e Direção Criativa</option>
+                      <option>Desenvolvimento de Coleções</option>
+                      <option>Briefing e Consultoria</option>
+                      <option>Croquis de Moda</option>
                       <option>Outro / Orçamento Personalizado</option>
                     </select>
                   </div>
