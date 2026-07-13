@@ -100,23 +100,6 @@ export default function Home() {
   const [visible, setVisible] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeMedia, setActiveMedia] = useState(null);
-  const [activeFeedbackImage, setActiveFeedbackImage] = useState(null);
-
-  const feedbackImages = [
-    { img: '/o_que_dizem/WhatsApp Image 2026-07-08 at 08.47.52.jpeg', name: 'Yasmim Diniz', color: 'rosa' },
-    { img: '/o_que_dizem/WhatsApp Image 2026-07-08 at 08.48.17.jpeg', name: 'Bruno Seterval', color: 'azul' },
-    { img: '/o_que_dizem/WhatsApp Image 2026-07-08 at 08.49.03.jpeg', name: 'Edna da Estação_Sol', color: 'verde' },
-    { img: '/o_que_dizem/WhatsApp Image 2026-07-08 at 08.51.07.jpeg', name: 'Letícia da Almeida Clinic', color: 'amarelo' }
-  ];
-
-  useEffect(() => {
-    if (activeFeedbackImage) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-    return () => { document.body.style.overflow = 'auto'; };
-  }, [activeFeedbackImage]);
 
 
   useEffect(() => {
@@ -212,7 +195,7 @@ export default function Home() {
         ))}
 
         {/* Hero text alined left matching the mockup */}
-        <div className="desktop-hero-text" style={{ position: 'relative', zIndex: 3, maxWidth: 550 }}>
+        <div className="desktop-hero-text" style={{ position: 'relative', zIndex: 3, maxWidth: 720 }}>
           <div className={`reveal${visible ? ' visible' : ''}`} style={{ marginBottom: '1.25rem' }}>
             <span className="badge badge-verde">
               <span className="color-dot" style={{ background: 'var(--verde)' }} />
@@ -229,18 +212,16 @@ export default function Home() {
             marginBottom: '1.5rem',
             fontWeight: 'normal',
           }}>
-            Criando a<br />
-            <span style={{ fontFamily: 'var(--font-script)', fontStyle: 'italic', textTransform: 'none', color: 'var(--rosa-deep)', display: 'inline-block', transform: 'rotate(-2deg)' }}>identidade</span><br />
-            da sua marca<br />
-            em <span className="brush-accent brush-accent-green" style={{ color: 'var(--verde-deep)' }}>cores</span> e<br />
-            <span className="brush-accent brush-accent-pink">elementos.</span>
+            Criando a <span style={{ fontFamily: 'var(--font-script)', fontStyle: 'italic', textTransform: 'none', color: 'var(--rosa-deep)', display: 'inline-block', transform: 'rotate(-2deg)', fontSize: '1.25em', margin: '0.2rem 0' }}>identidade</span><br />
+            da sua marca em <span className="brush-accent brush-accent-green" style={{ color: 'var(--verde-deep)' }}>cores</span><br />
+            e <span className="brush-accent brush-accent-pink">elementos.</span>
           </h1>
 
           <p className={`reveal reveal-delay-1${visible ? ' visible' : ''}`} style={{
             fontFamily: 'var(--font-body)', fontSize: '0.95rem', lineHeight: 1.7,
-            color: 'var(--ink-soft)', marginBottom: '2.5rem', maxWidth: 420,
+            color: 'var(--ink-soft)', marginBottom: '2.5rem', maxWidth: 580,
           }}>
-            Studio especializado em design têxtil, estampas exclusivas e identidade visual para marcas de moda.
+            Studio especializado em design têxtil, estampas exclusivas e croquis de moda.
           </p>
 
           <div className={`reveal reveal-delay-2${visible ? ' visible' : ''}`} style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
@@ -462,47 +443,25 @@ export default function Home() {
           O que dizem
         </h2>
 
-        <div className="feedback-grid">
-          {feedbackImages.map((img, i) => (
-            <div
-              key={i}
-              className={`reveal reveal-delay-${i} feedback-card feedback-card-tilt-${i % 4}`}
-              onClick={() => setActiveFeedbackImage(img)}
-            >
-              <div className={`feedback-phone-mockup phone-${img.color}`}>
-                <div className="feedback-phone-notch" />
-                <div className="feedback-phone-screen">
-                  <img src={img.img} alt={`Feedback de ${img.name}`} loading="lazy" />
+        <div className="desktop-grid-2" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          {[
+            { quote: '"A sensibilidade da Janynne para traduzir o sentimento da coleção em estampas foi extraordinária. Ela elevou o patamar do nosso design."', author: 'Maison Elegance', role: 'Alta Costura' },
+            { quote: '"O processo criativo é fluido e transparente. O resultado final da nossa identidade visual superou todas as expectativas."', author: 'Atelier Nouveau', role: 'Moda Contemporânea' },
+          ].map((t, i) => (
+            <div key={i} className={`reveal reveal-delay-${i} testimonial-card`} style={{ marginLeft: i % 2 !== 0 ? '1rem' : 0 }}>
+              <p style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: '1rem', lineHeight: 1.75, color: 'var(--ink)', marginBottom: '1.25rem', position: 'relative', zIndex: 1 }}>
+                {t.quote}
+              </p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <span style={{ width: 24, height: 2, background: 'var(--rosa)', borderRadius: 2, flexShrink: 0 }} />
+                <div>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--rosa-deep)' }}>{t.author}</span>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, color: 'var(--ink-muted)', marginLeft: 6 }}>{t.role}</span>
                 </div>
               </div>
-              <h4 className="feedback-client-name">
-                {img.name}
-              </h4>
             </div>
           ))}
         </div>
-
-        {/* Lightbox / Modal de Feedback */}
-        {activeFeedbackImage && (
-          <div className="lightbox-backdrop" onClick={() => setActiveFeedbackImage(null)}>
-            <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-              <button className="lightbox-close" onClick={() => setActiveFeedbackImage(null)} aria-label="Fechar">
-                &times;
-              </button>
-              <img src={activeFeedbackImage.img} alt={`Feedback de ${activeFeedbackImage.name}`} />
-              <div style={{
-                color: 'white',
-                textAlign: 'center',
-                marginTop: '1rem',
-                fontFamily: 'var(--font-heading)',
-                fontSize: '1.25rem',
-                fontWeight: 600
-              }}>
-                {activeFeedbackImage.name}
-              </div>
-            </div>
-          </div>
-        )}
       </section>
 
       {/* ═══════════════════════════════════════════
@@ -538,7 +497,7 @@ export default function Home() {
       ═══════════════════════════════════════════ */}
       <footer style={{ background: '#111009', padding: '3rem 1.25rem', borderTop: '1px solid rgba(168,214,106,0.1)' }}>
         <div className="footer-content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', textAlign: 'center' }}>
-          <img src="/logo_img.png" alt="Studio Janynne Yngrid" style={{ width: 56, height: 56, borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(168,214,106,0.4)', opacity: 0.9 }} />
+          <img src="/LOGO_STUDIO_JY.png" alt="Studio Janynne Yngrid" style={{ height: 56, width: 'auto', objectFit: 'contain', opacity: 0.9 }} />
 
           <span style={{ fontFamily: 'var(--font-script)', fontSize: '1.3rem', color: 'white', opacity: 0.9 }}>Studio Janynne Yngrid</span>
 

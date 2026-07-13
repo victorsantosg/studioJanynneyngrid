@@ -45,33 +45,11 @@ export default function Nav() {
   };
 
   const Logo = () => (
-    <div className="logo-watercolor-container">
-      <div className="logo-splash teal-splash" />
-      <div className="logo-splash pink-splash" />
-      <div className="logo-splash yellow-splash" />
-
-      {/* Ícone de Pincel SVG */}
-      <svg
-        className="logo-paintbrush"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="var(--ink)"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M18 11l-6-6-8.5 8.5a3.5 3.5 0 0 0 5 5L17 12" />
-        <path d="M14 14l1.5 1.5" />
-        <path d="M18 11.5l1.5-1.5a1.5 1.5 0 0 1 2 2l-1.5 1.5" />
-        <path d="M21 9l-2-2" />
-        <path d="M3.5 14.5L2 22l7.5-1.5" />
-      </svg>
-
-      <div className="logo-text">
-        <span className="logo-studio">Studio</span>
-        <span className="logo-name">Janynne Yngrid</span>
-      </div>
-    </div>
+    <img
+      src="/LOGO_STUDIO_JY.png"
+      alt="Studio Janynne Yngrid"
+      style={{ height: '42px', width: 'auto', display: 'block', objectFit: 'contain' }}
+    />
   );
 
   if (isMobile) {
@@ -95,9 +73,9 @@ export default function Nav() {
           >
             <Link to="/" style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
               <img
-                src="/logo_img.png"
+                src="/LOGO_STUDIO_JY.png"
                 alt="Studio Janynne Yngrid"
-                style={{ height: 36, width: 36, borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(168,214,106,0.5)' }}
+                style={{ height: 36, width: 'auto', objectFit: 'contain' }}
               />
             </Link>
             <span style={{
