@@ -497,9 +497,7 @@ export default function Home() {
       ═══════════════════════════════════════════ */}
       <footer style={{ background: '#111009', padding: '3rem 1.25rem', borderTop: '1px solid rgba(168,214,106,0.1)' }}>
         <div className="footer-content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', textAlign: 'center' }}>
-          <img src="/LOGO_STUDIO_JY_Branco.png" alt="Studio Janynne Yngrid" style={{ height: 85, width: 'auto', objectFit: 'contain', opacity: 0.9 }} />
-
-          <span style={{ fontFamily: 'var(--font-script)', fontSize: '1.3rem', color: 'white', opacity: 0.9 }}>Studio Janynne Yngrid</span>
+          <img src="/LOGO_STUDIO_JY_Branco.png" alt="Studio Janynne Yngrid" style={{ height: 100, width: 'auto', objectFit: 'contain', opacity: 0.9 }} />
 
           <nav className="footer-nav" style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             <Link to="/" className="footer-link" style={{ color: 'rgba(255,255,255,0.5)' }}>Home</Link>
