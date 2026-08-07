@@ -58,11 +58,12 @@ export default function ImageMagnifier({ src, alt, zoomLevel = 2 }) {
             inset: 0,
             backgroundImage: `url(${src})`,
             backgroundPosition: `${position.x}% ${position.y}%`,
-            backgroundSize: `${zoomLevel * 100}%`,
+            backgroundSize: `${zoomLevel * 125}%`,
             backgroundRepeat: 'no-repeat',
             opacity: showMagnifier ? 1 : 0,
             pointerEvents: 'none',
-            transition: 'opacity 0.2s ease-in-out'
+            transition: 'opacity 0.2s ease-in-out',
+            boxShadow: 'inset 0 0 15px rgba(0,0,0,0.15)'
           }}
         />
       </div>

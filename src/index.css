@@ -2529,3 +2529,40 @@ body::before {
     gap: 1rem !important;
   }
 }
+
+/* ─── SIMULADOR & PORTFOLIO RESPONSIVO (MOBILE / TABLET) ─── */
+@media (max-width: 992px) {
+  .portfolio-split-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .simulador-container-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .simulador-preview-box {
+    height: 420px !important;
+  }
+
+  .portfolio-sticky-col {
+    position: relative !important;
+    top: 0 !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .simulador-preview-box {
+    height: 350px !important;
+  }
+
+  .simulador-header-wrap {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .simulador-thumbs-grid {
+    grid-template-columns: repeat(5, 1fr) !important;
+  }
+}

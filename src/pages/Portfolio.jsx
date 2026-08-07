@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import useReveal from '../hooks/useReveal';
 import ImageMagnifier from '../components/ImageMagnifier';
 import ParticleCanvas from '../components/ParticleCanvas';
+import SimuladorMockup from '../components/SimuladorMockup';
 
 const CATEGORIES = ['Todos', 'Estampas', 'Croquis', 'Ilustração'];
 
@@ -179,49 +180,73 @@ export default function Portfolio() {
         ))}
       </div>
 
-      {/* ─── GRID ─── */}
-      <section className="section-padding" style={{ padding: '0 1.25rem 6rem' }}>
-        <div className="desktop-grid-4" style={{ gap: 16 }}>
-          {filtered.map((p, i) => {
-            const strokeColor = p.cat === 'Estampas' || p.cat === 'Ilustração'
-              ? 'rose'
-              : p.cat === 'Identidade Visual'
-                ? 'yellow'
-                : 'teal';
+      {/* ─── LAYOUT RESPONSIVO: ESTAMPAS À ESQUERDA | SIMULADOR À DIREITA ─── */}
+      <section className="section-padding" style={{ padding: '0 1.25rem 6rem', maxWidth: '1600px', margin: '0 auto', width: '100%' }}>
+        <div className="portfolio-split-grid" style={{
+          display: 'grid',
+          gridTemplateColumns: 'minmax(300px, 1fr) minmax(420px, 1.3fr)',
+          gap: '2.5rem',
+          alignItems: 'start'
+        }}>
+          
+          {/* LADO ESQUERDO: Grade de Estampas da Designer */}
+          <div>
+            <div style={{ marginBottom: '1.5rem' }}>
+              <span style={{ fontFamily: 'var(--font-script)', fontSize: '1.3rem', color: 'var(--rosa-deep)' }}>Coleções Exclusivas</span>
+              <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.8rem', color: 'var(--ink)', fontWeight: 700 }}>
+                Estampas em Aquarela
+              </h2>
+            </div>
 
-            return (
-              <div
-                key={p.id}
-                className={`reveal reveal-delay-${i % 4} canvas-card-container portfolio-item-clickable`}
-                onClick={() => setSelectedProject(p)}
-                style={{ cursor: 'pointer' }}
-              >
-                <div className={`canvas-card-inner ${p.gallery && p.gallery.length > 0 ? 'collection-stack' : ''}`} style={{ aspectRatio: '1/1', position: 'relative' }}>
-                  {p.gallery && p.gallery.length > 0 && (
-                    <div className="collection-badge">
-                      <span>❖</span> VER
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '16px' }}>
+              {filtered.map((p, i) => {
+                const strokeColor = p.cat === 'Estampas' || p.cat === 'Ilustração'
+                  ? 'rose'
+                  : p.cat === 'Identidade Visual'
+                    ? 'yellow'
+                    : 'teal';
+
+                return (
+                  <div
+                    key={p.id}
+                    className={`reveal reveal-delay-${i % 4} canvas-card-container portfolio-item-clickable`}
+                    onClick={() => setSelectedProject(p)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <div className={`canvas-card-inner ${p.gallery && p.gallery.length > 0 ? 'collection-stack' : ''}`} style={{ aspectRatio: '1/1', position: 'relative' }}>
+                      {p.gallery && p.gallery.length > 0 && (
+                        <div className="collection-badge">
+                          <span>❖</span> VER
+                        </div>
+                      )}
+                      <img
+                        src={p.img}
+                        alt={p.title}
+                        style={{
+                          objectPosition: 'top center',
+                          objectFit: 'contain',
+                          background: 'white',
+                          padding: '8px'
+                        }}
+                      />
                     </div>
-                  )}
-                  <img
-                    src={p.img}
-                    alt={p.title}
-                    style={{
-                      objectPosition: 'top center',
-                      objectFit: 'contain',
-                      background: 'white',
-                      padding: '8px'
-                    }}
-                  />
-                </div>
-                <div className="canvas-card-label-area">
-                  <div className={`card-brush-stroke card-brush-stroke-${strokeColor}`} />
-                  <span className="card-brush-title-text" style={{ fontSize: '1.25rem' }}>
-                    {p.title}
-                  </span>
-                </div>
-              </div>
-            );
-          })}
+                    <div className="canvas-card-label-area">
+                      <div className={`card-brush-stroke card-brush-stroke-${strokeColor}`} />
+                      <span className="card-brush-title-text" style={{ fontSize: '1.1rem' }}>
+                        {p.title}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* LADO DIREITO: Simulador de Aplicação Têxtil Fixo */}
+          <div className="portfolio-sticky-col" style={{ position: 'sticky', top: '100px' }}>
+            <SimuladorMockup prints={PROJECTS.filter(p => p.cat === 'Estampas')} />
+          </div>
+
         </div>
       </section>
 
