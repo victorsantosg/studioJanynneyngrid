@@ -11,10 +11,18 @@ export default function SimuladorMockup({ prints = [] }) {
   const [selectedModel, setSelectedModel] = useState(MOCKUP_MODELS[0]);
   const [tileSize, setTileSize] = useState(120); // tamanho da repetição/rapór em px
   const [blendOpacity, setBlendOpacity] = useState(0.85);
+  const [imageAspect, setImageAspect] = useState(null); // proporção real (largura/altura) da imagem PNG
 
   if (!prints || prints.length === 0) return null;
 
   const currentPrint = selectedPrint || prints[0];
+
+  const handleImageLoad = (e) => {
+    const { naturalWidth, naturalHeight } = e.target;
+    if (naturalWidth && naturalHeight) {
+      setImageAspect(naturalWidth / naturalHeight);
+    }
+  };
 
   return (
     <div style={{
@@ -78,22 +86,18 @@ export default function SimuladorMockup({ prints = [] }) {
       {/* Layout Vertical Integrado: Imagem do Vestido no Topo -> Seleção de Estampas -> Rapór -> Conceito Abaixo */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
         
-        {/* 1. VISUALIZADOR DA PEÇA (ENQUADRAMENTO MILIMÉTRICO DO MOCKUP SEM VAZAMENTO LATERAL) */}
+        {/* 1. VISUALIZADOR DA PEÇA (ENQUADRAMENTO MILIMÉTRICO SEM VAZAMENTO NAS BORDAS SUPERIOR OU INFERIOR) */}
         <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
           <div className="simulador-preview-box" style={{
             position: 'relative',
-            height: '620px',
-            maxHeight: '80vh',
-            aspectRatio: '9/16',
+            display: 'inline-block',
             borderRadius: '24px',
             overflow: 'hidden',
             backgroundColor: '#FFFFFF',
             boxShadow: '0 16px 36px rgba(0,0,0,0.06)',
             border: '1px solid var(--border-soft)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            margin: '0 auto'
+            margin: '0 auto',
+            maxHeight: '75vh'
           }}>
             {/* CAMADA 1 (AO FUNDO): Estampa Aquarelada Seamless Repetida */}
             <div style={{
@@ -106,16 +110,18 @@ export default function SimuladorMockup({ prints = [] }) {
               transition: 'background-size 0.3s ease'
             }} />
 
-            {/* CAMADA 2 (NA FRENTE ENQUADRADA): Foto do Mockup PNG Transparente */}
+            {/* CAMADA 2 (NA FRENTE 100% ENQUADRADA): Foto do Mockup PNG Transparente que Define o Tamanho Exato */}
             <img
               src={selectedModel.image}
               alt={selectedModel.name}
+              onLoad={handleImageLoad}
               style={{
                 position: 'relative',
-                width: '100%',
-                height: '100%',
-                objectFit: 'contain',
-                objectPosition: 'center',
+                display: 'block',
+                maxWidth: '100%',
+                maxHeight: '75vh',
+                width: 'auto',
+                height: 'auto',
                 zIndex: 5,
                 pointerEvents: 'none'
               }}
