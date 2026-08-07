@@ -95,6 +95,33 @@ const TAGS = [
   'Ilustração', 'Branding', 'Arte', 'Estamparia', 'Design Têxtil',
 ];
 
+const PROCESS = [
+  {
+    num: '01', accent: 'var(--verde)', badge: 'Início',
+    title: 'Briefing & Imersão',
+    desc: 'Mergulho profundo nos valores, DNA e referências da sua marca. Entendemos o que você quer comunicar antes de qualquer criação.',
+    duration: '1–2 semanas',
+  },
+  {
+    num: '02', accent: 'var(--rosa)', badge: 'Criação',
+    title: 'Pesquisa & Conceito',
+    desc: 'Desenvolvimento de referências visuais, moodboard e direção criativa. Apresentação de conceito para validação.',
+    duration: '1–2 semanas',
+  },
+  {
+    num: '03', accent: 'var(--azul)', badge: 'Desenvolvimento',
+    title: 'Design & Refinamento',
+    desc: 'Criação artística com até 3 rodadas de revisão incluídas. Cada detalhe é pensado com precisão e cuidado.',
+    duration: '2–3 semanas',
+  },
+  {
+    num: '04', accent: 'var(--amarelo-deep)', badge: 'Finalização',
+    title: 'Entrega & Suporte',
+    desc: 'Arquivos finais em todos os formatos necessários + guia de uso. Suporte para implementação.',
+    duration: '1 semana',
+  },
+];
+
 export default function Home() {
   const pageRef = useReveal();
   const [visible, setVisible] = useState(false);
@@ -429,6 +456,74 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════
+          PROCESSO CRIATIVO
+      ═══════════════════════════════════════════ */}
+      <section id="processo" className="section-padding" style={{ padding: '6rem 1.25rem', background: 'var(--creme-warm)', position: 'relative', overflow: 'hidden' }}>
+        <ParticleCanvas count={15} />
+        <div style={{ position: 'absolute', top: '5%', right: '-8%', width: 220, height: 200, borderRadius: '60% 40% 70% 30% / 50% 60% 40% 50%', background: 'var(--azul-pale)', opacity: 0.7, pointerEvents: 'none' }} />
+
+        <div className="reveal" style={{ marginBottom: '0.75rem' }}>
+          <span className="badge badge-azul">
+            <span className="color-dot" style={{ background: 'var(--azul)' }} />
+            Como funciona
+          </span>
+        </div>
+        <h2 className="reveal reveal-delay-1" style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(1.6rem,6vw,2.5rem)', color: 'var(--ink)', marginBottom: '0.5rem' }}>
+          O Processo <em style={{ fontStyle: 'italic', color: 'var(--azul-deep)', fontFamily: 'var(--font-display)' }}>Criativo</em>
+        </h2>
+        <p className="reveal reveal-delay-2" style={{ fontFamily: 'var(--font-body)', fontSize: '0.95rem', color: 'var(--ink-soft)', lineHeight: 1.7, maxWidth: 500, marginBottom: '3rem' }}>
+          Descubra como transformamos ideias e essência em estampas e identidades visuais inesquecíveis.
+        </p>
+
+        {/* Vídeos de processo */}
+        <div className="desktop-grid-2" style={{ gap: '2rem', maxWidth: '800px', margin: '0 auto 4rem' }}>
+          {/* Vídeo 1 */}
+          <div className="reveal reveal-delay-2" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.1rem', color: 'var(--ink)', textAlign: 'center' }}>Estampa Festival do Morango<br/><span style={{ fontSize: '0.9rem', color: 'var(--ink-soft)' }}>para marca Estação_Sol</span></h3>
+            <div style={{ width: '100%', maxWidth: '315px', aspectRatio: '9/16', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/y66JBsP7jOo" title="Estampa Festival do Morango" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+            </div>
+          </div>
+
+          {/* Vídeo 2 */}
+          <div className="reveal reveal-delay-3" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.1rem', color: 'var(--ink)', textAlign: 'center' }}>Estampa Aquarela Tropical<br/><span style={{ fontSize: '0.9rem', color: 'var(--ink-soft)' }}>&nbsp;</span></h3>
+            <div style={{ width: '100%', maxWidth: '315px', aspectRatio: '9/16', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Ow1mWOCpNyE" title="Estampa Aquarela Tropical" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+            </div>
+          </div>
+        </div>
+
+        {/* Timeline do processo */}
+        <div className="process-grid">
+          {PROCESS.map((step, i) => (
+            <div key={step.num} className={`reveal reveal-delay-${i % 3} process-step`} style={{ display: 'flex', gap: '1.25rem', paddingBottom: i < PROCESS.length - 1 ? '2rem' : 0, position: 'relative' }}>
+              {i < PROCESS.length - 1 && (
+                <div className="process-line" style={{ position: 'absolute', left: 22, top: 52, bottom: 0, width: 2, background: 'rgba(168,214,106,0.2)' }} />
+              )}
+              <div style={{
+                width: 44, height: 44, borderRadius: '50%', flexShrink: 0,
+                background: step.accent, display: 'flex', alignItems: 'center',
+                justifyContent: 'center', fontFamily: 'var(--font-body)',
+                fontSize: 12, fontWeight: 700, color: step.accent === 'var(--amarelo-deep)' ? 'var(--ink)' : 'white',
+                position: 'relative', zIndex: 1,
+                boxShadow: `0 4px 16px ${step.accent}40`,
+              }}>
+                {step.num}
+              </div>
+              <div style={{ paddingTop: 6 }}>
+                <span style={{ fontFamily: 'var(--font-body)', fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--ink-muted)', display: 'block', marginBottom: 4 }}>
+                  {step.badge}  ·  {step.duration}
+                </span>
+                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.1rem', color: 'var(--ink)', marginBottom: '0.4rem' }}>{step.title}</h3>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', lineHeight: 1.7, color: 'var(--ink-soft)' }}>{step.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
           DEPOIMENTOS
       ═══════════════════════════════════════════ */}
       <section className="section-padding" style={{ padding: '6rem 1.25rem', background: 'var(--creme-warm)', position: 'relative', overflow: 'hidden' }}>
@@ -503,6 +598,7 @@ export default function Home() {
             <Link to="/" className="footer-link" style={{ color: 'rgba(255,255,255,0.5)' }}>Home</Link>
             <Link to="/portfolio" className="footer-link" style={{ color: 'rgba(255,255,255,0.5)' }}>Portfólio</Link>
             <Link to="/servicos" className="footer-link" style={{ color: 'rgba(255,255,255,0.5)' }}>Serviços</Link>
+            <Link to="/#processo" className="footer-link" style={{ color: 'rgba(255,255,255,0.5)' }}>Processo Criativo</Link>
             <Link to="/contato" className="footer-link" style={{ color: 'rgba(255,255,255,0.5)' }}>Contato</Link>
           </nav>
 
