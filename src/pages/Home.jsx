@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import useReveal from '../hooks/useReveal';
 import ParticleCanvas from '../components/ParticleCanvas';
 import ImageMagnifier from '../components/ImageMagnifier';
+import SimuladorMockup from '../components/SimuladorMockup';
 
 const defaultDesc = "Uma estampa exclusiva criada com aquarela, pensada para trazer leveza e personalidade. Esse design foi desenvolvido focando no movimento das formas e na harmonia das cores.";
 const defaultGallery = [];
@@ -369,45 +370,60 @@ export default function Home() {
           Trabalhos em Destaque
         </h2>
 
-        {/* Grid harmonioso estilo Portfólio */}
-        <div className="desktop-grid-4" style={{ gap: '2rem', alignItems: 'start' }}>
-          {HIGHLIGHTED_PROJECTS.map((p, i) => {
-            const strokeColor = p.title === 'Jardim de Afetos' ? 'rose' : p.title === 'Cítricos do Sol' ? 'yellow' : 'teal';
-            return (
-              <div
-                key={p.id}
-                className={`reveal reveal-delay-${i} canvas-card-container portfolio-item-clickable`}
-                onClick={() => setSelectedProject(p)}
-                style={{ cursor: 'pointer' }}
-              >
-                <div className={`canvas-card-inner ${p.gallery && p.gallery.length > 0 ? 'collection-stack' : ''}`} style={{ aspectRatio: '1/1', position: 'relative' }}>
-                  {p.gallery && p.gallery.length > 0 && (
-                    <div className="collection-badge">
-                      <span>❖</span> VER
+        {/* Layout Side-by-Side: Cards em Destaque à Esquerda | Simulador Têxtil à Direita */}
+        <div className="portfolio-split-grid" style={{
+          display: 'grid',
+          gridTemplateColumns: 'minmax(300px, 1fr) minmax(400px, 1.2fr)',
+          gap: '2.5rem',
+          alignItems: 'start'
+        }}>
+          {/* LADO ESQUERDO: Cards dos Trabalhos em Destaque */}
+          <div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '16px' }}>
+              {HIGHLIGHTED_PROJECTS.map((p, i) => {
+                const strokeColor = p.title === 'Jardim de Afetos' ? 'rose' : p.title === 'Cítricos do Sol' ? 'yellow' : 'teal';
+                return (
+                  <div
+                    key={p.id}
+                    className={`reveal reveal-delay-${i} canvas-card-container portfolio-item-clickable`}
+                    onClick={() => setSelectedProject(p)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <div className={`canvas-card-inner ${p.gallery && p.gallery.length > 0 ? 'collection-stack' : ''}`} style={{ aspectRatio: '1/1', position: 'relative' }}>
+                      {p.gallery && p.gallery.length > 0 && (
+                        <div className="collection-badge">
+                          <span>❖</span> VER
+                        </div>
+                      )}
+                      <img 
+                        src={p.img} 
+                        alt={p.title} 
+                        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', background: 'white', padding: '12px' }} 
+                      />
                     </div>
-                  )}
-                  <img 
-                    src={p.img} 
-                    alt={p.title} 
-                    style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', background: 'white', padding: '12px' }} 
-                  />
-                </div>
-                <div className="canvas-card-label-area">
-                  <div className={`card-brush-stroke card-brush-stroke-${strokeColor}`} />
-                  <span className="card-brush-title-text" style={{ fontSize: '1.1rem' }}>
-                    {p.title}
-                  </span>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+                    <div className="canvas-card-label-area">
+                      <div className={`card-brush-stroke card-brush-stroke-${strokeColor}`} />
+                      <span className="card-brush-title-text" style={{ fontSize: '1.1rem' }}>
+                        {p.title}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
 
-        <div className="reveal reveal-delay-3" style={{ marginTop: '2rem', textAlign: 'center' }}>
-          <Link to="/portfolio" className="btn-primary">
-            <span className="label">Ver Portfólio Completo</span>
-            <span className="btn-icon" aria-hidden>→</span>
-          </Link>
+            <div className="reveal reveal-delay-3" style={{ marginTop: '2rem', textAlign: 'left' }}>
+              <Link to="/portfolio" className="btn-primary">
+                <span className="label">Ver Portfólio Completo</span>
+                <span className="btn-icon" aria-hidden>→</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* LADO DIREITO: Simulador Interativo Fixo */}
+          <div className="portfolio-sticky-col" style={{ position: 'sticky', top: '100px' }}>
+            <SimuladorMockup prints={HIGHLIGHTED_PROJECTS} />
+          </div>
         </div>
       </section>
 
