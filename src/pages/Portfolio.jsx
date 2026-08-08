@@ -198,7 +198,7 @@ export default function Portfolio() {
               </h2>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '16px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
               {filtered.map((p, i) => {
                 const strokeColor = p.cat === 'Estampas' || p.cat === 'Ilustração'
                   ? 'rose'

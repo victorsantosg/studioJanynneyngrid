@@ -2543,7 +2543,10 @@ body::before {
   }
 
   .simulador-preview-box {
-    height: 420px !important;
+    max-height: 420px !important;
+  }
+  .simulador-preview-box img {
+    max-height: 420px !important;
   }
 
   .portfolio-sticky-col {
@@ -2554,7 +2557,10 @@ body::before {
 
 @media (max-width: 576px) {
   .simulador-preview-box {
-    height: 350px !important;
+    max-height: 350px !important;
+  }
+  .simulador-preview-box img {
+    max-height: 350px !important;
   }
 
   .simulador-header-wrap {

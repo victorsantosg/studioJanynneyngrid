@@ -183,7 +183,7 @@ export default function Home() {
           </div>
 
           {/* Foto 2: Processo Criativo */}
-          <div style={{ position: 'absolute', top: '28%', right: '35%', zIndex: 3 }} className="float-b">
+          <div style={{ position: 'absolute', top: '32%', right: '25%', zIndex: 3 }} className="float-b">
             <div className={`hero-float-b float-b${visible ? ' paint-pop' : ''}`} style={{ animationDelay: '0.2s', width: 'min(135px, 28vw)', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 15px 35px rgba(28,20,16,0.12)', border: '5px solid white', transform: 'rotate(4deg)', background: 'white', padding: '5px 5px 14px' }}>
               <img src="https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/tela_inicial/1000187658.jpg.jpeg" alt="Processo Criativo" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4', borderRadius: '0.75rem' }} />
               <div style={{ textAlign: 'center', marginTop: '6px', fontFamily: 'var(--font-script)', fontSize: '0.95rem', color: 'var(--ink-muted)' }}>Processo Criativo</div>
@@ -379,7 +379,7 @@ export default function Home() {
         }}>
           {/* LADO ESQUERDO: Cards dos Trabalhos em Destaque */}
           <div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '16px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
               {HIGHLIGHTED_PROJECTS.map((p, i) => {
                 const strokeColor = p.title === 'Jardim de Afetos' ? 'rose' : p.title === 'Cítricos do Sol' ? 'yellow' : 'teal';
                 return (
