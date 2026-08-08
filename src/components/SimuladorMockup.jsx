@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Sparkles, RefreshCw, ZoomIn, Eye, Check } from 'lucide-react';
 
 const MOCKUP_MODELS = [
-  { id: 'vestido', name: 'Vestido Fluido', image: '/VESTIDO_LONGO_FEMININO.png' },
-  { id: 'pantalona', name: 'Pantalona Inverno', image: '/Pantalona_Inverno.png' }
+  { id: 'vestido', name: 'Vestido Fluido', image: 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/VESTIDO_LONGO_FEMININO.png' },
+  { id: 'pantalona', name: 'Pantalona Inverno', image: 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/Pantalona_Inverno.png' }
 ];
 
 export default function SimuladorMockup({ prints = [] }) {
@@ -12,10 +13,30 @@ export default function SimuladorMockup({ prints = [] }) {
   const [tileSize, setTileSize] = useState(120); // tamanho da repetição/rapór em px
   const [blendOpacity, setBlendOpacity] = useState(0.85);
   const [imageAspect, setImageAspect] = useState(null); // proporção real (largura/altura) da imagem PNG
+  const [showMagnifier, setShowMagnifier] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  const containerRef = useRef(null);
 
   if (!prints || prints.length === 0) return null;
 
   const currentPrint = selectedPrint || prints[0];
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isFullScreen) setIsFullScreen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isFullScreen]);
+
+  const handleMouseMove = (e) => {
+    if (!containerRef.current || isFullScreen) return;
+    const { left, top, width, height } = containerRef.current.getBoundingClientRect();
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
+    setPosition({ x, y });
+  };
 
   const handleImageLoad = (e) => {
     const { naturalWidth, naturalHeight } = e.target;
@@ -88,67 +109,65 @@ export default function SimuladorMockup({ prints = [] }) {
         
         {/* 1. VISUALIZADOR DA PEÇA (ENQUADRAMENTO MILIMÉTRICO SEM VAZAMENTO NAS BORDAS SUPERIOR OU INFERIOR) */}
         <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-          <div className="simulador-preview-box" style={{
-            position: 'relative',
-            display: 'inline-block',
-            borderRadius: '24px',
-            overflow: 'hidden',
-            backgroundColor: '#FFFFFF',
-            boxShadow: '0 16px 36px rgba(0,0,0,0.06)',
-            border: '1px solid var(--border-soft)',
-            margin: '0 auto',
-            maxHeight: '75vh'
-          }}>
-            {/* CAMADA 1 (AO FUNDO): Estampa Aquarelada Seamless Repetida */}
+          <div 
+            ref={containerRef}
+            className="simulador-preview-box" 
+            style={{
+              position: 'relative',
+              display: 'inline-block',
+              borderRadius: '24px',
+              overflow: 'hidden',
+              backgroundColor: '#FFFFFF',
+              boxShadow: '0 16px 36px rgba(0,0,0,0.06)',
+              border: '1px solid var(--border-soft)',
+              margin: '0 auto',
+              maxHeight: '75vh',
+              cursor: showMagnifier ? 'zoom-in' : 'pointer'
+            }}
+            onMouseEnter={() => setShowMagnifier(true)}
+            onMouseLeave={() => setShowMagnifier(false)}
+            onMouseMove={handleMouseMove}
+            onClick={() => setIsFullScreen(true)}
+            title="Clique para ver em tela cheia"
+          >
+            {/* Inner container to apply scale transform for magnification */}
             <div style={{
-              position: 'absolute',
-              inset: 0,
-              backgroundImage: `url(${currentPrint.img})`,
-              backgroundRepeat: 'repeat',
-              backgroundSize: `${tileSize * 1.2}px ${tileSize * 1.2}px`,
-              zIndex: 1,
-              transition: 'background-size 0.3s ease'
-            }} />
-
-            {/* CAMADA 2 (NA FRENTE 100% ENQUADRADA): Foto do Mockup PNG Transparente que Define o Tamanho Exato */}
-            <img
-              src={selectedModel.image}
-              alt={selectedModel.name}
-              onLoad={handleImageLoad}
-              style={{
-                position: 'relative',
-                display: 'block',
-                maxWidth: '100%',
-                maxHeight: '75vh',
-                width: 'auto',
-                height: 'auto',
-                zIndex: 5,
-                pointerEvents: 'none'
-              }}
-            />
-
-            {/* Badge Sobreposta de Alta Costura */}
-            <div style={{
-              position: 'absolute',
-              bottom: '1rem',
-              left: '1rem',
-              background: 'rgba(255, 255, 255, 0.94)',
-              backdropFilter: 'blur(10px)',
-              padding: '0.45rem 0.9rem',
-              borderRadius: '12px',
-              boxShadow: '0 6px 18px rgba(0,0,0,0.1)',
-              fontSize: '0.78rem',
-              fontWeight: 700,
-              color: 'var(--ink)',
+              width: '100%',
+              height: '100%',
               display: 'flex',
               alignItems: 'center',
-              gap: '0.4rem',
-              zIndex: 10
+              justifyContent: 'center',
+              transform: showMagnifier ? 'scale(2.2)' : 'scale(1)',
+              transformOrigin: `${position.x}% ${position.y}%`,
+              transition: 'transform 0.1s ease-out'
             }}>
-              <Eye size={15} color="var(--rosa-deep)" />
-              <span>{currentPrint.title}</span>
-              <span style={{ opacity: 0.5 }}>&bull;</span>
-              <span style={{ color: 'var(--verde-deep)' }}>{selectedModel.name}</span>
+              {/* CAMADA 1 (AO FUNDO): Estampa Aquarelada Seamless Repetida */}
+              <div style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: `url(${currentPrint.img})`,
+                backgroundRepeat: 'repeat',
+                backgroundSize: `${tileSize * 1.2}px ${tileSize * 1.2}px`,
+                zIndex: 1,
+                transition: 'background-size 0.3s ease'
+              }} />
+
+              {/* CAMADA 2 (NA FRENTE 100% ENQUADRADA): Foto do Mockup PNG Transparente que Define o Tamanho Exato */}
+              <img
+                src={selectedModel.image}
+                alt={selectedModel.name}
+                onLoad={handleImageLoad}
+                style={{
+                  position: 'relative',
+                  display: 'block',
+                  maxWidth: '100%',
+                  maxHeight: '75vh',
+                  width: 'auto',
+                  height: 'auto',
+                  zIndex: 5,
+                  pointerEvents: 'none'
+                }}
+              />
             </div>
           </div>
         </div>
@@ -217,9 +236,104 @@ export default function SimuladorMockup({ prints = [] }) {
             <strong>Conceito:</strong> {currentPrint.description || 'Estampa criada com técnica exclusiva de aquarela e textura têxtil.'}
           </div>
 
+          {/* Identificação de Peça e Estampa Selecionadas */}
+          <div style={{
+            fontSize: '0.74rem',
+            fontWeight: 500,
+            color: 'var(--ink-muted)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.35rem',
+            padding: '0 0.25rem',
+            marginTop: '-0.25rem'
+          }}>
+            <Eye size={13} color="var(--rosa-deep)" style={{ opacity: 0.8 }} />
+            <span style={{ fontWeight: 600, color: 'var(--ink-soft)' }}>{currentPrint.title}</span>
+            <span style={{ opacity: 0.5 }}>&bull;</span>
+            <span style={{ color: 'var(--verde-deep)', fontWeight: 600 }}>{selectedModel.name}</span>
+          </div>
+
         </div>
 
       </div>
+
+      {/* Tela Cheia Modal */}
+      {isFullScreen && createPortal(
+        <div 
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 999999,
+            backgroundColor: 'rgba(0,0,0,0.85)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'zoom-out'
+          }}
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsFullScreen(false);
+          }}
+        >
+          <div 
+            style={{
+              position: 'relative',
+              borderRadius: '24px',
+              overflow: 'hidden',
+              backgroundColor: '#FFFFFF',
+              boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              maxWidth: '90vw',
+              maxHeight: '90vh'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* CAMADA 1 (AO FUNDO): Estampa Aquarelada Seamless Repetida */}
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              backgroundImage: `url(${currentPrint.img})`,
+              backgroundRepeat: 'repeat',
+              backgroundSize: `${tileSize * 1.8}px ${tileSize * 1.8}px`,
+              zIndex: 1,
+            }} />
+
+            {/* CAMADA 2 (NA FRENTE 100% ENQUADRADA): Foto do Mockup PNG Transparente */}
+            <img
+              src={selectedModel.image}
+              alt={selectedModel.name}
+              style={{
+                position: 'relative',
+                display: 'block',
+                maxWidth: '90vw',
+                maxHeight: '90vh',
+                width: 'auto',
+                height: 'auto',
+                zIndex: 5,
+                pointerEvents: 'none'
+              }}
+            />
+
+            {/* Close instruction */}
+            <div style={{
+              position: 'absolute',
+              top: '1rem',
+              right: '1rem',
+              background: 'rgba(0, 0, 0, 0.6)',
+              color: 'white',
+              padding: '0.4rem 0.8rem',
+              borderRadius: '99px',
+              fontSize: '0.7rem',
+              fontWeight: 600,
+              zIndex: 10,
+              cursor: 'pointer'
+            }} onClick={() => setIsFullScreen(false)}>
+              Fechar (Esc)
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
     </div>
   );
 }

@@ -183,7 +183,7 @@ export default function Contato() {
         <div style={{ maxWidth: 600, margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'center', justifyContent: 'center' }}>
             <div style={{ width: 72, height: 72, borderRadius: '50%', overflow: 'hidden', flexShrink: 0, border: '2px solid var(--verde)', opacity: 0.95 }}>
-              <img src="/img_1.jpeg" alt="Janynne" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+              <img src="https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/img_1.jpeg" alt="Janynne" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
             </div>
             <div style={{ textAlign: 'left' }}>
               <span style={{ fontFamily: 'var(--font-script)', fontSize: '1.3rem', color: 'var(--rosa)', display: 'block', marginBottom: 2 }}>Janynne Yngrid</span>

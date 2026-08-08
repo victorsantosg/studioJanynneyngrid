@@ -13,73 +13,73 @@ const defaultGallery = [];
 const PROJECTS = [
   { 
     id: 7, 
-    img: '/colecao_estampas/Summer-Mocha-&-Blue/estampa1.jpeg', 
+    img: 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Summer-Mocha-%26-Blue/estampa1.jpeg', 
     title: 'Summer Mocha & Blue', 
     cat: 'Estampas', 
     accent: 'var(--verde)', 
     year: '2025', 
     description: 'Estampa criada destacando a cor do ano de 2025 Mocha Mousse e com uma pintada de azul escuro que fez uma combinação perfeita! Para realçar mais os elementos, textura não podia ficar de fora e agora mostro esse resultado incrível de estampa aquarela!', 
-    gallery: ['/colecao_estampas/Summer-Mocha-&-Blue/estampa2.jpeg', '/colecao_estampas/Summer-Mocha-&-Blue/estampa3.jpeg'] 
+    gallery: ['https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Summer-Mocha-%26-Blue/estampa2.jpeg', 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Summer-Mocha-%26-Blue/estampa3.jpeg'] 
   },
   {
     id: 8,
-    img: '/colecao_estampas/Frutificar-ano-2024/08af04218897743.67a974d29d006.jpg.jpeg',
+    img: 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Frutificar-ano-2024/08af04218897743.67a974d29d006.jpg.jpeg',
     title: 'Frutificar',
     cat: 'Estampas',
     accent: 'var(--amarelo-deep)',
     year: '2024',
     description: 'Fazer estampa infantil me leva a um mundo de cores e elementos criativos! É uma sensação maravilhosa e o resultado então? Fica tudo tão lindo! Elementos em aquarela com cartela primavera/verão com fundo textura de linho.',
     gallery: [
-      '/colecao_estampas/Frutificar-ano-2024/0528.mp4',
-      '/colecao_estampas/Frutificar-ano-2024/468179654_18146058658350434_4680175991980186050_n.jpg.jpeg',
-      '/colecao_estampas/Frutificar-ano-2024/468278741_18146058145350434_3177576444346075973_n.jpg.jpeg',
-      '/colecao_estampas/Frutificar-ano-2024/468280991_18146057968350434_3959330153825415454_n.jpg.jpeg',
-      '/colecao_estampas/Frutificar-ano-2024/ac4f3e218897743.67a974d29c878.jpg.jpeg'
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Frutificar-ano-2024/0528.mp4',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Frutificar-ano-2024/468179654_18146058658350434_4680175991980186050_n.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Frutificar-ano-2024/468278741_18146058145350434_3177576444346075973_n.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Frutificar-ano-2024/468280991_18146057968350434_3959330153825415454_n.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Frutificar-ano-2024/ac4f3e218897743.67a974d29c878.jpg.jpeg'
     ]
   },
   {
     id: 9,
-    img: '/colecao_estampas/Paraiso-ano-2024/JY0523A.jpg.jpeg',
+    img: 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Paraiso-ano-2024/JY0523A.jpg.jpeg',
     title: 'Paraíso',
     cat: 'Estampas',
     accent: 'var(--rosa-deep)',
     year: '2024',
     description: 'Uma coleção infantil encantadora, desenvolvida a partir de um estudo cuidadoso da identidade da marca Turma de Meninas. As cores foram selecionadas estrategicamente para criar conexão com o público e fortalecer a essência lúdica da coleção. Com elementos aquarelados e uma proposta tropical delicada, o resultado traduz leveza, alegria e um universo cheio de encanto.',
     gallery: [
-      '/colecao_estampas/Paraiso-ano-2024/behance_img_2.jpg.jpeg',
-      '/colecao_estampas/Paraiso-ano-2024/behance_img_3.jpg.jpeg',
-      '/colecao_estampas/Paraiso-ano-2024/behance_img_4.jpg.jpeg',
-      '/colecao_estampas/Paraiso-ano-2024/behance_img_5.jpg.jpeg',
-      '/colecao_estampas/Paraiso-ano-2024/behance_img_6.jpg.jpeg'
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Paraiso-ano-2024/behance_img_2.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Paraiso-ano-2024/behance_img_3.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Paraiso-ano-2024/behance_img_4.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Paraiso-ano-2024/behance_img_5.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Paraiso-ano-2024/behance_img_6.jpg.jpeg'
     ]
   },
   {
     id: 10,
-    img: '/colecao_estampas/Santa-palha-aquarela/1354f7197106979.662a871a3f2e5.png',
+    img: 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Santa-palha-aquarela/1354f7197106979.662a871a3f2e5.png',
     title: 'Santa Palha Aquarela',
     cat: 'Estampas',
     accent: 'var(--azul)',
     year: '2024',
     description: 'Mais um trabalho feito com muito carinho junto com a Supra Estamparia Digital! Amo trabalhar com aquarela pois enriquece a estampa de um jeito incrível, a finalização de cada elemento é uma surpresa e ver o resultado final ainda é mais surpreendente. Estampa com elementos em aquarela: palha, geométrico, folhagens e textura de linho.',
     gallery: [
-      '/colecao_estampas/Santa-palha-aquarela/37bbd9197106979.662a871a3e7f5.jpg.jpeg',
-      '/colecao_estampas/Santa-palha-aquarela/f2e0fc197106979.662a871a3ec45.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Santa-palha-aquarela/37bbd9197106979.662a871a3e7f5.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Santa-palha-aquarela/f2e0fc197106979.662a871a3ec45.jpg.jpeg',
       '/colecao_estampas/Santa-palha-aquarela/0605.mp4',
       '/colecao_estampas/Santa-palha-aquarela/20240422_132812.mp4'
     ]
   },
   {
     id: 11,
-    img: '/colecao_estampas/Aquarela-Tropical-ano/a48fc2195186333.66098164b1623.jpg.jpeg',
+    img: 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Aquarela-Tropical-ano/a48fc2195186333.66098164b1623.jpg.jpeg',
     title: 'Aquarela Tropical',
     cat: 'Estampas',
     accent: 'var(--rosa)',
     year: '2024',
     description: 'Os elementos em aquarela desta coleção foram desenvolvidos para representar as praias do Ceará, referências não apenas no Brasil, mas também mundialmente. A estampa carro-chefe da coleção da marca To Have Pet foi criada de forma exclusiva, com muito carinho e dedicação. Realizamos pesquisas, elaboramos um briefing detalhado e transformamos todas as ideias em uma estampa única, que traduz a essência da coleção. O resultado ficou incrível!',
     gallery: [
-      '/colecao_estampas/Aquarela-Tropical-ano/8d6ba1195186333.66098164b130c.jpg.jpeg',
-      '/colecao_estampas/Aquarela-Tropical-ano/ce03f8195186333.66098164b0cf4.jpg.jpeg',
-      '/colecao_estampas/Aquarela-Tropical-ano/SJY00093 1 - frente e costas ecobag.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Aquarela-Tropical-ano/8d6ba1195186333.66098164b130c.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Aquarela-Tropical-ano/ce03f8195186333.66098164b0cf4.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Aquarela-Tropical-ano/SJY00093%201%20-%20frente%20e%20costas%20ecobag.jpg.jpeg',
       '/colecao_estampas/Aquarela-Tropical-ano/VID_79630927_092539_459.mp4'
     ]
   }

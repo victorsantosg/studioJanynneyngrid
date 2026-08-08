@@ -11,73 +11,73 @@ const defaultGallery = [];
 const HIGHLIGHTED_PROJECTS = [
   { 
     id: 7, 
-    img: '/colecao_estampas/Summer-Mocha-&-Blue/estampa1.jpeg', 
+    img: 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Summer-Mocha-%26-Blue/estampa1.jpeg', 
     title: 'Summer Mocha & Blue', 
     cat: 'Estampas', 
     accent: 'var(--verde)', 
     year: '2025', 
     description: 'Estampa criada destacando a cor do ano de 2025 Mocha Mousse e com uma pintada de azul escuro que fez uma combinação perfeita! Para realçar mais os elementos, textura não podia ficar de fora e agora mostro esse resultado incrível de estampa aquarela!', 
-    gallery: ['/colecao_estampas/Summer-Mocha-&-Blue/estampa2.jpeg', '/colecao_estampas/Summer-Mocha-&-Blue/estampa3.jpeg'] 
+    gallery: ['https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Summer-Mocha-%26-Blue/estampa2.jpeg', 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Summer-Mocha-%26-Blue/estampa3.jpeg'] 
   },
   {
     id: 8,
-    img: '/colecao_estampas/Frutificar-ano-2024/08af04218897743.67a974d29d006.jpg.jpeg',
+    img: 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Frutificar-ano-2024/08af04218897743.67a974d29d006.jpg.jpeg',
     title: 'Frutificar',
     cat: 'Estampas',
     accent: 'var(--amarelo-deep)',
     year: '2024',
     description: 'Fazer estampa infantil me leva a um mundo de cores e elementos criativos! É uma sensação maravilhosa e o resultado então? Fica tudo tão lindo! Elementos em aquarela com cartela primavera/verão com fundo textura de linho.',
     gallery: [
-      '/colecao_estampas/Frutificar-ano-2024/0528.mp4',
-      '/colecao_estampas/Frutificar-ano-2024/468179654_18146058658350434_4680175991980186050_n.jpg.jpeg',
-      '/colecao_estampas/Frutificar-ano-2024/468278741_18146058145350434_3177576444346075973_n.jpg.jpeg',
-      '/colecao_estampas/Frutificar-ano-2024/468280991_18146057968350434_3959330153825415454_n.jpg.jpeg',
-      '/colecao_estampas/Frutificar-ano-2024/ac4f3e218897743.67a974d29c878.jpg.jpeg'
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Frutificar-ano-2024/0528.mp4',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Frutificar-ano-2024/468179654_18146058658350434_4680175991980186050_n.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Frutificar-ano-2024/468278741_18146058145350434_3177576444346075973_n.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Frutificar-ano-2024/468280991_18146057968350434_3959330153825415454_n.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Frutificar-ano-2024/ac4f3e218897743.67a974d29c878.jpg.jpeg'
     ]
   },
   {
     id: 9,
-    img: '/colecao_estampas/Paraiso-ano-2024/JY0523A.jpg.jpeg',
+    img: 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Paraiso-ano-2024/JY0523A.jpg.jpeg',
     title: 'Paraíso',
     cat: 'Estampas',
     accent: 'var(--rosa-deep)',
     year: '2024',
     description: 'Uma coleção infantil encantadora, desenvolvida a partir de um estudo cuidadoso da identidade da marca Turma de Meninas. As cores foram selecionadas estrategicamente para criar conexão com o público e fortalecer a essência lúdica da coleção. Com elementos aquarelados e uma proposta tropical delicada, o resultado traduz leveza, alegria e um universo cheio de encanto.',
     gallery: [
-      '/colecao_estampas/Paraiso-ano-2024/behance_img_2.jpg.jpeg',
-      '/colecao_estampas/Paraiso-ano-2024/behance_img_3.jpg.jpeg',
-      '/colecao_estampas/Paraiso-ano-2024/behance_img_4.jpg.jpeg',
-      '/colecao_estampas/Paraiso-ano-2024/behance_img_5.jpg.jpeg',
-      '/colecao_estampas/Paraiso-ano-2024/behance_img_6.jpg.jpeg'
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Paraiso-ano-2024/behance_img_2.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Paraiso-ano-2024/behance_img_3.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Paraiso-ano-2024/behance_img_4.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Paraiso-ano-2024/behance_img_5.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Paraiso-ano-2024/behance_img_6.jpg.jpeg'
     ]
   },
   {
     id: 10,
-    img: '/colecao_estampas/Santa-palha-aquarela/1354f7197106979.662a871a3f2e5.png',
+    img: 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Santa-palha-aquarela/1354f7197106979.662a871a3f2e5.png',
     title: 'Santa Palha Aquarela',
     cat: 'Estampas',
     accent: 'var(--azul)',
     year: '2024',
     description: 'Mais um trabalho feito com muito carinho junto com a Supra Estamparia Digital! Amo trabalhar com aquarela pois enriquece a estampa de um jeito incrível, a finalização de cada elemento é uma surpresa e ver o resultado final ainda é mais surpreendente. Estampa com elementos em aquarela: palha, geométrico, folhagens e textura de linho.',
     gallery: [
-      '/colecao_estampas/Santa-palha-aquarela/37bbd9197106979.662a871a3e7f5.jpg.jpeg',
-      '/colecao_estampas/Santa-palha-aquarela/f2e0fc197106979.662a871a3ec45.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Santa-palha-aquarela/37bbd9197106979.662a871a3e7f5.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Santa-palha-aquarela/f2e0fc197106979.662a871a3ec45.jpg.jpeg',
       '/colecao_estampas/Santa-palha-aquarela/0605.mp4',
       '/colecao_estampas/Santa-palha-aquarela/20240422_132812.mp4'
     ]
   },
   {
     id: 11,
-    img: '/colecao_estampas/Aquarela-Tropical-ano/a48fc2195186333.66098164b1623.jpg.jpeg',
+    img: 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Aquarela-Tropical-ano/a48fc2195186333.66098164b1623.jpg.jpeg',
     title: 'Aquarela Tropical',
     cat: 'Estampas',
     accent: 'var(--rosa)',
     year: '2024',
     description: 'Os elementos em aquarela desta coleção foram desenvolvidos para representar as praias do Ceará, referências não apenas no Brasil, mas também mundialmente. A estampa carro-chefe da coleção da marca To Have Pet foi criada de forma exclusiva, com muito carinho and dedicação. Realizamos pesquisas, elaboramos um briefing detalhado e transformamos todas as ideias em uma estampa única, que traduz a essência da coleção. O resultado ficou incrível!',
     gallery: [
-      '/colecao_estampas/Aquarela-Tropical-ano/8d6ba1195186333.66098164b130c.jpg.jpeg',
-      '/colecao_estampas/Aquarela-Tropical-ano/ce03f8195186333.66098164b0cf4.jpg.jpeg',
-      '/colecao_estampas/Aquarela-Tropical-ano/SJY00093 1 - frente e costas ecobag.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Aquarela-Tropical-ano/8d6ba1195186333.66098164b130c.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Aquarela-Tropical-ano/ce03f8195186333.66098164b0cf4.jpg.jpeg',
+      'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Aquarela-Tropical-ano/SJY00093%201%20-%20frente%20e%20costas%20ecobag.jpg.jpeg',
       '/colecao_estampas/Aquarela-Tropical-ano/VID_79630927_092539_459.mp4'
     ]
   }
@@ -177,7 +177,7 @@ export default function Home() {
           {/* Foto 1: Janynne Yngrid */}
           <div style={{ position: 'absolute', top: '5%', right: '2%', zIndex: 4 }} className="float-a">
             <div className={`hero-float-a float-a${visible ? ' paint-pop' : ''}`} style={{ width: 'min(170px, 38vw)', borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 20px 50px rgba(28,20,16,0.16)', border: '6px solid white', transform: 'rotate(-3deg)', background: 'white', padding: '6px 6px 18px' }}>
-              <img src="/tela_inicial/1000187657.jpg.jpeg" alt="Janynne Yngrid" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4', borderRadius: '1rem' }} />
+              <img src="https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/tela_inicial/1000187657.jpg.jpeg" alt="Janynne Yngrid" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4', borderRadius: '1rem' }} />
               <div style={{ textAlign: 'center', marginTop: '8px', fontFamily: 'var(--font-script)', fontSize: '1.15rem', color: 'var(--ink-soft)' }}>Janynne Yngrid</div>
             </div>
           </div>
@@ -185,7 +185,7 @@ export default function Home() {
           {/* Foto 2: Processo Criativo */}
           <div style={{ position: 'absolute', top: '28%', right: '35%', zIndex: 3 }} className="float-b">
             <div className={`hero-float-b float-b${visible ? ' paint-pop' : ''}`} style={{ animationDelay: '0.2s', width: 'min(135px, 28vw)', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 15px 35px rgba(28,20,16,0.12)', border: '5px solid white', transform: 'rotate(4deg)', background: 'white', padding: '5px 5px 14px' }}>
-              <img src="/tela_inicial/1000187658.jpg.jpeg" alt="Processo Criativo" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4', borderRadius: '0.75rem' }} />
+              <img src="https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/tela_inicial/1000187658.jpg.jpeg" alt="Processo Criativo" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4', borderRadius: '0.75rem' }} />
               <div style={{ textAlign: 'center', marginTop: '6px', fontFamily: 'var(--font-script)', fontSize: '0.95rem', color: 'var(--ink-muted)' }}>Processo Criativo</div>
             </div>
           </div>
@@ -193,7 +193,7 @@ export default function Home() {
           {/* Foto 3: Estilo */}
           <div style={{ position: 'absolute', top: '12%', right: '40%', zIndex: 2 }} className="float-c">
             <div className={`hero-float-c float-c${visible ? ' paint-pop' : ''}`} style={{ animationDelay: '0.4s', width: 'min(125px, 26vw)', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 15px 35px rgba(28,20,16,0.12)', border: '5px solid white', transform: 'rotate(-8deg)', background: 'white', padding: '5px 5px 14px' }}>
-              <img src="/tela_inicial/1000017391.jpg.jpeg" alt="Estilo" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4', borderRadius: '0.75rem' }} />
+              <img src="https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/tela_inicial/1000017391.jpg.jpeg" alt="Estilo" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4', borderRadius: '0.75rem' }} />
               <div style={{ textAlign: 'center', marginTop: '6px', fontFamily: 'var(--font-script)', fontSize: '0.95rem', color: 'var(--ink-muted)' }}>Estilo</div>
             </div>
           </div>
@@ -201,7 +201,7 @@ export default function Home() {
           {/* Foto 4: Criação */}
           <div style={{ position: 'absolute', top: '48%', right: '8%', zIndex: 1 }} className="float-d">
             <div className={`hero-float-d float-d${visible ? ' paint-pop' : ''}`} style={{ animationDelay: '0.6s', width: 'min(145px, 32vw)', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 15px 35px rgba(28,20,16,0.12)', border: '5px solid white', transform: 'rotate(2deg)', background: 'white', padding: '5px 5px 14px' }}>
-              <img src="/tela_inicial/InShot_20220513_201325991.jpg.jpeg" alt="Criação" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4', borderRadius: '0.75rem' }} />
+              <img src="https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/tela_inicial/InShot_20220513_201325991.jpg.jpeg" alt="Criação" style={{ width: '100%', display: 'block', objectFit: 'cover', aspectRatio: '3/4', borderRadius: '0.75rem' }} />
               <div style={{ textAlign: 'center', marginTop: '6px', fontFamily: 'var(--font-script)', fontSize: '0.95rem', color: 'var(--ink-muted)' }}>Criação</div>
             </div>
           </div>
@@ -305,7 +305,7 @@ export default function Home() {
             {/* Photo with double-bezel */}
             <div className="card-bezel float-b" style={{ flexShrink: 0 }}>
               <div className="card-inner" style={{ width: 'min(210px, 40vw)', borderRadius: 'calc(2rem - 6px)', overflow: 'hidden' }}>
-                <img src="/img_4.jpeg" alt="Janynne Yngrid" style={{ width: '100%', height: 'auto', display: 'block' }} />
+                <img src="https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/img_4.jpeg" alt="Janynne Yngrid" style={{ width: '100%', height: 'auto', display: 'block' }} />
               </div>
             </div>
 
@@ -608,7 +608,7 @@ export default function Home() {
       ═══════════════════════════════════════════ */}
       <footer style={{ background: '#111009', padding: '3rem 1.25rem', borderTop: '1px solid rgba(168,214,106,0.1)' }}>
         <div className="footer-content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', textAlign: 'center' }}>
-          <img src="/LOGO_STUDIO_JY_Branco.png" alt="Studio Janynne Yngrid" style={{ height: 125, width: 'auto', objectFit: 'contain', opacity: 0.9 }} />
+          <img src="https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/LOGO_STUDIO_JY_Branco.png" alt="Studio Janynne Yngrid" style={{ height: 125, width: 'auto', objectFit: 'contain', opacity: 0.9 }} />
 
           <nav className="footer-nav" style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             <Link to="/" className="footer-link" style={{ color: 'rgba(255,255,255,0.5)' }}>Home</Link>
