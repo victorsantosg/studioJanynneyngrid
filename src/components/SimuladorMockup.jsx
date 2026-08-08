@@ -28,7 +28,7 @@ export default function SimuladorMockup({ prints = [] }) {
     <div style={{
       background: 'var(--creme-warm)',
       borderRadius: '24px',
-      padding: '2rem',
+      padding: '1.5rem',
       border: '1px solid var(--border-soft)',
       boxShadow: '0 12px 32px rgba(28, 20, 16, 0.04)',
       margin: '2rem 0',
@@ -50,7 +50,7 @@ export default function SimuladorMockup({ prints = [] }) {
           </span>
           <h3 style={{
             fontFamily: 'var(--font-heading)',
-            fontSize: '1.6rem',
+            fontSize: '1.5rem',
             color: 'var(--ink)',
             fontWeight: 700,
             marginTop: '0.1rem'
@@ -83,8 +83,8 @@ export default function SimuladorMockup({ prints = [] }) {
         </div>
       </div>
 
-      {/* Layout Vertical Integrado: Imagem do Vestido no Topo -> Seleção de Estampas -> Rapór -> Conceito Abaixo */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      {/* Layout Integrado: Imagem do Vestido -> Seleção de Estampas -> Rapór -> Conceito */}
+      <div className="simulador-main-layout">
         
         {/* 1. VISUALIZADOR DA PEÇA (ENQUADRAMENTO MILIMÉTRICO SEM VAZAMENTO NAS BORDAS SUPERIOR OU INFERIOR) */}
         <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
@@ -154,21 +154,21 @@ export default function SimuladorMockup({ prints = [] }) {
         </div>
 
         {/* 2. CONTROLES: SELEÇÃO DE ESTAMPAS & ESCALA DO RAPÓR LOGO ABAIXO DA FOTO */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           
           {/* Seletor da Estampa Ativa */}
           <div>
-            <label style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--ink)', display: 'block', marginBottom: '0.5rem' }}>
+            <label style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--ink)', display: 'block', marginBottom: '0.4rem' }}>
               Selecione a Estampa em Aquarela:
             </label>
-            <div className="simulador-thumbs-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0.6rem' }}>
+            <div className="simulador-thumbs-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0.5rem' }}>
               {prints.slice(0, 10).map((p) => (
                 <button
                   key={p.id}
                   onClick={() => setSelectedPrint(p)}
                   style={{
-                    height: '60px',
-                    borderRadius: '12px',
+                    height: '50px',
+                    borderRadius: '10px',
                     overflow: 'hidden',
                     border: currentPrint.id === p.id ? '3px solid var(--rosa-deep)' : '1px solid var(--border-soft)',
                     cursor: 'pointer',
@@ -197,8 +197,8 @@ export default function SimuladorMockup({ prints = [] }) {
           </div>
 
           {/* Ajuste do Tamanho do Rapór (Repetição do Padrão) */}
-          <div style={{ backgroundColor: 'white', padding: '1rem', borderRadius: '14px', border: '1px solid var(--border-soft)' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.4rem', fontSize: '0.78rem', fontWeight: 600, color: 'var(--ink)' }}>
+          <div style={{ backgroundColor: 'white', padding: '0.75rem', borderRadius: '12px', border: '1px solid var(--border-soft)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.3rem', fontSize: '0.78rem', fontWeight: 600, color: 'var(--ink)' }}>
               <span>Escala do Rapór (Repetição)</span>
               <span style={{ color: 'var(--rosa-deep)' }}>{tileSize}px</span>
             </div>
@@ -213,7 +213,7 @@ export default function SimuladorMockup({ prints = [] }) {
           </div>
 
           {/* 3. CONCEITO DA ESTAMPA POSICIONADO NO RODA PÉ DA IMAGEM */}
-          <div style={{ fontSize: '0.82rem', color: 'var(--ink-soft)', lineHeight: 1.5, background: 'rgba(168, 214, 106, 0.12)', padding: '1rem', borderRadius: '14px', borderLeft: '3px solid var(--verde-deep)' }}>
+          <div style={{ fontSize: '0.8rem', color: 'var(--ink-soft)', lineHeight: 1.45, background: 'rgba(168, 214, 106, 0.12)', padding: '0.75rem', borderRadius: '12px', borderLeft: '3px solid var(--verde-deep)' }}>
             <strong>Conceito:</strong> {currentPrint.description || 'Estampa criada com técnica exclusiva de aquarela e textura têxtil.'}
           </div>
 
