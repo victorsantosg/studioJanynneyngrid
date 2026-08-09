@@ -3,8 +3,10 @@ import { createPortal } from 'react-dom';
 import { Sparkles, RefreshCw, ZoomIn, Eye, Check } from 'lucide-react';
 
 const MOCKUP_MODELS = [
-  { id: 'vestido', name: 'Vestido Fluido', image: 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/VESTIDO_LONGO_FEMININO.png' },
-  { id: 'pantalona', name: 'Pantalona Inverno', image: 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/Pantalona_Inverno.png' }
+  { id: 'vestido-longo', name: 'Vestido Longo', image: 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/mockups/VESTIDO%20LONGO.png' },
+  { id: 'conj-pantalona', name: 'Conj Pantalona', image: 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/mockups/CONJ%20PANTALONA.png' },
+  { id: 'canga', name: 'Canga', image: 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/mockups/CANGA.png' },
+  { id: 'bolsa', name: 'Bolsa', image: 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/mockups/BOLSA.png' }
 ];
 
 export default function SimuladorMockup({ prints = [] }) {
