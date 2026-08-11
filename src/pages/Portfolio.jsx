@@ -11,15 +11,15 @@ const defaultDesc = "Uma estampa exclusiva criada com aquarela, pensada para tra
 const defaultGallery = [];
 
 const PROJECTS = [
-  { 
-    id: 7, 
-    img: 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Summer-Mocha-%26-Blue/estampa1.jpeg', 
-    title: 'Summer Mocha & Blue', 
-    cat: 'Estampas', 
-    accent: 'var(--verde)', 
-    year: '2025', 
-    description: 'Estampa criada destacando a cor do ano de 2025 Mocha Mousse e com uma pintada de azul escuro que fez uma combinação perfeita! Para realçar mais os elementos, textura não podia ficar de fora e agora mostro esse resultado incrível de estampa aquarela!', 
-    gallery: ['https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Summer-Mocha-%26-Blue/estampa2.jpeg', 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Summer-Mocha-%26-Blue/estampa3.jpeg'] 
+  {
+    id: 7,
+    img: 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Summer-Mocha-%26-Blue/estampa1.jpeg',
+    title: 'Summer Mocha & Blue',
+    cat: 'Estampas',
+    accent: 'var(--verde)',
+    year: '2025',
+    description: 'Estampa criada destacando a cor do ano de 2025 Mocha Mousse e com uma pintada de azul escuro que fez uma combinação perfeita! Para realçar mais os elementos, textura não podia ficar de fora e agora mostro esse resultado incrível de estampa aquarela!',
+    gallery: ['https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Summer-Mocha-%26-Blue/estampa2.jpeg', 'https://ndco8rokii9ywnd8.public.blob.vercel-storage.com/colecao_estampas/Summer-Mocha-%26-Blue/estampa3.jpeg']
   },
   {
     id: 8,
@@ -135,22 +135,22 @@ export default function Portfolio() {
       {/* ─── BRAND MARQUEE (Carrossel Automático de Marcas) ─── */}
       <div className="brand-marquee-container reveal reveal-delay-2">
         <div className="brand-marquee-track">
-          <span className="brand-logo brand-cabide">CABIDE CAIÇARA</span>
-          <span className="brand-logo brand-dalutex">Dalutex</span>
-          <span className="brand-logo brand-lancaster">LANCASTER</span>
-          <span className="brand-logo brand-munny">MUNNY</span>
-          <span className="brand-logo brand-triton">Triton</span>
-          <span className="brand-logo brand-shein">SHEIN</span>
-          <span className="brand-logo brand-ipanema">Ipanema</span>
-
-          {/* Duplicado para rolagem contínua */}
-          <span className="brand-logo brand-cabide">CABIDE CAIÇARA</span>
-          <span className="brand-logo brand-dalutex">Dalutex</span>
-          <span className="brand-logo brand-lancaster">LANCASTER</span>
-          <span className="brand-logo brand-munny">MUNNY</span>
-          <span className="brand-logo brand-triton">Triton</span>
-          <span className="brand-logo brand-shein">SHEIN</span>
-          <span className="brand-logo brand-ipanema">Ipanema</span>
+          {Array(4).fill([
+            { src: '/logo_marcas_empresas/DEL_RAYSSA.png', alt: 'DEL RAYSSA' },
+            { src: '/logo_marcas_empresas/MOOREA_BEACHWEAR.png', alt: 'MOOREA BEACHWEAR' },
+            { src: '/logo_marcas_empresas/sellena_logo.png', alt: 'SELLENA' },
+            { src: '/logo_marcas_empresas/exito_lingerie.png', alt: 'ÊXITO LINGERIE' },
+            { src: '/logo_marcas_empresas/ONDAS_KIDS.png', alt: 'ONDAS KIDS' },
+            { src: '/logo_marcas_empresas/turma_de_meninas_logo.png', alt: 'TURMA DE MENINAS' },
+            { src: '/logo_marcas_empresas/logos_excelencia.png', alt: 'LOGOS EXCELENCIA' },
+          ]).flat().map((brand, i) => (
+            <img
+              key={i}
+              src={brand.src}
+              alt={brand.alt}
+              className="brand-logo-img"
+            />
+          ))}
         </div>
       </div>
 
@@ -188,7 +188,7 @@ export default function Portfolio() {
           gap: '2.5rem',
           alignItems: 'start'
         }}>
-          
+
           {/* LADO ESQUERDO: Grade de Estampas da Designer */}
           <div>
             <div style={{ marginBottom: '1.5rem' }}>
@@ -295,11 +295,11 @@ export default function Portfolio() {
                     <div className="project-modal-media">
                       <div className="project-modal-main-image" style={{ borderColor: selectedProject.accent }}>
                         {activeMedia?.img?.endsWith('.mp4') ? (
-                          <video 
+                          <video
                             key={activeMedia.img}
-                            src={activeMedia.img} 
+                            src={activeMedia.img}
                             autoPlay loop muted playsInline
-                            style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: 'calc(1.5rem - 4px)', background: 'black' }} 
+                            style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: 'calc(1.5rem - 4px)', background: 'black' }}
                           />
                         ) : (
                           <ImageMagnifier src={activeMedia?.img || selectedProject.img} alt={selectedProject.title} zoomLevel={2.5} />
@@ -314,7 +314,7 @@ export default function Portfolio() {
                                 key={idx}
                                 className="project-modal-thumb"
                                 onClick={() => setActiveMedia(media)}
-                                                               style={{
+                                style={{
                                   cursor: 'pointer',
                                   border: isActive ? `3px solid ${selectedProject.accent}` : '3px solid transparent',
                                   opacity: isActive ? 1 : 0.6,
