@@ -136,13 +136,13 @@ export default function Portfolio() {
       <div className="brand-marquee-container reveal reveal-delay-2">
         <div className="brand-marquee-track">
           {Array(4).fill([
-            { src: '/logo_marcas_empresas/DEL_RAYSSA.png', alt: 'DEL RAYSSA' },
-            { src: '/logo_marcas_empresas/MOOREA_BEACHWEAR.png', alt: 'MOOREA BEACHWEAR' },
-            { src: '/logo_marcas_empresas/sellena_logo.png', alt: 'SELLENA' },
+            { src: '/logo_marcas_empresas/del_rayssa.png', alt: 'DEL RAYSSA' },
+            { src: '/logo_marcas_empresas/moore_beachwear.png', alt: 'MOORE BEACHWEAR' },
+            { src: '/logo_marcas_empresas/sellena.png', alt: 'SELLENA' },
             { src: '/logo_marcas_empresas/exito_lingerie.png', alt: 'ÊXITO LINGERIE' },
-            { src: '/logo_marcas_empresas/ONDAS_KIDS.png', alt: 'ONDAS KIDS' },
-            { src: '/logo_marcas_empresas/turma_de_meninas_logo.png', alt: 'TURMA DE MENINAS' },
-            { src: '/logo_marcas_empresas/logos_excelencia.png', alt: 'LOGOS EXCELENCIA' },
+            { src: '/logo_marcas_empresas/ondas_kids.png', alt: 'ONDAS KIDS' },
+            { src: '/logo_marcas_empresas/turma_de_meninas.png', alt: 'TURMA DE MENINAS' },
+            { src: '/logo_marcas_empresas/excelencia.png', alt: 'EXCELÊNCIA' },
           ]).flat().map((brand, i) => (
             <img
               key={i}
