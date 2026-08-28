@@ -25,3 +25,8 @@ dist-ssr
 
 # Ignorar videos grandes
 *.mp4
+
+# Environment
+.env
+.env.*
+

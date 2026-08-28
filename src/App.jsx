@@ -7,6 +7,7 @@ import Servicos from './pages/Servicos';
 import Processo from './pages/Processo';
 import Contato from './pages/Contato';
 import SplashScreen from './components/SplashScreen';
+import AIBriefingWidget from './components/AIBriefingWidget';
 import './index.css';
 
 function App() {
@@ -26,8 +27,10 @@ function App() {
         <Route path="/processo" element={<Processo />} />
         <Route path="/contato" element={<Contato />} />
       </Routes>
+      <AIBriefingWidget />
     </Router>
   );
 }
+
 
 export default App;

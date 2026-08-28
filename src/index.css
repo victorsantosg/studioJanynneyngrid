@@ -2603,3 +2603,17 @@ body::before {
     gap: 1.5rem !important;
   }
 }
+
+/* ─── 3D VIEWER UTILITIES & ANIMATIONS ─── */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+.spin-slow {
+  animation: spin 8s linear infinite;
+}
